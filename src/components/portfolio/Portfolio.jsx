@@ -5,27 +5,31 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 const items = [
   {
     id: 1,
-    title: "React Commerce",
-    img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    title: "CareerHub",
+    img: "/careerhub-screenshot.png", // Replace with actual image
+    desc: "CareerHub is a job portal built with React, Supabase, and Clerk to connect job seekers with employers. It features job listings, application tracking, and role-based access control for a seamless experience. Recruiters can post jobs and track applications, while job seekers can search and save jobs. Clerk ensures secure authentication, while Supabase handles backend operations, including job data storage and file uploads. The UI, designed with Tailwind CSS and Radix UI, delivers a smooth and responsive experience.",
+    demoLink: "https://careerhub-demo.com", // Add demo link
   },
   {
     id: 2,
-    title: "Next.js Blog",
-    img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    title: "Sumz",
+    img: "/sumz-screenshot.png", // Replace with actual image
+    desc: "Sumz is an AI-driven web app that provides quick and precise article summaries, enhancing content digestibility. Built with React.js and Redux Toolkit, it integrates the Article Extractor and Summarizer API via RapidAPI for efficient results. A lazy query approach optimizes API response times, and persistent local storage enhances user experience. Sumz offers a seamless interface for fast and accurate content consumption.",
+    demoLink: "https://sumz-demo.com", // Add demo link
   },
   {
     id: 3,
-    title: "Vanilla JS App",
-    img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    title: "House Price Predictor",
+    img: "/HousePricePridictor-screenshot.png", // Replace with actual image
+    desc: "House Price Predictor is a machine learning model built with Python and scikit-learn to predict house prices. It includes data preprocessing for handling missing values and feature scaling. A RandomForestRegressor model was trained and optimized using cross-validation, achieving low RMSE. The model was serialized with joblib for efficient storage, and the project was managed using Git and GitHub.",
+    demoLink: "https://foodie-demo.com", // Add demo link
   },
   {
     id: 4,
-    title: "Music App",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    title: "Student Marks Predictor",
+    img: "/StudentMarksPredictor-screenshot.png", // Replace with actual image
+    desc: "Student Marks Predictor a supervised machine learning model using Simple Regression to predict student marks based on study hours. Built with NumPy, Pandas, Matplotlib, Seaborn, and scikit-learn, it achieved high accuracy in training and testing. Data analysis and feature engineering improved performance, while Git and GitHub were used for version control.",
+    demoLink: "https://foodie-demo.com", // Add demo link
   },
 ];
 
@@ -39,16 +43,18 @@ const Single = ({ item }) => {
   const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
 
   return (
-    <section >
+    <section>
       <div className="container">
         <div className="wrapper">
           <div className="imageContainer" ref={ref}>
             <img src={item.img} alt="" />
           </div>
-          <motion.div className="textContainer" style={{y}}>
+          <motion.div className="textContainer" style={{ y }}>
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
-            <button>See Demo</button>
+            <button onClick={() => window.open(item.demoLink, "_blank")}>
+              See Demo
+            </button>
           </motion.div>
         </div>
       </div>
