@@ -22,13 +22,13 @@ const App = () => {
       <section>
         <About /> {/* Add the About component */}
       </section>
-      <section id="Portfolio">
-        <Parallax type="portfolio" />
-      </section>
-      <Portfolio />
-      <section id="Contact">
-        <Contact />
-      </section>
+      <section id="Portfolio"> 
+  <Parallax type="portfolio" />
+</section>
+<Portfolio />
+<section id="Contact"> 
+  <Contact />
+</section>
     </div>
   );
 };

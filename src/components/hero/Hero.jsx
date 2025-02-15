@@ -23,6 +23,7 @@ const textVariants = {
     },
   },
 };
+
 const sliderVariants = {
   initial: {
     x: 0,
@@ -31,13 +32,21 @@ const sliderVariants = {
     x: "-220%",
     transition: {
       repeat: Infinity,
-      repeatType:"mirror",
+      repeatType: "mirror",
       duration: 20,
     },
   },
 };
 
 const Hero = () => {
+  // Function to handle smooth scrolling to a section
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="hero">
       <div className="wrapper">
@@ -52,10 +61,20 @@ const Hero = () => {
             Web developer and UI designer
           </motion.h1>
           <motion.div variants={textVariants} className="buttons">
-            <motion.button variants={textVariants}>
+            {/* Button to scroll to the Portfolio section */}
+            <motion.button
+              variants={textVariants}
+              onClick={() => scrollToSection("Portfolio")}
+            >
               See the Latest Works
             </motion.button>
-            <motion.button variants={textVariants}>Contact Me</motion.button>
+            {/* Button to scroll to the Contact section */}
+            <motion.button
+              variants={textVariants}
+              onClick={() => scrollToSection("Contact")}
+            >
+              Contact Me
+            </motion.button>
           </motion.div>
           <motion.img
             variants={textVariants}
@@ -71,7 +90,7 @@ const Hero = () => {
         initial="initial"
         animate="animate"
       >
-        Writer Content Creator Influencer
+        {/* Writer Content Creator Influencer */}
       </motion.div>
       <div className="imageContainer">
         {/* <img src="/hero.png" alt="" /> */}
