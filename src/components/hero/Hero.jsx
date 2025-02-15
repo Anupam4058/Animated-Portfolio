@@ -58,7 +58,7 @@ const Hero = () => {
         >
           <motion.h2 variants={textVariants}>ANUPAM KUMAR SINGH</motion.h2>
           <motion.h1 variants={textVariants}>
-            Web developer and UI designer
+            Web developer and Machine Learning Enthusiast
           </motion.h1>
           <motion.div variants={textVariants} className="buttons">
             {/* Button to scroll to the Portfolio section */}

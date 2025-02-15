@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       {/* Sidebar */}
-      <Sidebar/>
+      <Sidebar />
       <div className="wrapper">
         <motion.span
           initial={{ opacity: 0, scale: 0.5 }}
@@ -16,17 +16,18 @@ const Navbar = () => {
           {/* Lama Dev */}
         </motion.span>
         <div className="social">
-          <a href="#">
-            <img src="/facebook.png" alt="" />
+          <a href="https://www.linkedin.com/in/anupam-kumar-singh-0b647224a/">
+            <img src="/Linkedin.png" alt="" />
+          </a>
+          <a href="https://github.com/Anupam4058">
+            <img src="/Github.webp" alt="" />
+          </a>
+
+          <a href="https://x.com/Anupam4058?t=A3v-Adh4cp1egzRle_9ZFA&s=09">
+            <img src="/X.avif" alt="" />
           </a>
           <a href="#">
             <img src="/instagram.png" alt="" />
-          </a>
-          <a href="#">
-            <img src="/youtube.png" alt="" />
-          </a>
-          <a href="#">
-            <img src="/Linkedin.png" alt="" />
           </a>
         </div>
       </div>
