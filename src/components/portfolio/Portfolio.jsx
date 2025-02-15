@@ -6,30 +6,30 @@ const items = [
   {
     id: 1,
     title: "CareerHub",
-    img: "/careerhub-screenshot.png", // Replace with actual image
+    img: "/CareerHub.png", // Replace with actual image
     desc: "CareerHub is a job portal built with React, Supabase, and Clerk to connect job seekers with employers. It features job listings, application tracking, and role-based access control for a seamless experience. Recruiters can post jobs and track applications, while job seekers can search and save jobs. Clerk ensures secure authentication, while Supabase handles backend operations, including job data storage and file uploads. The UI, designed with Tailwind CSS and Radix UI, delivers a smooth and responsive experience.",
-    demoLink: "https://careerhub-demo.com", // Add demo link
+    demoLink: "https://github.com/Anupam4058/CareerHub", // Add demo link
   },
   {
     id: 2,
     title: "Sumz",
-    img: "/sumz-screenshot.png", // Replace with actual image
+    img: "/Sumz.png", // Replace with actual image
     desc: "Sumz is an AI-driven web app that provides quick and precise article summaries, enhancing content digestibility. Built with React.js and Redux Toolkit, it integrates the Article Extractor and Summarizer API via RapidAPI for efficient results. A lazy query approach optimizes API response times, and persistent local storage enhances user experience. Sumz offers a seamless interface for fast and accurate content consumption.",
-    demoLink: "https://sumz-demo.com", // Add demo link
+    demoLink: "https://article-summerizer-3c887d.netlify.app/", // Add demo link
   },
   {
     id: 3,
     title: "House Price Predictor",
-    img: "/HousePricePridictor-screenshot.png", // Replace with actual image
+    img: "/HousePricePredictor.jpeg", // Replace with actual image
     desc: "House Price Predictor is a machine learning model built with Python and scikit-learn to predict house prices. It includes data preprocessing for handling missing values and feature scaling. A RandomForestRegressor model was trained and optimized using cross-validation, achieving low RMSE. The model was serialized with joblib for efficient storage, and the project was managed using Git and GitHub.",
-    demoLink: "https://foodie-demo.com", // Add demo link
+    demoLink: "https://github.com/Anupam4058/House-Price-Pridictor", // Add demo link
   },
   {
     id: 4,
     title: "Student Marks Predictor",
-    img: "/StudentMarksPredictor-screenshot.png", // Replace with actual image
+    img: "/StudentMarksPredictor.png", // Replace with actual image
     desc: "Student Marks Predictor a supervised machine learning model using Simple Regression to predict student marks based on study hours. Built with NumPy, Pandas, Matplotlib, Seaborn, and scikit-learn, it achieved high accuracy in training and testing. Data analysis and feature engineering improved performance, while Git and GitHub were used for version control.",
-    demoLink: "https://foodie-demo.com", // Add demo link
+    demoLink: "https://student-marks-predictor.streamlit.app/", // Add demo link
   },
 ];
 
