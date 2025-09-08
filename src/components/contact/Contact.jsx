@@ -56,15 +56,30 @@ const Contact = () => {
     >
       <motion.div className="textContainer" variants={variants}>
         <motion.h1 variants={variants}>Let’s work together</motion.h1>
-        <motion.div className="item" variants={variants}>
+        <motion.div 
+          className="item" 
+          variants={variants}
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
           <h2>Mail</h2>
           <span>anupamkumar46511@gmail.com</span>
         </motion.div>
-        <motion.div className="item" variants={variants}>
+        <motion.div 
+          className="item" 
+          variants={variants}
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
           <h2>Address</h2>
           <span>Pune, Maharastra, India</span>
         </motion.div>
-        <motion.div className="item" variants={variants}>
+        <motion.div 
+          className="item" 
+          variants={variants}
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
           <h2>Phone</h2>
           <span>+91 7464078721</span>
         </motion.div>
@@ -106,10 +121,32 @@ const Contact = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 4, duration: 1 }}
         >
-          <input type="text" required placeholder="Name" name="name"/>
-          <input type="email" required placeholder="Email" name="email"/>
-          <textarea rows={8} placeholder="Message" name="message"/>
-          <button>Submit</button>
+          <motion.input 
+            type="text" 
+            required 
+            placeholder="Name" 
+            name="name"
+            whileFocus={{ scale: 1.02 }}
+          />
+          <motion.input 
+            type="email" 
+            required 
+            placeholder="Email" 
+            name="email"
+            whileFocus={{ scale: 1.02 }}
+          />
+          <motion.textarea 
+            rows={8} 
+            placeholder="Message" 
+            name="message"
+            whileFocus={{ scale: 1.02 }}
+          />
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Submit
+          </motion.button>
           {error && "Error"}
           {success && "Success"}
         </motion.form>

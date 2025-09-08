@@ -46,15 +46,49 @@ const Single = ({ item }) => {
     <section>
       <div className="container">
         <div className="wrapper">
-          <div className="imageContainer" ref={ref}>
-            <img src={item.img} alt="" />
-          </div>
+          <motion.div 
+            className="imageContainer" 
+            ref={ref}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            viewport={{ once: true }}
+          >
+            <motion.img 
+              src={item.img} 
+              alt={item.title}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.4 }}
+            />
+          </motion.div>
           <motion.div className="textContainer" style={{ y }}>
-            <h2>{item.title}</h2>
-            <p>{item.desc}</p>
-            <button onClick={() => window.open(item.demoLink, "_blank")}>
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {item.title}
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              {item.desc}
+            </motion.p>
+            <motion.button 
+              onClick={() => window.open(item.demoLink, "_blank")}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
               See Demo
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </div>

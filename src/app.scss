@@ -13,6 +13,7 @@ html {
   body {
     background-color: #0c0c1d;
     color: lightgray;
+    overflow-x: hidden;
   }
   
   a {
@@ -33,12 +34,40 @@ html {
     }
   }
   @mixin tablet {
-    @media (max-width: 1024px) {
+    @media (min-width: 739px) and (max-width: 1024px) {
       @content;
     }
   }
   @mixin desktop {
-    @media (max-width: 1366px) {
+    @media (min-width: 1025px) and (max-width: 1366px) {
       @content;
     }
+  }
+  @mixin large-desktop {
+    @media (min-width: 1367px) {
+      @content;
+    }
+  }
+
+  // Smooth animations for all elements
+  * {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  // Custom scrollbar
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0c0c1d;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, orange, #ff6b35);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ff6b35, orange);
   }

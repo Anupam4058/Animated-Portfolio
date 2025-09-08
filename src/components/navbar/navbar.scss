@@ -2,6 +2,14 @@
 
 .navbar {
   height: 100px;
+  
+  @include tablet {
+    height: 80px;
+  }
+  
+  @include mobile {
+    height: 60px;
+  }
 
   .wrapper {
     max-width: 1366px;
@@ -10,7 +18,15 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    padding: 0 20px;
+    
+    @include large-desktop {
+      max-width: 1600px;
+    }
 
+    @include tablet {
+      padding: 0 15px;
+    }
     @include mobile {
       justify-content: flex-end;
       padding: 20px;
@@ -27,10 +43,35 @@
     .social {
       display: flex;
       gap: 20px;
+      
+      @include tablet {
+        gap: 15px;
+      }
+      
+      @include mobile {
+        gap: 12px;
+      }
 
       img {
         width: 20px;
         height: 20px;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+        
+        &:hover {
+          transform: scale(1.2) rotate(5deg);
+          filter: brightness(1.2);
+        }
+        
+        @include tablet {
+          width: 18px;
+          height: 18px;
+        }
+        
+        @include mobile {
+          width: 16px;
+          height: 16px;
+        }
       }
     }
   }

@@ -11,7 +11,14 @@
     text-align: center;
     color: orange;
     font-size: 36px;
+    background: rgba(12, 12, 29, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 10;
 
+    @include tablet {
+      font-size: 28px;
+      padding-top: 40px;
+    }
     @include mobile {
       padding-top: calc(100vh - 100px);
       font-size: 24px;
@@ -20,6 +27,16 @@
     .progressBar {
       height: 10px;
       background-color: white;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 20px auto;
+      max-width: 300px;
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+      
+      @include mobile {
+        height: 8px;
+        max-width: 200px;
+      }
     }
   }
 
@@ -39,24 +56,67 @@
       align-items: center;
       justify-content: center;
       gap: 50px;
+      padding: 0 20px;
+      
+      @include large-desktop {
+        max-width: 1600px;
+        gap: 80px;
+      }
+      
+      @include tablet {
+        gap: 30px;
+        padding: 0 15px;
+      }
 
       @include mobile {
         flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
       }
 
       .imageContainer {
         flex: 1;
         height: 50%;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 
+        @include tablet {
+          height: 45%;
+        }
         @include mobile {
           width: 100%;
           max-height: 300px;
+          height: 250px;
+        }
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), transparent);
+          z-index: 1;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        
+        &:hover::before {
+          opacity: 1;
         }
 
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          
+          &:hover {
+            transform: scale(1.1);
+          }
 
           @include mobile {
             object-fit: contain;
@@ -70,16 +130,32 @@
         flex-direction: column;
         gap: 30px;
 
+        @include tablet {
+          gap: 25px;
+        }
         @include mobile {
           transform: none !important;
           padding: 10px;
           align-items: center;
           text-align: center;
+          gap: 20px;
         }
 
         h2 {
           font-size: 72px;
+          background: linear-gradient(45deg, #fff, #ccc);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          line-height: 1.1;
 
+          @include large-desktop {
+            font-size: 96px;
+          }
+          
+          @include tablet {
+            font-size: 56px;
+          }
           @include mobile {
             font-size: 36px;
           }
@@ -88,19 +164,61 @@
         p {
           color: gray;
           font-size: 20px;
+          line-height: 1.6;
 
+          @include tablet {
+            font-size: 18px;
+          }
           @include mobile {
             font-size: 16px;
           }
         }
 
         button {
-          background-color: orange;
+          background: linear-gradient(45deg, orange, #ff6b35);
           border: none;
           border-radius: 10px;
           padding: 10px;
           width: 200px;
           cursor: pointer;
+          font-size: 16px;
+          font-weight: 600;
+          color: white;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+          }
+          
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 165, 0, 0.4);
+            
+            &::before {
+              left: 100%;
+            }
+          }
+          
+          @include tablet {
+            width: 180px;
+            padding: 12px;
+            font-size: 14px;
+          }
+          
+          @include mobile {
+            width: 160px;
+            padding: 10px;
+            font-size: 14px;
+          }
         }
       }
     }

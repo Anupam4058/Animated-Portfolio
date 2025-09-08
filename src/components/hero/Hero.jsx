@@ -38,6 +38,30 @@ const sliderVariants = {
   },
 };
 
+const buttonVariants = {
+  initial: { scale: 0, opacity: 0 },
+  animate: { 
+    scale: 1, 
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 10,
+      delay: 0.8
+    }
+  },
+  hover: {
+    scale: 1.05,
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10
+    }
+  },
+  tap: {
+    scale: 0.95
+  }
+};
 const Hero = () => {
   // Function to handle smooth scrolling to a section
   const scrollToSection = (sectionId) => {
@@ -63,14 +87,18 @@ const Hero = () => {
           <motion.div variants={textVariants} className="buttons">
             {/* Button to scroll to the Portfolio section */}
             <motion.button
-              variants={textVariants}
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
               onClick={() => scrollToSection("Portfolio")}
             >
               See the Latest Works
             </motion.button>
             {/* Button to scroll to the Contact section */}
             <motion.button
-              variants={textVariants}
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
               onClick={() => scrollToSection("Contact")}
             >
               Contact Me
@@ -90,10 +118,16 @@ const Hero = () => {
         initial="initial"
         animate="animate"
       >
-        {/* Writer Content Creator Influencer */}
+        Developer • Creator • Innovator •
       </motion.div>
       <div className="imageContainer">
-        {/* <img src="/hero.png" alt="" /> */}
+        <motion.img 
+          src="/hero.png" 
+          alt="Anupam Kumar Singh"
+          initial={{ opacity: 0, scale: 1.2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+        />
       </div>
     </div>
   );
