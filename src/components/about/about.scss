@@ -1,40 +1,56 @@
 @import "../../app.scss";
 
 .about {
-  height: 100%;
+  min-height: 100vh;
   background: linear-gradient(180deg, #0c0c1d, #111132);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
-  padding: 50px;
+  gap: clamp(30px, 5vw, 50px);
+  padding: clamp(40px, 8vw, 80px) 20px;
+
+  @include small-laptop {
+    gap: 40px;
+    padding: 60px 15px;
+  }
 
   @include tablet {
-    gap: 30px;
-    padding: 40px;
+    gap: 35px;
+    padding: 50px 15px;
   }
+  
   @include mobile {
     flex-direction: column;
-    padding: 20px;
+    padding: 40px 10px;
     text-align: center;
-    gap: 30px;
+    gap: 25px;
+    min-height: auto;
   }
 
   .textContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: clamp(20px, 4vw, 30px);
+    max-width: 600px;
+
+    @include small-laptop {
+      gap: 25px;
+      max-width: 550px;
+    }
 
     @include tablet {
-      gap: 25px;
+      gap: 20px;
+      max-width: 500px;
     }
 
     @include mobile {
-      gap: 20px;
+      gap: 15px;
+      max-width: 100%;
     }
+    
     h1 {
-      font-size: 72px;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       color: orange;
       background: linear-gradient(45deg, orange, #ff6b35);
       -webkit-background-clip: text;
@@ -45,26 +61,27 @@
       &::after {
         content: '';
         position: absolute;
-        bottom: -10px;
+        bottom: clamp(-5px, -1vw, -10px);
         left: 0;
-        width: 100px;
+        width: clamp(60px, 15vw, 100px);
         height: 4px;
         background: linear-gradient(45deg, orange, #ff6b35);
         border-radius: 2px;
       }
 
-      @include large-desktop {
-        font-size: 96px;
+      @include small-laptop {
+        font-size: 56px;
       }
       
       @include tablet {
-        font-size: 56px;
+        font-size: 48px;
       }
+      
       @include mobile {
-        font-size: 36px;
+        font-size: 32px;
         
         &::after {
-          width: 80px;
+          width: 60px;
           left: 50%;
           transform: translateX(-50%);
         }
@@ -72,11 +89,11 @@
     }
 
     p {
-      font-size: 20px;
+      font-size: clamp(1rem, 2vw, 1.25rem);
       color: lightgray;
       line-height: 1.6;
       position: relative;
-      padding-left: 20px;
+      padding-left: clamp(0px, 2vw, 20px);
       
       &::before {
         content: '';
@@ -87,6 +104,10 @@
         height: 100%;
         background: linear-gradient(180deg, orange, transparent);
         border-radius: 2px;
+        
+        @include mobile {
+          display: none;
+        }
       }
 
       span {
@@ -111,17 +132,19 @@
         }
       }
 
-      @include tablet {
+      @include small-laptop {
         font-size: 18px;
         padding-left: 15px;
       }
-      @include mobile {
+      
+      @include tablet {
         font-size: 16px;
+        padding-left: 10px;
+      }
+      
+      @include mobile {
+        font-size: 14px;
         padding-left: 0;
-        
-        &::before {
-          display: none;
-        }
       }
     }
   }
@@ -132,14 +155,15 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    max-width: 500px;
     
     &::before {
       content: '';
       position: absolute;
-      top: -20px;
-      left: -20px;
-      right: 20px;
-      bottom: 20px;
+      top: clamp(-10px, -2vw, -20px);
+      left: clamp(-10px, -2vw, -20px);
+      right: clamp(10px, 2vw, 20px);
+      bottom: clamp(10px, 2vw, 20px);
       background: linear-gradient(45deg, orange, #ff6b35);
       border-radius: 20px;
       opacity: 0.1;
@@ -148,7 +172,6 @@
 
     img {
       width: 100%;
-      max-width: 500px;
       height: auto;
       border-radius: 10px;
       box-shadow: 
@@ -165,12 +188,17 @@
           0 0 80px rgba(255, 165, 0, 0.2);
       }
 
+      @include small-laptop {
+        max-width: 450px;
+      }
+      
       @include tablet {
         max-width: 400px;
       }
+      
       @include mobile {
-        width: 80%;
         max-width: 300px;
+        width: 80%;
       }
     }
   }

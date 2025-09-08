@@ -1,10 +1,16 @@
 @import "../../app.scss";
 
 .navbar {
-  height: 100px;
+  height: clamp(60px, 10vw, 100px);
+  position: relative;
+  z-index: 100;
+  
+  @include small-laptop {
+    height: 80px;
+  }
   
   @include tablet {
-    height: 80px;
+    height: 70px;
   }
   
   @include mobile {
@@ -12,28 +18,32 @@
   }
 
   .wrapper {
-    max-width: 1366px;
+    max-width: 1200px;
     margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    padding: 0 20px;
+    padding: 0 clamp(10px, 2vw, 20px);
     
-    @include large-desktop {
-      max-width: 1600px;
+    @include small-laptop {
+      max-width: 1000px;
+      padding: 0 15px;
     }
 
     @include tablet {
+      max-width: 100%;
       padding: 0 15px;
     }
+    
     @include mobile {
       justify-content: flex-end;
-      padding: 20px;
+      padding: 0 10px;
     }
 
     span {
       font-weight: bold;
+      font-size: clamp(1rem, 2vw, 1.25rem);
 
       @include mobile {
         display: none;
@@ -42,19 +52,23 @@
 
     .social {
       display: flex;
-      gap: 20px;
+      gap: clamp(12px, 2vw, 20px);
       
-      @include tablet {
+      @include small-laptop {
         gap: 15px;
       }
       
-      @include mobile {
+      @include tablet {
         gap: 12px;
+      }
+      
+      @include mobile {
+        gap: 10px;
       }
 
       img {
-        width: 20px;
-        height: 20px;
+        width: clamp(16px, 2.5vw, 20px);
+        height: clamp(16px, 2.5vw, 20px);
         transition: all 0.3s ease;
         border-radius: 4px;
         
@@ -63,14 +77,19 @@
           filter: brightness(1.2);
         }
         
-        @include tablet {
+        @include small-laptop {
           width: 18px;
           height: 18px;
         }
         
-        @include mobile {
+        @include tablet {
           width: 16px;
           height: 16px;
+        }
+        
+        @include mobile {
+          width: 14px;
+          height: 14px;
         }
       }
     }

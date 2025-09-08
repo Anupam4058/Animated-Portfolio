@@ -1,118 +1,152 @@
 @import "../../app.scss";
 
 .hero {
+  min-height: calc(100vh - 100px);
   height: calc(100vh - 100px);
   overflow: hidden;
   background: linear-gradient(180deg, #0c0c1d, #111132);
   position: relative;
   
+  @include small-laptop {
+    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
+  }
+  
   @include tablet {
     height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
   }
   
   @include mobile {
     height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
   }
 
   .wrapper {
-    max-width: 1366px;
     height: 100%;
-    margin: auto;
-    padding: 0 20px;
-    
-    @include large-desktop {
-      max-width: 1600px;
-    }
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
 
     .textContainer {
-      width: 50%;
+      width: 55%;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 40px;
+      gap: clamp(20px, 4vw, 40px);
+      padding: 0 20px;
 
-      @include tablet {
+      @include small-laptop {
         width: 60%;
         gap: 30px;
+        padding: 0 15px;
+      }
+
+      @include tablet {
+        width: 65%;
+        gap: 25px;
+        padding: 0 15px;
       }
 
       @include mobile {
-        height: 50%;
+        height: 60%;
         width: 100%;
-        gap: 20px;
+        gap: 15px;
         align-items: center;
         text-align: center;
         padding: 0 10px;
       }
 
       h2 {
-        font-size: 30px;
+        font-size: clamp(1rem, 3vw, 1.875rem);
         color: rebeccapurple;
-        letter-spacing: 10px;
+        letter-spacing: clamp(2px, 1vw, 10px);
         
-        @include tablet {
+        @include small-laptop {
           font-size: 24px;
           letter-spacing: 6px;
         }
         
+        @include tablet {
+          font-size: 20px;
+          letter-spacing: 6px;
+        }
+        
         @include mobile {
-          font-size: 18px;
+          font-size: 16px;
           letter-spacing: 4px;
         }
       }
 
       h1 {
-        font-size: 88px;
+        font-size: clamp(2rem, 8vw, 5.5rem);
         line-height: 1.1;
         background: linear-gradient(45deg, #fff, #ccc);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
 
-        @include large-desktop {
-          font-size: 120px;
+        @include small-laptop {
+          font-size: 72px;
         }
         
         @include tablet {
-          font-size: 64px;
+          font-size: 56px;
         }
+        
         @include mobile {
-          font-size: 36px;
+          font-size: 32px;
         }
       }
 
       .buttons {
         display: flex;
-        gap: 20px;
+        gap: clamp(10px, 2vw, 20px);
         flex-wrap: wrap;
+        
+        @include small-laptop {
+          gap: 15px;
+        }
+        
+        @include tablet {
+          gap: 15px;
+        }
         
         @include mobile {
           justify-content: center;
-          gap: 15px;
+          gap: 10px;
         }
 
         button {
-          padding: 20px;
+          padding: clamp(12px, 2.5vw, 20px) clamp(16px, 3vw, 24px);
           border: 1px solid white;
           border-radius: 10px;
           background-color: transparent;
           color: white;
           cursor: pointer;
           font-weight: 300;
+          font-size: clamp(0.75rem, 1.5vw, 1rem);
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           position: relative;
           overflow: hidden;
+          white-space: nowrap;
           
-          @include tablet {
+          @include small-laptop {
             padding: 16px 20px;
             font-size: 14px;
           }
           
+          @include tablet {
+            padding: 14px 18px;
+            font-size: 14px;
+          }
+          
           @include mobile {
-            padding: 12px 16px;
-            font-size: 12px;
-            min-width: 140px;
+            padding: 10px 14px;
+            font-size: 11px;
+            min-width: 120px;
           }
 
           &::before {
@@ -140,12 +174,8 @@
       }
 
       img {
-        width: 50px;
+        width: clamp(30px, 5vw, 50px);
         filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));
-        
-        @include mobile {
-          width: 40px;
-        }
       }
     }
   }
@@ -155,17 +185,23 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 50%;
+    width: 45%;
+    z-index: 1;
+    
+    @include small-laptop {
+      width: 40%;
+    }
     
     @include tablet {
-      width: 40%;
+      width: 35%;
     }
 
     @include mobile {
-      height: 50%;
+      height: 40%;
       width: 100%;
       top: unset;
       bottom: 0;
+      opacity: 0.7;
     }
 
     img{
@@ -173,26 +209,41 @@
       height: 100%;
       object-fit: cover;
       filter: brightness(0.8) contrast(1.1);
+      
+      @include mobile {
+        object-fit: contain;
+        object-position: center bottom;
+      }
     }
   }
 
   .slidingTextContainer {
     position: absolute;
-    font-size: 50vh;
-    bottom: -120px;
+    font-size: clamp(20vh, 40vw, 50vh);
+    bottom: clamp(-80px, -15vw, -120px);
     white-space: nowrap;
     color: #ffffff09;
-    width: 50%;
+    width: 60%;
     font-weight: bold;
+    z-index: 0;
+    
+    @include small-laptop {
+      font-size: 35vh;
+      bottom: -100px;
+      width: 55%;
+    }
     
     @include tablet {
-      font-size: 40vh;
-      bottom: -100px;
+      font-size: 30vh;
+      bottom: -80px;
+      width: 50%;
     }
     
     @include mobile {
-      font-size: 30vh;
-      bottom: -80px;
+      font-size: 25vh;
+      bottom: -60px;
+      width: 100%;
+      text-align: center;
     }
   }
 }

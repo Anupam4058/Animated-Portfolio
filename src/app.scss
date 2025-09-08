@@ -26,25 +26,40 @@ html {
     width: 100vw;
     scroll-snap-align: center;
     overflow: hidden;
+    
+    @include mobile {
+      min-height: 100vh;
+      height: auto;
+    }
   }
   
+  // Enhanced responsive breakpoints
   @mixin mobile {
-    @media (max-width: 738px) {
+    @media (max-width: 767px) {
       @content;
     }
   }
+  
   @mixin tablet {
-    @media (min-width: 739px) and (max-width: 1024px) {
+    @media (min-width: 768px) and (max-width: 1023px) {
       @content;
     }
   }
+  
+  @mixin small-laptop {
+    @media (min-width: 1024px) and (max-width: 1365px) {
+      @content;
+    }
+  }
+  
   @mixin desktop {
-    @media (min-width: 1025px) and (max-width: 1366px) {
+    @media (min-width: 1366px) and (max-width: 1919px) {
       @content;
     }
   }
+  
   @mixin large-desktop {
-    @media (min-width: 1367px) {
+    @media (min-width: 1920px) {
       @content;
     }
   }
@@ -57,6 +72,10 @@ html {
   // Custom scrollbar
   ::-webkit-scrollbar {
     width: 8px;
+    
+    @include mobile {
+      width: 4px;
+    }
   }
 
   ::-webkit-scrollbar-track {
@@ -70,4 +89,57 @@ html {
 
   ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #ff6b35, orange);
+  }
+
+  // Container utility classes
+  .container {
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    @include large-desktop {
+      max-width: 1600px;
+    }
+    
+    @include desktop {
+      max-width: 1200px;
+    }
+    
+    @include small-laptop {
+      max-width: 1024px;
+      padding: 0 15px;
+    }
+    
+    @include tablet {
+      max-width: 768px;
+      padding: 0 15px;
+    }
+    
+    @include mobile {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  }
+
+  // Responsive typography
+  .responsive-text {
+    &.hero-title {
+      font-size: clamp(2rem, 8vw, 5.5rem);
+      line-height: 1.1;
+    }
+    
+    &.section-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.2;
+    }
+    
+    &.subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.875rem);
+      line-height: 1.4;
+    }
+    
+    &.body-text {
+      font-size: clamp(0.875rem, 2vw, 1.25rem);
+      line-height: 1.6;
+    }
   }

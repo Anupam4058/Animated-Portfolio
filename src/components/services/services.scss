@@ -1,144 +1,297 @@
 @import "../../app.scss";
+
 .services {
   background: linear-gradient(180deg, #0c0c1d, #111132);
-  height: 100%;
+  min-height: 100vh;
+  padding: 80px 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+
+  @include small-laptop {
+    padding: 60px 0;
+  }
+
+  @include tablet {
+    padding: 50px 0;
+  }
+
+  @include mobile {
+    padding: 40px 0;
+    min-height: auto;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    @include small-laptop {
+      gap: 50px;
+    }
+
+    @include tablet {
+      gap: 40px;
+    }
+
+    @include mobile {
+      gap: 30px;
+    }
+  }
 
   .textContainer {
-    flex: 1;
-    align-self: flex-end;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 20px;
+
+    @include tablet {
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
 
     @include mobile {
       align-self: center;
       text-align: center;
       flex-direction: column;
+      gap: 15px;
     }
 
-    p {
+    .subtitle {
       font-weight: 200;
-      font-size: 20px;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: gray;
       text-align: right;
+      max-width: 400px;
+
+      @include tablet {
+        text-align: center;
+        max-width: 500px;
+      }
+
+      @include mobile {
+        text-align: center;
+        max-width: 100%;
+      }
     }
 
     hr {
-      width: 500px;
+      width: clamp(200px, 40vw, 500px);
       border: none;
       border-top: 0.5px solid gray;
 
       @include mobile {
-        width: 300px;
+        width: 80%;
       }
     }
   }
+
   .titleContainer {
-    flex: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
 
     @include mobile {
-      width: 100%;
+      gap: 20px;
     }
 
     .title {
       display: flex;
       align-items: center;
-      gap: 50px;
+      justify-content: center;
+      gap: clamp(20px, 5vw, 50px);
+      width: 100%;
 
-      @include mobile {
+      @include tablet {
         flex-direction: column;
         text-align: center;
         gap: 20px;
       }
 
-      img {
-        width: 300px;
-        height: 100px;
-        border-radius: 50px;
-        object-fit: cover;
+      @include mobile {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+
+      .icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: clamp(80px, 15vw, 120px);
+        height: clamp(80px, 15vw, 120px);
+        background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), rgba(255, 107, 53, 0.1));
+        border-radius: 50%;
+        border: 2px solid rgba(255, 165, 0, 0.3);
+
+        .service-icon {
+          font-size: clamp(2rem, 5vw, 3rem);
+        }
 
         @include mobile {
-          width: 200px;
-          height: 50px;
+          width: 60px;
+          height: 60px;
+          
+          .service-icon {
+            font-size: 1.5rem;
+          }
         }
       }
 
       h1 {
-        font-size: 96px;
         font-weight: 100;
+        text-align: center;
 
         @include mobile {
-          font-size: 36px;
+          line-height: 1.2;
         }
       }
 
       button {
-        width: 300px;
-        height: 100px;
+        padding: clamp(15px, 3vw, 25px) clamp(30px, 6vw, 50px);
         border-radius: 50px;
-        background-color: orange;
+        background: linear-gradient(45deg, orange, #ff6b35);
         border: none;
-        font-size: 24px;
+        font-size: clamp(0.875rem, 2vw, 1.5rem);
+        font-weight: 600;
+        color: white;
         cursor: pointer;
+        white-space: nowrap;
+        min-width: fit-content;
 
         @include mobile {
-          font-size: 16px;
-          width: 150px;
-          height: 50px;
+          padding: 12px 24px;
+          font-size: 0.875rem;
         }
       }
     }
   }
+
   .listContainer {
-    flex: 2;
-    display: flex;
-    max-width: 1366px;
-    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+
+    @include small-laptop {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
 
     @include mobile {
-      flex-direction: column;
-      width: 100%;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 100%;
     }
 
     .box {
-      padding: 50px;
-      border: 0.5px solid gray;
+      padding: clamp(20px, 4vw, 40px);
+      border: 1px solid rgba(255, 165, 0, 0.2);
+      border-radius: 15px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
 
-      @include mobile {
-        border: none;
-        align-items: center;
-        gap: 20px;
-        padding: 10px;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
+        transition: left 0.6s;
       }
 
-      p {
+      &:hover::before {
+        left: 100%;
+      }
+
+      @include mobile {
+        padding: 20px;
+        gap: 15px;
+      }
+
+      .service-icon-large {
+        font-size: clamp(2rem, 4vw, 3rem);
+        align-self: flex-start;
+        padding: 10px;
+        background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), rgba(255, 107, 53, 0.1));
+        border-radius: 10px;
+        width: fit-content;
+      }
+
+      h2 {
+        font-size: clamp(1.25rem, 3vw, 1.5rem);
+        color: orange;
+        margin: 0;
+      }
+
+      .service-description {
+        color: lightgray;
+        line-height: 1.6;
+        font-size: clamp(0.875rem, 2vw, 1rem);
+        flex-grow: 1;
+
         @include mobile {
-          display: none;
+          font-size: 0.875rem;
+        }
+      }
+
+      .technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 10px 0;
+
+        .tech-tag {
+          padding: 4px 8px;
+          background: rgba(255, 165, 0, 0.1);
+          border: 1px solid rgba(255, 165, 0, 0.3);
+          border-radius: 12px;
+          font-size: 0.75rem;
+          color: orange;
+          transition: all 0.3s ease;
+          cursor: pointer;
+
+          @include mobile {
+            font-size: 0.7rem;
+            padding: 3px 6px;
+          }
         }
       }
 
       button {
-        padding: 10px;
-        background-color: orange;
+        padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 20px);
+        background: linear-gradient(45deg, orange, #ff6b35);
         border: none;
+        border-radius: 8px;
         cursor: pointer;
+        font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+        font-weight: 500;
+        color: white;
+        align-self: flex-start;
+        transition: all 0.3s ease;
 
         @include mobile {
-          background-color: transparent;
-          border: 1px solid orange;
-          border-radius: 5px;
-          color: orange;
-          width: 50%;
-          padding: 5px;
+          padding: 8px 16px;
+          font-size: 0.75rem;
+          align-self: stretch;
+          text-align: center;
         }
       }
     }

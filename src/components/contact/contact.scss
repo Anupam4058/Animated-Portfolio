@@ -1,73 +1,85 @@
 @import "../../app.scss";
 
 .contact {
-  height: 100%;
-  max-width: 1366px;
+  min-height: 100vh;
+  max-width: 1200px;
   margin: auto;
   display: flex;
   align-items: center;
-  gap: 50px;
-  padding: 0 20px;
+  gap: clamp(30px, 5vw, 50px);
+  padding: clamp(40px, 8vw, 80px) clamp(10px, 2vw, 20px);
   
-  @include large-desktop {
-    max-width: 1600px;
-    gap: 80px;
+  @include small-laptop {
+    max-width: 1000px;
+    gap: 40px;
+    padding: 60px 15px;
   }
   
   @include tablet {
-    gap: 30px;
-    padding: 0 15px;
+    max-width: 100%;
+    gap: 35px;
+    padding: 50px 15px;
   }
 
   @include mobile {
     width: 100%;
-    padding: 10px;
+    padding: 40px 10px;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
+    min-height: auto;
   }
 
   .textContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: clamp(25px, 4vw, 40px);
+    max-width: 500px;
+
+    @include small-laptop {
+      gap: 30px;
+      max-width: 450px;
+    }
 
     @include tablet {
-      gap: 30px;
+      gap: 25px;
+      max-width: 400px;
     }
+    
     @include mobile {
       gap: 20px;
       text-align: center;
       align-items: center;
-      margin-top: 70px;
+      max-width: 100%;
     }
 
     h1 {
-      font-size: 100px;
-      line-height: 88px;
+      font-size: clamp(2.5rem, 8vw, 6.25rem);
+      line-height: 0.9;
       background: linear-gradient(45deg, #fff, #ccc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
 
-      @include large-desktop {
-        font-size: 120px;
-        line-height: 100px;
+      @include small-laptop {
+        font-size: 80px;
+        line-height: 72px;
       }
       
       @include tablet {
-        font-size: 72px;
-        line-height: 64px;
+        font-size: 64px;
+        line-height: 56px;
       }
+      
       @include mobile {
-        font-size: 36px;
-        line-height: 32px;
+        font-size: 32px;
+        line-height: 28px;
       }
     }
     
     .item {
       position: relative;
-      padding: 20px;
+      padding: clamp(15px, 3vw, 20px);
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
@@ -82,16 +94,33 @@
       
       h2 {
         color: orange;
-        margin-bottom: 10px;
-        font-size: 24px;
+        margin-bottom: clamp(5px, 1vw, 10px);
+        font-size: clamp(1.125rem, 2.5vw, 1.5rem);
         
-        @include tablet {
+        @include small-laptop {
           font-size: 20px;
         }
         
-        @include mobile {
+        @include tablet {
           font-size: 18px;
         }
+        
+        @include mobile {
+          font-size: 16px;
+        }
+      }
+      
+      span {
+        font-weight: 300;
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        
+        @include mobile {
+          font-size: 14px;
+        }
+      }
+      
+      @include small-laptop {
+        padding: 18px;
       }
       
       @include tablet {
@@ -99,17 +128,8 @@
       }
       
       @include mobile {
-        padding: 15px;
+        padding: 12px;
         width: 100%;
-      }
-    }
-
-    span {
-      font-weight: 300;
-      font-size: 16px;
-      
-      @include mobile {
-        font-size: 14px;
       }
     }
   }
@@ -117,27 +137,41 @@
   .formContainer {
     flex: 1;
     position: relative;
+    max-width: 500px;
+    width: 100%;
+    
+    @include small-laptop {
+      max-width: 450px;
+    }
     
     @include tablet {
-      padding: 30px;
+      max-width: 400px;
     }
 
     @include mobile {
-      padding: 50px;
-      width: 100%;
+      max-width: 100%;
     }
-
 
     .phoneSvg {
       stroke: orange;
       position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       margin: auto;
       z-index: -1;
       opacity: 0.3;
+      width: clamp(250px, 40vw, 450px);
+      height: clamp(250px, 40vw, 450px);
       
-      @include tablet {
+      @include small-laptop {
         width: 350px;
         height: 350px;
+      }
+      
+      @include tablet {
+        width: 300px;
+        height: 300px;
       }
       
       @include mobile {
@@ -149,32 +183,39 @@
     form {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: clamp(15px, 3vw, 20px);
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
-      padding: 30px;
+      padding: clamp(20px, 4vw, 30px);
       border-radius: 20px;
       border: 1px solid rgba(255, 165, 0, 0.2);
+      position: relative;
+      z-index: 1;
+      
+      @include small-laptop {
+        padding: 25px;
+        gap: 18px;
+      }
       
       @include tablet {
-        padding: 25px;
-        gap: 15px;
+        padding: 20px;
+        gap: 16px;
       }
       
       @include mobile {
-        padding: 20px;
+        padding: 18px;
         gap: 15px;
       }
 
       input,
       textarea {
-        padding: 20px;
+        padding: clamp(12px, 2.5vw, 20px);
         background-color: transparent;
         border: 1px solid white;
         color: white;
         border-radius: 5px;
         transition: all 0.3s ease;
-        font-size: 16px;
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
         
         &:focus {
           outline: none;
@@ -187,25 +228,31 @@
           color: rgba(255, 255, 255, 0.6);
         }
 
-        @include tablet {
+        @include small-laptop {
           padding: 16px;
           font-size: 14px;
         }
-        @include mobile {
-          padding: 10px;
+
+        @include tablet {
+          padding: 14px;
           font-size: 14px;
+        }
+        
+        @include mobile {
+          padding: 12px;
+          font-size: 13px;
         }
       }
 
       button {
-        padding: 20px;
+        padding: clamp(12px, 2.5vw, 20px);
         border: none;
         background: linear-gradient(45deg, orange, #ff6b35);
         cursor: pointer;
         font-weight: 500;
         border-radius: 10px;
         color: white;
-        font-size: 16px;
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
@@ -230,14 +277,19 @@
           }
         }
         
-        @include tablet {
+        @include small-laptop {
           padding: 16px;
           font-size: 14px;
         }
         
-        @include mobile {
-          padding: 10px;
+        @include tablet {
+          padding: 14px;
           font-size: 14px;
+        }
+        
+        @include mobile {
+          padding: 12px;
+          font-size: 13px;
         }
       }
     }
