@@ -1,0 +1,319 @@
+@import "../../app.scss";
+
+// ========================================
+// ERROR BOUNDARY STYLES
+// ========================================
+
+.error-boundary {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $gradient-primary;
+  padding: $space-6;
+
+  .error-container {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: $radius-2xl;
+    padding: $space-8;
+    box-shadow: $shadow-2xl;
+
+    .error-icon {
+      margin-bottom: $space-6;
+      color: $accent-error;
+      
+      svg {
+        filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.3));
+      }
+    }
+
+    .error-title {
+      font-size: clamp($text-2xl, 4vw, $text-4xl);
+      font-weight: $font-bold;
+      color: $text-primary;
+      margin-bottom: $space-4;
+      background: $gradient-accent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .error-description {
+      font-size: $text-lg;
+      color: $text-secondary;
+      line-height: $leading-relaxed;
+      margin-bottom: $space-8;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: $space-4;
+      justify-content: center;
+      margin-bottom: $space-8;
+      flex-wrap: wrap;
+
+      .retry-btn,
+      .reload-btn {
+        @include button-primary;
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+        padding: $space-3 $space-6;
+        font-weight: $font-semibold;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        svg {
+          flex-shrink: 0;
+        }
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: $shadow-lg;
+        }
+      }
+
+      .retry-btn {
+        background: $accent-primary;
+        color: $primary-dark;
+
+        &:hover {
+          background: lighten($accent-primary, 10%);
+        }
+      }
+
+      .reload-btn {
+        background: $accent-secondary;
+        color: $primary-dark;
+
+        &:hover {
+          background: lighten($accent-secondary, 10%);
+        }
+      }
+    }
+
+    .error-details {
+      margin-bottom: $space-6;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: $radius-lg;
+      padding: $space-4;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      summary {
+        cursor: pointer;
+        font-weight: $font-semibold;
+        color: $text-primary;
+        margin-bottom: $space-3;
+        padding: $space-2;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: $radius-sm;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      .error-stack {
+        h4 {
+          color: $accent-error;
+          margin: $space-3 0 $space-2 0;
+          font-size: $text-sm;
+          font-weight: $font-semibold;
+        }
+
+        pre {
+          background: rgba(0, 0, 0, 0.3);
+          padding: $space-3;
+          border-radius: $radius-sm;
+          font-size: $text-xs;
+          color: $text-secondary;
+          overflow-x: auto;
+          white-space: pre-wrap;
+          word-break: break-word;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+
+    .error-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: $space-6;
+
+      p {
+        color: $text-secondary;
+        margin-bottom: $space-2;
+        font-size: $text-sm;
+      }
+
+      .contact-link {
+        color: $accent-primary;
+        text-decoration: none;
+        font-weight: $font-semibold;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: lighten($accent-primary, 20%);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include laptop {
+  .error-boundary {
+    padding: $space-4;
+
+    .error-container {
+      padding: $space-6;
+
+      .error-actions {
+        flex-direction: column;
+        align-items: center;
+
+        .retry-btn,
+        .reload-btn {
+          width: 100%;
+          max-width: 200px;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .error-boundary {
+    padding: $space-3;
+
+    .error-container {
+      padding: $space-5;
+
+      .error-title {
+        font-size: clamp($text-xl, 3vw, $text-3xl);
+      }
+
+      .error-description {
+        font-size: $text-base;
+      }
+
+      .error-actions {
+        .retry-btn,
+        .reload-btn {
+          padding: $space-2 $space-4;
+          font-size: $text-sm;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .error-boundary {
+    padding: $space-2;
+
+    .error-container {
+      padding: $space-4;
+
+      .error-icon {
+        margin-bottom: $space-4;
+
+        svg {
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      .error-title {
+        font-size: clamp($text-lg, 2.5vw, $text-2xl);
+        margin-bottom: $space-3;
+      }
+
+      .error-description {
+        font-size: $text-sm;
+        margin-bottom: $space-6;
+      }
+
+      .error-actions {
+        gap: $space-3;
+        margin-bottom: $space-6;
+
+        .retry-btn,
+        .reload-btn {
+          padding: $space-2 $space-3;
+          font-size: $text-xs;
+          gap: $space-1;
+
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+
+      .error-details {
+        margin-bottom: $space-4;
+        padding: $space-3;
+
+        .error-stack {
+          pre {
+            font-size: 10px;
+            padding: $space-2;
+          }
+        }
+      }
+
+      .error-footer {
+        padding-top: $space-4;
+
+        p {
+          font-size: $text-xs;
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// PERFORMANCE OPTIMIZATIONS
+// ========================================
+
+.error-boundary {
+  .error-container {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .error-icon svg {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  .error-boundary {
+    .error-icon {
+      animation: none !important;
+    }
+
+    .retry-btn,
+    .reload-btn {
+      transition: none !important;
+    }
+  }
+}

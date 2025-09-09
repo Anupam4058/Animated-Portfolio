@@ -115,7 +115,7 @@ const cardVariants = {
 
 // Project Card Component
 const ProjectCard = ({ project }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -191,7 +191,7 @@ const ProjectCard = ({ project }) => {
 // Main Portfolio Component
 const Portfolio = () => {
   const ref = useRef();
-  const isInView = useInView(ref, { margin: "-100px" });
+  useInView(ref, { margin: "-100px" });
   const [activeFilter, setActiveFilter] = useState("all");
 
   // Filter projects based on active category
@@ -257,7 +257,7 @@ const Portfolio = () => {
         <motion.div className="portfolio-cta" variants={itemVariants}>
           <div className="cta-content">
             <h3>Interested in working together?</h3>
-            <p>Let's discuss your next project and bring your ideas to life</p>
+            <p>Let&apos;s discuss your next project and bring your ideas to life</p>
             <motion.button 
               className="btn btn-primary btn-large"
               whileHover={{ scale: 1.05 }}

@@ -42,7 +42,7 @@ const cardVariants = {
 
 const Services = () => {
   const ref = useRef();
-  const isInView = useInView(ref, { margin: "-100px" });
+  useInView(ref, { margin: "-100px" });
 
   const services = [
     {
@@ -111,7 +111,7 @@ const Services = () => {
         
         {/* Services Grid */}
         <motion.div className="services-grid" variants={itemVariants}>
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.id}
               className="service-card"
@@ -165,7 +165,7 @@ const Services = () => {
         <motion.div className="services-cta" variants={itemVariants}>
           <div className="cta-content">
             <h3>Ready to start your project?</h3>
-            <p>Let's discuss how I can help bring your ideas to life</p>
+            <p>Let&apos;s discuss how I can help bring your ideas to life</p>
             <motion.button 
               className="btn btn-primary btn-large"
               whileHover={{ scale: 1.05 }}

@@ -132,12 +132,12 @@ const Hero = () => {
             className="hero-text"
             variants={textVariants}
           >
-            <motion.div 
+            {/* <motion.div 
               className="greeting"
               variants={textVariants}
             >
-              <span className="wave">👋</span> Hello, I'm
-            </motion.div>
+              <span className="wave">👋</span> Hello, I&apos;m
+            </motion.div> */}
             
             <motion.h1 
               className="hero-name"
@@ -150,7 +150,7 @@ const Hero = () => {
               className="role-container"
               variants={textVariants}
             >
-              <span className="role-prefix">I'm a </span>
+              <span className="role-prefix">I&apos;m a </span>
               <motion.span 
                 className="role-text text-gradient"
                 key={currentRole}

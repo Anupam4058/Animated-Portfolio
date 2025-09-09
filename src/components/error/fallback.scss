@@ -1,0 +1,206 @@
+@import "../../app.scss";
+
+// ========================================
+// FALLBACK COMPONENT STYLES
+// ========================================
+
+.fallback-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: $space-6;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: $radius-xl;
+  backdrop-filter: blur(10px);
+
+  .fallback-content {
+    text-align: center;
+    max-width: 400px;
+
+    .fallback-icon {
+      margin-bottom: $space-4;
+      color: $accent-warning;
+      
+      svg {
+        filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.3));
+      }
+    }
+
+    .fallback-title {
+      font-size: $text-lg;
+      font-weight: $font-semibold;
+      color: $text-primary;
+      margin-bottom: $space-3;
+    }
+
+    .fallback-description {
+      font-size: $text-sm;
+      color: $text-secondary;
+      line-height: $leading-relaxed;
+      margin-bottom: $space-4;
+    }
+
+    .fallback-error {
+      margin-bottom: $space-4;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: $radius-sm;
+      padding: $space-3;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      summary {
+        cursor: pointer;
+        font-weight: $font-medium;
+        color: $text-primary;
+        margin-bottom: $space-2;
+        font-size: $text-xs;
+      }
+
+      pre {
+        background: rgba(0, 0, 0, 0.3);
+        padding: $space-2;
+        border-radius: $radius-sm;
+        font-size: 10px;
+        color: $text-secondary;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    }
+
+    .fallback-retry-btn {
+      @include button-primary;
+      display: inline-flex;
+      align-items: center;
+      gap: $space-2;
+      padding: $space-2 $space-4;
+      font-size: $text-sm;
+      font-weight: $font-medium;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      svg {
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: $shadow-md;
+      }
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include tablet {
+  .fallback-component {
+    padding: $space-4;
+    min-height: 150px;
+
+    .fallback-content {
+      .fallback-icon {
+        margin-bottom: $space-3;
+
+        svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      .fallback-title {
+        font-size: $text-base;
+        margin-bottom: $space-2;
+      }
+
+      .fallback-description {
+        font-size: $text-xs;
+        margin-bottom: $space-3;
+      }
+
+      .fallback-retry-btn {
+        padding: $space-2 $space-3;
+        font-size: $text-xs;
+        gap: $space-1;
+
+        svg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .fallback-component {
+    padding: $space-3;
+    min-height: 120px;
+
+    .fallback-content {
+      .fallback-icon {
+        margin-bottom: $space-2;
+
+        svg {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      .fallback-title {
+        font-size: $text-sm;
+        margin-bottom: $space-2;
+      }
+
+      .fallback-description {
+        font-size: $text-xs;
+        margin-bottom: $space-3;
+      }
+
+      .fallback-retry-btn {
+        padding: $space-1 $space-2;
+        font-size: $text-xs;
+        gap: $space-1;
+
+        svg {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// PERFORMANCE OPTIMIZATIONS
+// ========================================
+
+.fallback-component {
+  .fallback-content {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .fallback-icon svg {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  .fallback-component {
+    .fallback-icon {
+      animation: none !important;
+    }
+
+    .fallback-retry-btn {
+      transition: none !important;
+    }
+  }
+}

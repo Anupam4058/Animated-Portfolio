@@ -164,7 +164,7 @@ const About = () => {
                 >
                   <div className="story-text">
                     <p>
-                      Hi, I'm <span className="highlight">Anupam Kumar Singh</span>, a passionate 
+                      Hi, I&apos;m <span className="highlight">Anupam Kumar Singh</span>, a passionate 
                       Computer Science student and aspiring full-stack developer. I love creating 
                       digital experiences that are not just functional, but also beautiful and 
                       user-centered.
@@ -176,9 +176,9 @@ const About = () => {
                       of technology to solve real-world problems and make a positive impact.
                     </p>
                     <p>
-                      When I'm not coding, you'll find me exploring new design trends, contributing 
+                      When I&apos;m not coding, you&apos;ll find me exploring new design trends, contributing 
                       to open-source projects, or learning about the latest advancements in AI and 
-                      web technologies. I'm always excited to collaborate and learn from others in 
+                      web technologies. I&apos;m always excited to collaborate and learn from others in 
                       the tech community.
                     </p>
                   </div>

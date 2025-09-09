@@ -1,0 +1,323 @@
+@import "../../app.scss";
+
+// ========================================
+// PWA INSTALL PROMPT STYLES
+// ========================================
+
+.install-prompt {
+  position: fixed;
+  bottom: $space-6;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  max-width: 400px;
+  width: calc(100% - 2rem);
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $radius-xl;
+  box-shadow: $shadow-2xl;
+
+  .install-content {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    padding: $space-4;
+
+    .install-icon {
+      flex-shrink: 0;
+      color: $accent-primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 212, 255, 0.1);
+      border-radius: $radius-lg;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+
+      svg {
+        filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+      }
+    }
+
+    .install-text {
+      flex: 1;
+      min-width: 0;
+
+      h3 {
+        color: $text-primary;
+        font-size: $text-lg;
+        font-weight: $font-semibold;
+        margin: 0 0 $space-1 0;
+        line-height: $leading-tight;
+      }
+
+      p {
+        color: $text-secondary;
+        font-size: $text-sm;
+        margin: 0;
+        line-height: $leading-relaxed;
+      }
+    }
+
+    .install-actions {
+      display: flex;
+      gap: $space-2;
+      flex-shrink: 0;
+
+      .install-btn {
+        @include button-primary;
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+        padding: $space-2 $space-4;
+        font-size: $text-sm;
+        font-weight: $font-semibold;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        svg {
+          flex-shrink: 0;
+        }
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: $shadow-lg;
+        }
+      }
+
+      .dismiss-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: $radius-lg;
+        color: $text-secondary;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        svg {
+          flex-shrink: 0;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: $text-primary;
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include laptop {
+  .install-prompt {
+    bottom: $space-4;
+    max-width: 380px;
+
+    .install-content {
+      gap: $space-3;
+      padding: $space-3;
+
+      .install-icon {
+        width: 44px;
+        height: 44px;
+
+        svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+
+      .install-text {
+        h3 {
+          font-size: $text-base;
+        }
+
+        p {
+          font-size: $text-xs;
+        }
+      }
+
+      .install-actions {
+        gap: $space-2;
+
+        .install-btn {
+          padding: $space-2 $space-3;
+          font-size: $text-xs;
+
+          svg {
+            width: 14px;
+            height: 14px;
+          }
+        }
+
+        .dismiss-btn {
+          width: 36px;
+          height: 36px;
+
+          svg {
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .install-prompt {
+    bottom: $space-3;
+    max-width: 350px;
+
+    .install-content {
+      gap: $space-3;
+      padding: $space-3;
+
+      .install-icon {
+        width: 40px;
+        height: 40px;
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .install-text {
+        h3 {
+          font-size: $text-sm;
+        }
+
+        p {
+          font-size: $text-xs;
+        }
+      }
+
+      .install-actions {
+        flex-direction: column;
+        gap: $space-1;
+
+        .install-btn {
+          padding: $space-2 $space-3;
+          font-size: $text-xs;
+          width: 100%;
+
+          svg {
+            width: 12px;
+            height: 12px;
+          }
+        }
+
+        .dismiss-btn {
+          width: 100%;
+          height: 32px;
+
+          svg {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .install-prompt {
+    bottom: $space-2;
+    left: $space-2;
+    right: $space-2;
+    transform: none;
+    max-width: none;
+    width: auto;
+
+    .install-content {
+      gap: $space-2;
+      padding: $space-3;
+
+      .install-icon {
+        width: 36px;
+        height: 36px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .install-text {
+        h3 {
+          font-size: $text-sm;
+          margin-bottom: 2px;
+        }
+
+        p {
+          font-size: 10px;
+        }
+      }
+
+      .install-actions {
+        flex-direction: column;
+        gap: $space-1;
+
+        .install-btn {
+          padding: $space-1 $space-2;
+          font-size: 10px;
+          width: 100%;
+
+          svg {
+            width: 10px;
+            height: 10px;
+          }
+        }
+
+        .dismiss-btn {
+          width: 100%;
+          height: 28px;
+
+          svg {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// PERFORMANCE OPTIMIZATIONS
+// ========================================
+
+.install-prompt {
+  .install-content {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .install-icon svg {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  .install-prompt {
+    .install-btn,
+    .dismiss-btn {
+      transition: none !important;
+    }
+  }
+}

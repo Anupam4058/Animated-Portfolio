@@ -1,0 +1,295 @@
+@import "../../app.scss";
+
+// ========================================
+// LOADING SCREEN STYLES
+// ========================================
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  overflow: hidden;
+
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-8;
+    position: relative;
+    z-index: 2;
+
+    // Logo
+    .loading-logo {
+      text-align: center;
+      
+      h1 {
+        font-size: clamp($text-4xl, 8vw, $text-8xl);
+        font-weight: $font-black;
+        color: $text-primary;
+        margin: 0;
+        background: $gradient-accent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+      }
+      
+      p {
+        font-size: $text-lg;
+        color: $text-secondary;
+        margin: $space-2 0 0 0;
+        font-weight: $font-medium;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+    }
+
+    // Loading Animation
+    .loading-animation {
+      .loading-spinner {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        
+        .spinner-ring {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 3px solid transparent;
+          border-radius: 50%;
+          
+          &:first-child {
+            border-top-color: $accent-primary;
+            border-right-color: $accent-primary;
+          }
+          
+          &:last-child {
+            border-bottom-color: $accent-secondary;
+            border-left-color: $accent-secondary;
+            width: 60px;
+            height: 60px;
+            top: 10px;
+            left: 10px;
+          }
+        }
+      }
+    }
+
+    // Progress Bar
+    .loading-progress {
+      width: 300px;
+      text-align: center;
+      
+      .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: $radius-full;
+        overflow: hidden;
+        margin-bottom: $space-3;
+        
+        .progress-fill {
+          height: 100%;
+          background: $gradient-accent;
+          border-radius: $radius-full;
+          box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+      }
+      
+      .progress-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: $text-sm;
+        color: $text-secondary;
+        
+        span:first-child {
+          font-weight: $font-medium;
+        }
+        
+        span:last-child {
+          font-weight: $font-semibold;
+          color: $accent-primary;
+        }
+      }
+    }
+
+    // Floating Particles
+    .loading-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: $accent-primary;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      }
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include laptop {
+  .loading-screen {
+    .loading-container {
+      gap: $space-6;
+      
+      .loading-logo {
+        h1 {
+          font-size: clamp($text-3xl, 6vw, $text-6xl);
+        }
+        
+        p {
+          font-size: $text-base;
+        }
+      }
+      
+      .loading-animation {
+        .loading-spinner {
+          width: 60px;
+          height: 60px;
+          
+          .spinner-ring:last-child {
+            width: 45px;
+            height: 45px;
+            top: 7.5px;
+            left: 7.5px;
+          }
+        }
+      }
+      
+      .loading-progress {
+        width: 250px;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .loading-screen {
+    .loading-container {
+      gap: $space-5;
+      
+      .loading-logo {
+        h1 {
+          font-size: clamp($text-2xl, 5vw, $text-4xl);
+        }
+        
+        p {
+          font-size: $text-sm;
+        }
+      }
+      
+      .loading-animation {
+        .loading-spinner {
+          width: 50px;
+          height: 50px;
+          
+          .spinner-ring:last-child {
+            width: 35px;
+            height: 35px;
+            top: 7.5px;
+            left: 7.5px;
+          }
+        }
+      }
+      
+      .loading-progress {
+        width: 200px;
+        
+        .progress-text {
+          font-size: $text-xs;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .loading-screen {
+    .loading-container {
+      gap: $space-4;
+      
+      .loading-logo {
+        h1 {
+          font-size: clamp($text-xl, 4vw, $text-3xl);
+        }
+        
+        p {
+          font-size: $text-xs;
+        }
+      }
+      
+      .loading-animation {
+        .loading-spinner {
+          width: 40px;
+          height: 40px;
+          
+          .spinner-ring:last-child {
+            width: 30px;
+            height: 30px;
+            top: 5px;
+            left: 5px;
+          }
+        }
+      }
+      
+      .loading-progress {
+        width: 180px;
+        
+        .progress-text {
+          font-size: $text-xs;
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// PERFORMANCE OPTIMIZATIONS
+// ========================================
+
+// GPU acceleration
+.loading-screen {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.loading-spinner .spinner-ring,
+.loading-particles .particle {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen {
+    .loading-spinner .spinner-ring {
+      animation: none !important;
+    }
+    
+    .loading-particles .particle {
+      animation: none !important;
+    }
+  }
+}

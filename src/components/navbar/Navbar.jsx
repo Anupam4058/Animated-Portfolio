@@ -67,6 +67,8 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="container">
         <div className="navbar-content">
@@ -76,13 +78,17 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a href="#Homepage" onClick={(e) => { e.preventDefault(); scrollToSection('#Homepage'); }}>
+            <a 
+              href="#Homepage" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('#Homepage'); }}
+              aria-label="Go to homepage"
+            >
               <span className="logo-text">AKS</span>
             </a>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="nav-links">
+          <div className="nav-links" role="menubar">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
@@ -93,6 +99,8 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
                 whileHover={{ y: -2 }}
+                role="menuitem"
+                aria-label={`Navigate to ${item.name} section`}
               >
                 {item.name}
               </motion.a>
@@ -100,7 +108,7 @@ const Navbar = () => {
           </div>
 
           {/* Social Links */}
-          <div className="social-links">
+          <div className="social-links" role="list" aria-label="Social media links">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={social.name}
@@ -113,6 +121,8 @@ const Navbar = () => {
                 transition={{ delay: index * 0.1 + 0.5 }}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label={`Visit my ${social.name} profile (opens in new tab)`}
+                role="listitem"
               >
                 {social.icon}
               </motion.a>
@@ -124,18 +134,24 @@ const Navbar = () => {
             className="mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
+            aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <motion.span
               animate={{ rotate: isMobileMenuOpen ? 45 : 0, y: isMobileMenuOpen ? 6 : 0 }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
             <motion.span
               animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
             <motion.span
               animate={{ rotate: isMobileMenuOpen ? -45 : 0, y: isMobileMenuOpen ? -6 : 0 }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
           </motion.button>
         </div>
@@ -145,29 +161,36 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             className="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            role="menu"
+            aria-label="Mobile navigation menu"
           >
             <div className="mobile-menu-content">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  className="mobile-nav-link"
-                  onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 10 }}
-                >
-                  {item.name}
-                </motion.a>
-              ))}
+              <div className="mobile-nav-links" role="menubar">
+                {navItems.map((item, index) => (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    className="mobile-nav-link"
+                    onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ x: 10 }}
+                    role="menuitem"
+                    aria-label={`Navigate to ${item.name} section`}
+                  >
+                    {item.name}
+                  </motion.a>
+                ))}
+              </div>
               
-              <div className="mobile-social-links">
+              <div className="mobile-social-links" role="list" aria-label="Social media links">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.name}
@@ -180,6 +203,8 @@ const Navbar = () => {
                     transition={{ delay: index * 0.1 + 0.3 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    aria-label={`Visit my ${social.name} profile (opens in new tab)`}
+                    role="listitem"
                   >
                     {social.icon}
                   </motion.a>

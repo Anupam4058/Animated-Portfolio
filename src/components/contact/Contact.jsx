@@ -47,7 +47,7 @@ const Contact = () => {
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const isInView = useInView(ref, { margin: "-100px" });
+  useInView(ref, { margin: "-100px" });
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -63,12 +63,12 @@ const Contact = () => {
         "pX_2hasGmGcuvjXIW"
       )
       .then(
-        (result) => {
+        () => {
           setSuccess(true);
           setIsSubmitting(false);
           formRef.current.reset();
         },
-        (error) => {
+        () => {
           setError(true);
           setIsSubmitting(false);
         }
@@ -158,7 +158,7 @@ const Contact = () => {
             Get In <span className="text-gradient">Touch</span>
           </h2>
           <p className="subtitle">
-            Ready to start your next project? Let's discuss how I can help bring your ideas to life.
+            Ready to start your next project? Let&apos;s discuss how I can help bring your ideas to life.
           </p>
         </motion.div>
 
@@ -166,8 +166,8 @@ const Contact = () => {
           {/* Contact Info */}
           <motion.div className="contact-info" variants={itemVariants}>
             <div className="info-header">
-              <h3>Let's Connect</h3>
-              <p>I'm always excited to work on new projects and collaborate with amazing people.</p>
+              <h3>Let&apos;s Connect</h3>
+              <p>I&apos;m always excited to work on new projects and collaborate with amazing people.</p>
             </div>
 
             <div className="contact-methods">
@@ -223,6 +223,8 @@ const Contact = () => {
               ref={formRef}
               onSubmit={sendEmail}
               className="form"
+              role="form"
+              aria-label="Contact form"
             >
               <div className="form-group">
                 <label htmlFor="name">Name</label>
@@ -278,6 +280,8 @@ const Contact = () => {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label={isSubmitting ? "Sending message..." : "Send message"}
+                aria-describedby="form-status"
               >
                 {isSubmitting ? (
                   <>
@@ -298,34 +302,38 @@ const Contact = () => {
               </motion.button>
 
               {/* Status Messages */}
-              {error && (
-                <motion.div 
-                  className="status-message error"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                    <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" strokeWidth="2"/>
-                    <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
-                  <span>Failed to send message. Please try again.</span>
-                </motion.div>
-              )}
+              <div id="form-status" role="status" aria-live="polite">
+                {error && (
+                  <motion.div 
+                    className="status-message error"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    role="alert"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                      <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" strokeWidth="2"/>
+                      <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" strokeWidth="2"/>
+                    </svg>
+                    <span>Failed to send message. Please try again.</span>
+                  </motion.div>
+                )}
 
-              {success && (
-                <motion.div 
-                  className="status-message success"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.7088 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2401 3.61096 17.4381C2.43727 15.636 1.87979 13.508 2.02168 11.3603C2.16356 9.21267 2.99721 7.16915 4.39828 5.49706C5.79935 3.82496 7.69279 2.61013 9.79619 2.01811C11.8996 1.42609 14.1003 1.48699 16.17 2.193" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <polyline points="22,4 12,14.01 9,11.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span>Message sent successfully! I'll get back to you soon.</span>
-                </motion.div>
-              )}
+                {success && (
+                  <motion.div 
+                    className="status-message success"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    role="alert"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.7088 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2401 3.61096 17.4381C2.43727 15.636 1.87979 13.508 2.02168 11.3603C2.16356 9.21267 2.99721 7.16915 4.39828 5.49706C5.79935 3.82496 7.69279 2.61013 9.79619 2.01811C11.8996 1.42609 14.1003 1.48699 16.17 2.193" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <polyline points="22,4 12,14.01 9,11.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>Message sent successfully! I'll get back to you soon.</span>
+                  </motion.div>
+                )}
+              </div>
             </motion.form>
           </motion.div>
         </div>
