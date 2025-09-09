@@ -1,249 +1,380 @@
 @import "../../app.scss";
 
+// ========================================
+// MODERN HERO SECTION
+// ========================================
+
 .hero {
-  min-height: calc(100vh - 100px);
-  height: calc(100vh - 100px);
-  overflow: hidden;
-  background: linear-gradient(180deg, #0c0c1d, #111132);
+  min-height: 100vh;
   position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: $gradient-hero;
   
-  @include small-laptop {
-    height: calc(100vh - 80px);
-    min-height: calc(100vh - 80px);
-  }
-  
-  @include tablet {
-    height: calc(100vh - 80px);
-    min-height: calc(100vh - 80px);
-  }
-  
-  @include mobile {
-    height: calc(100vh - 60px);
-    min-height: calc(100vh - 60px);
-  }
-
-  .wrapper {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-
-    .textContainer {
-      width: 55%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: clamp(20px, 4vw, 40px);
-      padding: 0 20px;
-
-      @include small-laptop {
-        width: 60%;
-        gap: 30px;
-        padding: 0 15px;
-      }
-
-      @include tablet {
-        width: 65%;
-        gap: 25px;
-        padding: 0 15px;
-      }
-
-      @include mobile {
-        height: 60%;
-        width: 100%;
-        gap: 15px;
-        align-items: center;
-        text-align: center;
-        padding: 0 10px;
-      }
-
-      h2 {
-        font-size: clamp(1rem, 3vw, 1.875rem);
-        color: rebeccapurple;
-        letter-spacing: clamp(2px, 1vw, 10px);
-        
-        @include small-laptop {
-          font-size: 24px;
-          letter-spacing: 6px;
-        }
-        
-        @include tablet {
-          font-size: 20px;
-          letter-spacing: 6px;
-        }
-        
-        @include mobile {
-          font-size: 16px;
-          letter-spacing: 4px;
-        }
-      }
-
-      h1 {
-        font-size: clamp(2rem, 8vw, 5.5rem);
-        line-height: 1.1;
-        background: linear-gradient(45deg, #fff, #ccc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-
-        @include small-laptop {
-          font-size: 72px;
-        }
-        
-        @include tablet {
-          font-size: 56px;
-        }
-        
-        @include mobile {
-          font-size: 32px;
-        }
-      }
-
-      .buttons {
-        display: flex;
-        gap: clamp(10px, 2vw, 20px);
-        flex-wrap: wrap;
-        
-        @include small-laptop {
-          gap: 15px;
-        }
-        
-        @include tablet {
-          gap: 15px;
-        }
-        
-        @include mobile {
-          justify-content: center;
-          gap: 10px;
-        }
-
-        button {
-          padding: clamp(12px, 2.5vw, 20px) clamp(16px, 3vw, 24px);
-          border: 1px solid white;
-          border-radius: 10px;
-          background-color: transparent;
-          color: white;
-          cursor: pointer;
-          font-weight: 300;
-          font-size: clamp(0.75rem, 1.5vw, 1rem);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
-          overflow: hidden;
-          white-space: nowrap;
-          
-          @include small-laptop {
-            padding: 16px 20px;
-            font-size: 14px;
-          }
-          
-          @include tablet {
-            padding: 14px 18px;
-            font-size: 14px;
-          }
-          
-          @include mobile {
-            padding: 10px 14px;
-            font-size: 11px;
-            min-width: 120px;
-          }
-
-          &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-          }
-
-          &:hover {
-            background: linear-gradient(45deg, orange, #ff6b35);
-            color: #0c0c1d;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 165, 0, 0.3);
-            
-            &::before {
-              left: 100%;
-            }
-          }
-        }
-      }
-
-      img {
-        width: clamp(30px, 5vw, 50px);
-        filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));
-      }
-    }
-  }
-
-  .imageContainer {
-    height: 100%;
+  // Background Elements
+  .hero-background {
     position: absolute;
     top: 0;
-    right: 0;
-    width: 45%;
-    z-index: 1;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
     
-    @include small-laptop {
-      width: 40%;
-    }
-    
-    @include tablet {
-      width: 35%;
-    }
-
-    @include mobile {
-      height: 40%;
-      width: 100%;
-      top: unset;
-      bottom: 0;
-      opacity: 0.7;
-    }
-
-    img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.8) contrast(1.1);
+    .gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.3;
+      animation: float 20s ease-in-out infinite;
       
-      @include mobile {
-        object-fit: contain;
-        object-position: center bottom;
+      &.orb-1 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, $accent-primary 0%, transparent 70%);
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+      
+      &.orb-2 {
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, $accent-tertiary 0%, transparent 70%);
+        top: 60%;
+        right: 20%;
+        animation-delay: -7s;
+      }
+      
+      &.orb-3 {
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, $accent-secondary 0%, transparent 70%);
+        bottom: 20%;
+        left: 60%;
+        animation-delay: -14s;
       }
     }
   }
-
-  .slidingTextContainer {
-    position: absolute;
-    font-size: clamp(20vh, 40vw, 50vh);
-    bottom: clamp(-80px, -15vw, -120px);
-    white-space: nowrap;
-    color: #ffffff09;
-    width: 60%;
-    font-weight: bold;
-    z-index: 0;
+  
+  // Main Content
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-16;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
     
-    @include small-laptop {
-      font-size: 35vh;
-      bottom: -100px;
-      width: 55%;
+    @include laptop {
+      gap: $space-12;
     }
     
     @include tablet {
-      font-size: 30vh;
-      bottom: -80px;
-      width: 50%;
+      grid-template-columns: 1fr;
+      gap: $space-8;
+      text-align: center;
+      min-height: auto;
+      padding: $space-20 0;
     }
     
     @include mobile {
-      font-size: 25vh;
-      bottom: -60px;
-      width: 100%;
+      gap: $space-6;
+      padding: $space-16 0;
+    }
+  }
+  
+  // Text Content
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+    
+    @include tablet {
+      align-items: center;
       text-align: center;
+    }
+    
+    .greeting {
+      font-size: $text-lg;
+      color: $text-secondary;
+      font-weight: $font-medium;
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+      
+      .wave {
+        font-size: $text-xl;
+        animation: wave 2s ease-in-out infinite;
+      }
+    }
+    
+    .hero-name {
+      font-size: clamp($text-4xl, 8vw, $text-8xl);
+      font-weight: $font-black;
+      line-height: $leading-tight;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    
+    .role-container {
+      font-size: clamp($text-xl, 4vw, $text-4xl);
+      font-weight: $font-semibold;
+      line-height: $leading-snug;
+      
+      .role-prefix {
+        color: $text-secondary;
+      }
+      
+      .role-text {
+        display: inline-block;
+        min-width: 200px;
+        
+        @include mobile {
+          min-width: auto;
+        }
+      }
+    }
+    
+    .hero-description {
+      font-size: $text-lg;
+      color: $text-secondary;
+      line-height: $leading-relaxed;
+      max-width: 500px;
+      
+      @include tablet {
+        max-width: 600px;
+      }
+      
+      @include mobile {
+        font-size: $text-base;
+      }
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: $space-4;
+      flex-wrap: wrap;
+      
+      @include mobile {
+        justify-content: center;
+        gap: $space-3;
+      }
+      
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-2;
+        padding: $space-4 $space-6;
+        border-radius: $radius-lg;
+        font-weight: $font-semibold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        
+        svg {
+          transition: transform 0.3s ease;
+        }
+        
+        &:hover svg {
+          transform: translateX(2px);
+        }
+        
+        &.btn-primary {
+          background: $gradient-accent;
+          color: $text-primary;
+          
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: $shadow-glow;
+          }
+        }
+        
+        &.btn-secondary {
+          background: transparent;
+          border: 2px solid $accent-primary;
+          color: $accent-primary;
+          
+          &:hover {
+            background: $accent-primary;
+            color: $primary-dark;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+    
+    .hero-social {
+      display: flex;
+      align-items: center;
+      gap: $space-4;
+      margin-top: $space-4;
+      
+      @include tablet {
+        justify-content: center;
+      }
+      
+      .social-label {
+        font-size: $text-sm;
+        color: $text-muted;
+        font-weight: $font-medium;
+      }
+      
+      .social-links {
+        display: flex;
+        gap: $space-3;
+        
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: $radius-lg;
+          background: $bg-card;
+          color: $text-secondary;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background: $accent-primary;
+            color: $primary-dark;
+            transform: translateY(-2px);
+            box-shadow: $shadow-glow;
+          }
+        }
+      }
+    }
+  }
+  
+  // Image Content
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    @include tablet {
+      order: -1;
+    }
+    
+    .image-wrapper {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      
+      @include laptop {
+        width: 350px;
+        height: 350px;
+      }
+      
+      @include tablet {
+        width: 300px;
+        height: 300px;
+      }
+      
+      @include mobile {
+        width: 250px;
+        height: 250px;
+      }
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: $radius-2xl;
+        position: relative;
+        z-index: 2;
+        box-shadow: $shadow-2xl;
+      }
+      
+      .image-glow {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        background: $gradient-accent;
+        border-radius: $radius-2xl;
+        opacity: 0.2;
+        filter: blur(20px);
+        z-index: 1;
+      }
+    }
+  }
+  
+  // Scroll Indicator
+  .scroll-indicator {
+    position: absolute;
+    bottom: $space-8;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-2;
+    z-index: 3;
+    
+    .scroll-text {
+      font-size: $text-sm;
+      color: $text-muted;
+      font-weight: $font-medium;
+    }
+    
+    .scroll-arrow {
+      color: $accent-primary;
+    }
+  }
+}
+
+// ========================================
+// ANIMATIONS
+// ========================================
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-30px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(30px) rotate(240deg);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include mobile {
+  .hero {
+    .hero-content {
+      padding: $space-12 0;
+    }
+    
+    .hero-text {
+      gap: $space-4;
+      
+      .hero-buttons {
+        .btn {
+          padding: $space-3 $space-5;
+          font-size: $text-sm;
+        }
+      }
     }
   }
 }

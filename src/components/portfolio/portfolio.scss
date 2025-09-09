@@ -1,248 +1,578 @@
 @import "../../app.scss";
 
-.portfolio {
-  position: relative;
+// ========================================
+// MODERN PORTFOLIO SECTION
+// ========================================
 
-  .progress {
-    position: sticky;
+.portfolio {
+  min-height: 100vh;
+  padding: $space-20 0;
+  background: $gradient-primary;
+  position: relative;
+  overflow: hidden;
+
+  // Background Elements
+  &::before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
-    padding: clamp(30px, 5vw, 50px) 20px 20px;
-    text-align: center;
-    color: orange;
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    background: rgba(12, 12, 29, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 10;
-
-    @include small-laptop {
-      font-size: 28px;
-      padding-top: 40px;
-    }
-
-    @include tablet {
-      font-size: 24px;
-      padding-top: 35px;
-    }
-    
-    @include mobile {
-      font-size: 20px;
-      padding-top: 30px;
-    }
-
-    .progressBar {
-      height: clamp(6px, 1vw, 10px);
-      background-color: white;
-      border-radius: 5px;
-      overflow: hidden;
-      margin: clamp(15px, 3vw, 20px) auto;
-      max-width: clamp(200px, 40vw, 300px);
-      box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
-    }
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 25% 25%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+    z-index: 0;
   }
 
   .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    padding: clamp(40px, 8vw, 80px) 0;
+    position: relative;
+    z-index: 1;
+  }
 
-    .wrapper {
-      max-width: 1200px;
-      margin: auto;
+  // Header
+  .portfolio-header {
+    text-align: center;
+    margin-bottom: $space-16;
+    
+    .section-title {
+      margin-bottom: $space-4;
+    }
+    
+    .subtitle {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  // Filter Navigation
+  .filter-navigation {
+    display: flex;
+    justify-content: center;
+    gap: $space-2;
+    margin-bottom: $space-12;
+    flex-wrap: wrap;
+    
+    .filter-btn {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: clamp(30px, 5vw, 50px);
-      padding: 0 clamp(10px, 2vw, 20px);
-      width: 100%;
+      gap: $space-2;
+      padding: $space-3 $space-6;
+      background: $bg-card;
+      border: 2px solid transparent;
+      border-radius: $radius-full;
+      color: $text-secondary;
+      font-weight: $font-medium;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
       
-      @include small-laptop {
-        max-width: 1000px;
-        gap: 40px;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: $gradient-accent;
+        transition: left 0.3s ease;
+        z-index: 0;
+      }
+      
+      .filter-icon,
+      .filter-name {
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease;
+      }
+      
+      &.active {
+        border-color: $accent-primary;
+        color: $primary-dark;
+        
+        &::before {
+          left: 0;
+        }
+      }
+      
+      &:hover:not(.active) {
+        border-color: rgba(0, 212, 255, 0.3);
+        color: $text-primary;
+        background: rgba(0, 212, 255, 0.05);
+      }
+    }
+  }
+
+  // Projects Grid
+  .projects-grid {
+    margin-bottom: $space-16;
+    
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: $space-8;
+      
+      @include laptop {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $space-6;
       }
       
       @include tablet {
-        max-width: 100%;
-        gap: 35px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: $space-5;
       }
-
+      
       @include mobile {
-        flex-direction: column;
-        gap: 25px;
-        text-align: center;
+        grid-template-columns: 1fr;
+        gap: $space-4;
+      }
+    }
+
+    .project-card {
+      @include glass-effect;
+      border-radius: $radius-xl;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      
+      &:hover {
+        box-shadow: $shadow-2xl, $shadow-glow;
+        border-color: rgba(0, 212, 255, 0.3);
       }
 
-      .imageContainer {
-        flex: 1;
-        max-width: 500px;
-        aspect-ratio: 16/10;
+      // Card Image
+      .card-image {
         position: relative;
-        border-radius: 20px;
+        height: 200px;
         overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-
-        @include small-laptop {
-          max-width: 450px;
-        }
-
-        @include tablet {
-          max-width: 400px;
-        }
         
-        @include mobile {
+        img {
           width: 100%;
-          max-width: 350px;
-          aspect-ratio: 16/9;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
         }
         
-        &::before {
-          content: '';
+        .featured-badge {
+          position: absolute;
+          top: $space-3;
+          right: $space-3;
+          background: $gradient-accent;
+          color: $primary-dark;
+          padding: $space-1 $space-3;
+          border-radius: $radius-full;
+          font-size: $text-xs;
+          font-weight: $font-semibold;
+          z-index: 2;
+        }
+        
+        .card-overlay {
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), transparent);
-          z-index: 1;
+          background: rgba(0, 0, 0, 0.8);
+          display: flex;
+          align-items: center;
+          justify-content: center;
           opacity: 0;
           transition: opacity 0.3s ease;
+          
+          .overlay-content {
+            display: flex;
+            gap: $space-3;
+            
+            .demo-btn,
+            .github-btn {
+              display: flex;
+              align-items: center;
+              gap: $space-2;
+              padding: $space-2 $space-4;
+              border-radius: $radius-lg;
+              font-weight: $font-medium;
+              transition: all 0.3s ease;
+              
+              svg {
+                transition: transform 0.3s ease;
+              }
+            }
+            
+            .demo-btn {
+              background: $accent-primary;
+              color: $primary-dark;
+              border: none;
+              
+              &:hover {
+                background: lighten($accent-primary, 10%);
+                transform: translateY(-2px);
+                
+                svg {
+                  transform: translateX(2px);
+                }
+              }
+            }
+            
+            .github-btn {
+              background: transparent;
+              color: $text-primary;
+              border: 2px solid $text-primary;
+              
+              &:hover {
+                background: $text-primary;
+                color: $primary-dark;
+                transform: translateY(-2px);
+                
+                svg {
+                  transform: translateX(2px);
+                }
+              }
+            }
+          }
         }
         
-        &:hover::before {
+        &:hover .card-overlay {
           opacity: 1;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          
-          &:hover {
-            transform: scale(1.1);
-          }
         }
       }
 
-      .textContainer {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: clamp(20px, 4vw, 30px);
-        max-width: 600px;
-
-        @include small-laptop {
-          gap: 25px;
-          max-width: 500px;
-        }
-
-        @include tablet {
-          gap: 20px;
-          max-width: 450px;
+      // Card Content
+      .card-content {
+        padding: $space-6;
+        
+        .card-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: $space-4;
+          
+          .project-title {
+            font-size: $text-xl;
+            color: $text-primary;
+            font-weight: $font-bold;
+            margin: 0;
+            line-height: $leading-tight;
+          }
+          
+          .project-year {
+            font-size: $text-sm;
+            color: $accent-primary;
+            font-weight: $font-semibold;
+            background: rgba(0, 212, 255, 0.1);
+            padding: $space-1 $space-2;
+            border-radius: $radius-sm;
+          }
         }
         
-        @include mobile {
-          transform: none !important;
-          padding: 0;
-          align-items: center;
-          text-align: center;
-          gap: 15px;
-          max-width: 100%;
+        .project-description {
+          color: $text-secondary;
+          line-height: $leading-relaxed;
+          margin-bottom: $space-4;
+          font-size: $text-sm;
         }
-
-        h2 {
-          font-size: clamp(2rem, 6vw, 4.5rem);
-          background: linear-gradient(45deg, #fff, #ccc);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          line-height: 1.1;
-
-          @include small-laptop {
-            font-size: 56px;
-          }
+        
+        .technologies {
+          display: flex;
+          flex-wrap: wrap;
+          gap: $space-2;
           
-          @include tablet {
-            font-size: 48px;
-          }
-          
-          @include mobile {
-            font-size: 28px;
-          }
-        }
-
-        p {
-          color: gray;
-          font-size: clamp(1rem, 2vw, 1.25rem);
-          line-height: 1.6;
-
-          @include small-laptop {
-            font-size: 18px;
-          }
-
-          @include tablet {
-            font-size: 16px;
-          }
-          
-          @include mobile {
-            font-size: 14px;
-          }
-        }
-
-        button {
-          background: linear-gradient(45deg, orange, #ff6b35);
-          border: none;
-          border-radius: 10px;
-          padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 30px);
-          width: fit-content;
-          min-width: clamp(150px, 25vw, 200px);
-          cursor: pointer;
-          font-size: clamp(0.875rem, 1.5vw, 1rem);
-          font-weight: 600;
-          color: white;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
-          overflow: hidden;
-          
-          &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-          }
-          
-          &:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 165, 0, 0.4);
+          .tech-tag {
+            padding: $space-1 $space-2;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: $radius-sm;
+            font-size: $text-xs;
+            color: $accent-primary;
+            font-weight: $font-medium;
+            transition: all 0.3s ease;
             
-            &::before {
-              left: 100%;
+            &:hover {
+              background: $accent-primary;
+              color: $primary-dark;
+              transform: translateY(-1px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Call to Action
+  .portfolio-cta {
+    text-align: center;
+    padding: $space-12 0;
+    
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+      
+      h3 {
+        font-size: $text-3xl;
+        color: $text-primary;
+        margin-bottom: $space-4;
+        font-weight: $font-bold;
+      }
+      
+      p {
+        font-size: $text-lg;
+        color: $text-secondary;
+        margin-bottom: $space-8;
+        line-height: $leading-relaxed;
+      }
+      
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-2;
+        padding: $space-4 $space-8;
+        font-size: $text-lg;
+        font-weight: $font-semibold;
+        
+        svg {
+          transition: transform 0.3s ease;
+        }
+        
+        &:hover svg {
+          transform: translateX(2px);
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include laptop {
+  .portfolio {
+    padding: $space-16 0;
+    
+    .filter-navigation {
+      margin-bottom: $space-10;
+      
+      .filter-btn {
+        padding: $space-2 $space-4;
+        font-size: $text-sm;
+      }
+    }
+    
+    .projects-grid {
+      margin-bottom: $space-12;
+      
+      .project-card {
+        .card-image {
+          height: 180px;
+        }
+        
+        .card-content {
+          padding: $space-5;
+          
+          .card-header {
+            margin-bottom: $space-3;
+            
+            .project-title {
+              font-size: $text-lg;
             }
           }
           
-          @include small-laptop {
-            padding: 12px 24px;
-            font-size: 14px;
+          .project-description {
+            margin-bottom: $space-3;
+            font-size: $text-xs;
+          }
+        }
+      }
+    }
+    
+    .portfolio-cta {
+      padding: $space-10 0;
+      
+      .cta-content {
+        h3 {
+          font-size: $text-2xl;
+        }
+        
+        p {
+          font-size: $text-base;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .portfolio {
+    padding: $space-12 0;
+    
+    .portfolio-header {
+      margin-bottom: $space-12;
+    }
+    
+    .filter-navigation {
+      margin-bottom: $space-8;
+      gap: $space-1;
+      
+      .filter-btn {
+        padding: $space-2 $space-3;
+        font-size: $text-xs;
+        
+        .filter-name {
+          display: none;
+        }
+      }
+    }
+    
+    .projects-grid {
+      margin-bottom: $space-10;
+      
+      .project-card {
+        .card-image {
+          height: 160px;
+        }
+        
+        .card-content {
+          padding: $space-4;
+          
+          .card-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $space-2;
+            margin-bottom: $space-3;
+            
+            .project-title {
+              font-size: $text-lg;
+            }
           }
           
-          @include tablet {
-            padding: 10px 20px;
-            font-size: 14px;
+          .project-description {
+            margin-bottom: $space-3;
+            font-size: $text-xs;
           }
           
-          @include mobile {
-            padding: 10px 20px;
-            font-size: 13px;
-            align-self: center;
+          .technologies {
+            gap: $space-1;
+            
+            .tech-tag {
+              padding: $space-1 $space-2;
+              font-size: $text-xs;
+            }
           }
+        }
+      }
+    }
+    
+    .portfolio-cta {
+      padding: $space-8 0;
+      
+      .cta-content {
+        h3 {
+          font-size: $text-xl;
+        }
+        
+        p {
+          font-size: $text-sm;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .portfolio {
+    padding: $space-10 0;
+    
+    .portfolio-header {
+      margin-bottom: $space-10;
+    }
+    
+    .filter-navigation {
+      margin-bottom: $space-6;
+      gap: $space-1;
+      
+      .filter-btn {
+        padding: $space-2 $space-3;
+        font-size: $text-xs;
+        
+        .filter-name {
+          display: none;
+        }
+      }
+    }
+    
+    .projects-grid {
+      margin-bottom: $space-8;
+      
+      .project-card {
+        .card-image {
+          height: 150px;
+          
+          .card-overlay {
+            .overlay-content {
+              flex-direction: column;
+              gap: $space-2;
+              
+              .demo-btn,
+              .github-btn {
+                padding: $space-2 $space-3;
+                font-size: $text-xs;
+              }
+            }
+          }
+        }
+        
+        .card-content {
+          padding: $space-4;
+          
+          .card-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $space-2;
+            margin-bottom: $space-3;
+            
+            .project-title {
+              font-size: $text-base;
+            }
+            
+            .project-year {
+              font-size: $text-xs;
+            }
+          }
+          
+          .project-description {
+            margin-bottom: $space-3;
+            font-size: $text-xs;
+          }
+          
+          .technologies {
+            gap: $space-1;
+            
+            .tech-tag {
+              padding: $space-1 $space-2;
+              font-size: $text-xs;
+            }
+          }
+        }
+      }
+    }
+    
+    .portfolio-cta {
+      padding: $space-6 0;
+      
+      .cta-content {
+        h3 {
+          font-size: $text-lg;
+          margin-bottom: $space-3;
+        }
+        
+        p {
+          font-size: $text-sm;
+          margin-bottom: $space-6;
+        }
+        
+        .btn {
+          padding: $space-3 $space-6;
+          font-size: $text-base;
         }
       }
     }

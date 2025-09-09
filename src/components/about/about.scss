@@ -1,204 +1,542 @@
 @import "../../app.scss";
 
+// ========================================
+// MODERN ABOUT SECTION
+// ========================================
+
 .about {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0c0c1d, #111132);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(30px, 5vw, 50px);
-  padding: clamp(40px, 8vw, 80px) 20px;
+  padding: $space-20 0;
+  background: $gradient-primary;
+  position: relative;
+  overflow: hidden;
 
-  @include small-laptop {
-    gap: 40px;
-    padding: 60px 15px;
+  // Background Elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+    z-index: 0;
   }
 
-  @include tablet {
-    gap: 35px;
-    padding: 50px 15px;
+  .container {
+    position: relative;
+    z-index: 1;
   }
-  
-  @include mobile {
-    flex-direction: column;
-    padding: 40px 10px;
+
+  // Header
+  .about-header {
     text-align: center;
-    gap: 25px;
-    min-height: auto;
-  }
-
-  .textContainer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(20px, 4vw, 30px);
-    max-width: 600px;
-
-    @include small-laptop {
-      gap: 25px;
-      max-width: 550px;
-    }
-
-    @include tablet {
-      gap: 20px;
-      max-width: 500px;
-    }
-
-    @include mobile {
-      gap: 15px;
-      max-width: 100%;
+    margin-bottom: $space-16;
+    
+    .section-title {
+      margin-bottom: $space-4;
     }
     
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      color: orange;
-      background: linear-gradient(45deg, orange, #ff6b35);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: clamp(-5px, -1vw, -10px);
-        left: 0;
-        width: clamp(60px, 15vw, 100px);
-        height: 4px;
-        background: linear-gradient(45deg, orange, #ff6b35);
-        border-radius: 2px;
-      }
+    .subtitle {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
 
-      @include small-laptop {
-        font-size: 56px;
-      }
+  // Main Content
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-16;
+    align-items: start;
+    
+    @include laptop {
+      gap: $space-12;
+    }
+    
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $space-10;
+    }
+  }
+
+  // Left Side
+  .about-left {
+    display: flex;
+    flex-direction: column;
+    gap: $space-8;
+    
+    // Tab Navigation
+    .tab-navigation {
+      display: flex;
+      background: $bg-card;
+      border-radius: $radius-lg;
+      padding: $space-1;
+      margin-bottom: $space-6;
       
-      @include tablet {
-        font-size: 48px;
-      }
-      
-      @include mobile {
-        font-size: 32px;
+      .tab-btn {
+        flex: 1;
+        padding: $space-3 $space-4;
+        background: transparent;
+        border: none;
+        border-radius: $radius-md;
+        color: $text-secondary;
+        font-weight: $font-medium;
+        cursor: pointer;
+        transition: all 0.3s ease;
         
-        &::after {
-          width: 60px;
-          left: 50%;
-          transform: translateX(-50%);
+        &.active {
+          background: $gradient-accent;
+          color: $text-primary;
+          box-shadow: $shadow-glow;
+        }
+        
+        &:hover:not(.active) {
+          color: $text-primary;
+          background: rgba(255, 255, 255, 0.05);
         }
       }
     }
 
-    p {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: lightgray;
-      line-height: 1.6;
-      position: relative;
-      padding-left: clamp(0px, 2vw, 20px);
+    // Tab Content
+    .tab-content {
+      min-height: 300px;
       
-      &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(180deg, orange, transparent);
-        border-radius: 2px;
+      .story-content {
+        .story-text {
+          p {
+            font-size: $text-lg;
+            line-height: $leading-relaxed;
+            color: $text-secondary;
+            margin-bottom: $space-6;
+            
+            .highlight {
+              color: $accent-primary;
+              font-weight: $font-semibold;
+              position: relative;
+              
+              &::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: $gradient-accent;
+                opacity: 0.3;
+              }
+            }
+          }
+        }
+      }
+
+      .timeline-content {
+        .timeline {
+          position: relative;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: $gradient-accent;
+            opacity: 0.3;
+          }
+          
+          .timeline-item {
+            position: relative;
+            padding-left: $space-16;
+            margin-bottom: $space-8;
+            
+            .timeline-marker {
+              position: absolute;
+              left: 12px;
+              top: 8px;
+              width: 16px;
+              height: 16px;
+              background: $gradient-accent;
+              border-radius: 50%;
+              border: 3px solid $bg-secondary;
+              box-shadow: $shadow-glow;
+            }
+            
+            .timeline-content {
+              .timeline-year {
+                font-size: $text-sm;
+                color: $accent-primary;
+                font-weight: $font-semibold;
+                margin-bottom: $space-1;
+              }
+              
+              .timeline-title {
+                font-size: $text-xl;
+                color: $text-primary;
+                font-weight: $font-semibold;
+                margin-bottom: $space-2;
+              }
+              
+              .timeline-description {
+                color: $text-secondary;
+                line-height: $leading-relaxed;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Values Section
+    .values {
+      h3 {
+        font-size: $text-2xl;
+        color: $text-primary;
+        margin-bottom: $space-6;
+        font-weight: $font-semibold;
+      }
+      
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $space-4;
         
         @include mobile {
-          display: none;
-        }
-      }
-
-      span {
-        color: orange;
-        font-weight: bold;
-        position: relative;
-        
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: linear-gradient(45deg, orange, #ff6b35);
-          transform: scaleX(0);
-          transition: transform 0.3s ease;
+          grid-template-columns: 1fr;
         }
         
-        &:hover::after {
-          transform: scaleX(1);
+        .value-card {
+          @include glass-effect;
+          padding: $space-4;
+          border-radius: $radius-lg;
+          text-align: center;
+          transition: all 0.3s ease;
+          
+          .value-icon {
+            font-size: $text-3xl;
+            margin-bottom: $space-3;
+          }
+          
+          h4 {
+            font-size: $text-lg;
+            color: $text-primary;
+            margin-bottom: $space-2;
+            font-weight: $font-semibold;
+          }
+          
+          p {
+            font-size: $text-sm;
+            color: $text-secondary;
+            line-height: $leading-relaxed;
+          }
         }
-      }
-
-      @include small-laptop {
-        font-size: 18px;
-        padding-left: 15px;
-      }
-      
-      @include tablet {
-        font-size: 16px;
-        padding-left: 10px;
-      }
-      
-      @include mobile {
-        font-size: 14px;
-        padding-left: 0;
       }
     }
   }
 
-  .imageContainer {
-    flex: 1;
+  // Right Side
+  .about-right {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 500px;
+    flex-direction: column;
+    gap: $space-8;
     
-    &::before {
-      content: '';
-      position: absolute;
-      top: clamp(-10px, -2vw, -20px);
-      left: clamp(-10px, -2vw, -20px);
-      right: clamp(10px, 2vw, 20px);
-      bottom: clamp(10px, 2vw, 20px);
-      background: linear-gradient(45deg, orange, #ff6b35);
-      border-radius: 20px;
-      opacity: 0.1;
-      z-index: 0;
+    // Profile Section
+    .profile-section {
+      display: flex;
+      justify-content: center;
+      
+      .image-container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        
+        @include laptop {
+          width: 250px;
+          height: 250px;
+        }
+        
+        @include tablet {
+          width: 200px;
+          height: 200px;
+        }
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: $radius-2xl;
+          position: relative;
+          z-index: 2;
+          box-shadow: $shadow-2xl;
+        }
+        
+        .image-glow {
+          position: absolute;
+          top: -20px;
+          left: -20px;
+          right: -20px;
+          bottom: -20px;
+          background: $gradient-accent;
+          border-radius: $radius-2xl;
+          opacity: 0.2;
+          filter: blur(20px);
+          z-index: 1;
+        }
+      }
     }
 
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 
-        0 0 30px rgba(255, 165, 0, 0.3),
-        0 0 60px rgba(255, 165, 0, 0.1);
-      position: relative;
-      z-index: 1;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      
-      &:hover {
-        transform: scale(1.05) rotate(2deg);
-        box-shadow: 
-          0 0 40px rgba(255, 165, 0, 0.4),
-          0 0 80px rgba(255, 165, 0, 0.2);
+    // Skills Section
+    .skills-section {
+      h3 {
+        font-size: $text-2xl;
+        color: $text-primary;
+        margin-bottom: $space-6;
+        font-weight: $font-semibold;
+        text-align: center;
       }
+      
+      .skills-tabs {
+        display: flex;
+        flex-direction: column;
+        gap: $space-6;
+        
+        .skill-category {
+          .skill-category-title {
+            font-size: $text-lg;
+            color: $accent-primary;
+            margin-bottom: $space-4;
+            font-weight: $font-semibold;
+            text-align: center;
+          }
+          
+          .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: $space-3;
+            
+            .skill-item {
+              .skill-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: $space-2;
+                
+                .skill-name {
+                  font-size: $text-base;
+                  color: $text-primary;
+                  font-weight: $font-medium;
+                }
+                
+                .skill-percentage {
+                  font-size: $text-sm;
+                  color: $accent-primary;
+                  font-weight: $font-semibold;
+                }
+              }
+              
+              .skill-bar {
+                height: 8px;
+                background: $bg-card;
+                border-radius: $radius-full;
+                overflow: hidden;
+                position: relative;
+                
+                .skill-progress {
+                  height: 100%;
+                  background: $gradient-accent;
+                  border-radius: $radius-full;
+                  position: relative;
+                  
+                  &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                    animation: shimmer 2s infinite;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
-      @include small-laptop {
-        max-width: 450px;
+// ========================================
+// ANIMATIONS
+// ========================================
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include tablet {
+  .about {
+    padding: $space-16 0;
+    
+    .about-content {
+      .about-left {
+        .tab-content {
+          min-height: 250px;
+        }
+        
+        .values .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: $space-3;
+        }
       }
       
-      @include tablet {
-        max-width: 400px;
+      .about-right {
+        .profile-section .image-container {
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .about {
+    padding: $space-12 0;
+    
+    .about-header {
+      margin-bottom: $space-12;
+    }
+    
+    .about-content {
+      gap: $space-8;
+      
+      .about-left {
+        gap: $space-6;
+        
+        .tab-navigation {
+          .tab-btn {
+            padding: $space-2 $space-3;
+            font-size: $text-sm;
+          }
+        }
+        
+        .tab-content {
+          min-height: 200px;
+          
+          .story-content .story-text p {
+            font-size: $text-base;
+            margin-bottom: $space-4;
+          }
+          
+          .timeline-content .timeline {
+            .timeline-item {
+              padding-left: $space-12;
+              
+              .timeline-marker {
+                left: 8px;
+                width: 12px;
+                height: 12px;
+              }
+              
+              .timeline-content {
+                .timeline-title {
+                  font-size: $text-lg;
+                }
+              }
+            }
+          }
+        }
+        
+        .values {
+          h3 {
+            font-size: $text-xl;
+            margin-bottom: $space-4;
+          }
+          
+          .values-grid {
+            grid-template-columns: 1fr;
+            gap: $space-3;
+            
+            .value-card {
+              padding: $space-3;
+              
+              .value-icon {
+                font-size: $text-2xl;
+                margin-bottom: $space-2;
+              }
+              
+              h4 {
+                font-size: $text-base;
+                margin-bottom: $space-1;
+              }
+              
+              p {
+                font-size: $text-xs;
+              }
+            }
+          }
+        }
       }
       
-      @include mobile {
-        max-width: 300px;
-        width: 80%;
+      .about-right {
+        gap: $space-6;
+        
+        .profile-section .image-container {
+          width: 180px;
+          height: 180px;
+        }
+        
+        .skills-section {
+          h3 {
+            font-size: $text-xl;
+            margin-bottom: $space-4;
+          }
+          
+          .skills-tabs {
+            gap: $space-4;
+            
+            .skill-category {
+              .skill-category-title {
+                font-size: $text-base;
+                margin-bottom: $space-3;
+              }
+              
+              .skills-list {
+                gap: $space-2;
+                
+                .skill-item {
+                  .skill-info {
+                    margin-bottom: $space-1;
+                    
+                    .skill-name {
+                      font-size: $text-sm;
+                    }
+                    
+                    .skill-percentage {
+                      font-size: $text-xs;
+                    }
+                  }
+                  
+                  .skill-bar {
+                    height: 6px;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

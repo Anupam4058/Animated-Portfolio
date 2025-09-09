@@ -1,4 +1,3 @@
-import Test from "./Test";
 import "./app.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
@@ -7,35 +6,47 @@ import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
 import Portfolio from "./components/portfolio/Portfolio";
 import Services from "./components/services/Services";
-import About from "./components/about/About"; // Import the About component
+import About from "./components/about/About";
 
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <Cursor />
-      <section id="Homepage">
+      
+      {/* Hero Section */}
+      <section id="Homepage" className="section">
         <Navbar />
         <Hero />
       </section>
-      <section id="About"> {/* Replace Services with About */}
+      
+      {/* About Section */}
+      <section id="About" className="section">
         <Parallax type="about" />
       </section>
-      <section>
-        <About /> {/* Add the About component */}
+      <section className="section">
+        <About />
       </section>
-      <section id="Services">
+      
+      {/* Services Section */}
+      <section id="Services" className="section">
         <Parallax type="services" />
       </section>
-      <section>
+      <section className="section">
         <Services />
       </section>
-      <section id="Portfolio"> 
-  <Parallax type="portfolio" />
-</section>
-<Portfolio />
-<section id="Contact"> 
-  <Contact />
-</section>
+      
+      {/* Portfolio Section */}
+      <section id="Portfolio" className="section">
+        <Parallax type="portfolio" />
+      </section>
+      <section className="section">
+        <Portfolio />
+      </section>
+      
+      {/* Contact Section */}
+      <section id="Contact" className="section">
+        <Contact />
+      </section>
     </div>
   );
 };

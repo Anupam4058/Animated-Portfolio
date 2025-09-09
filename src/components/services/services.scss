@@ -1,211 +1,81 @@
 @import "../../app.scss";
 
+// ========================================
+// MODERN SERVICES SECTION
+// ========================================
+
 .services {
-  background: linear-gradient(180deg, #0c0c1d, #111132);
   min-height: 100vh;
-  padding: 80px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: $space-20 0;
+  background: $gradient-primary;
+  position: relative;
+  overflow: hidden;
 
-  @include small-laptop {
-    padding: 60px 0;
-  }
-
-  @include tablet {
-    padding: 50px 0;
-  }
-
-  @include mobile {
-    padding: 40px 0;
-    min-height: auto;
+  // Background Elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+    z-index: 0;
   }
 
   .container {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-
-    @include small-laptop {
-      gap: 50px;
-    }
-
-    @include tablet {
-      gap: 40px;
-    }
-
-    @include mobile {
-      gap: 30px;
-    }
+    position: relative;
+    z-index: 1;
   }
 
-  .textContainer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
-
-    @include tablet {
-      justify-content: center;
-      text-align: center;
-      flex-direction: column;
+  // Header
+  .services-header {
+    text-align: center;
+    margin-bottom: $space-16;
+    
+    .section-title {
+      margin-bottom: $space-4;
     }
-
-    @include mobile {
-      align-self: center;
-      text-align: center;
-      flex-direction: column;
-      gap: 15px;
-    }
-
+    
     .subtitle {
-      font-weight: 200;
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: gray;
-      text-align: right;
-      max-width: 400px;
-
-      @include tablet {
-        text-align: center;
-        max-width: 500px;
-      }
-
-      @include mobile {
-        text-align: center;
-        max-width: 100%;
-      }
-    }
-
-    hr {
-      width: clamp(200px, 40vw, 500px);
-      border: none;
-      border-top: 0.5px solid gray;
-
-      @include mobile {
-        width: 80%;
-      }
+      max-width: 600px;
+      margin: 0 auto;
     }
   }
 
-  .titleContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-
-    @include mobile {
-      gap: 20px;
-    }
-
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(20px, 5vw, 50px);
-      width: 100%;
-
-      @include tablet {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-      }
-
-      @include mobile {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-      }
-
-      .icon-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: clamp(80px, 15vw, 120px);
-        height: clamp(80px, 15vw, 120px);
-        background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), rgba(255, 107, 53, 0.1));
-        border-radius: 50%;
-        border: 2px solid rgba(255, 165, 0, 0.3);
-
-        .service-icon {
-          font-size: clamp(2rem, 5vw, 3rem);
-        }
-
-        @include mobile {
-          width: 60px;
-          height: 60px;
-          
-          .service-icon {
-            font-size: 1.5rem;
-          }
-        }
-      }
-
-      h1 {
-        font-weight: 100;
-        text-align: center;
-
-        @include mobile {
-          line-height: 1.2;
-        }
-      }
-
-      button {
-        padding: clamp(15px, 3vw, 25px) clamp(30px, 6vw, 50px);
-        border-radius: 50px;
-        background: linear-gradient(45deg, orange, #ff6b35);
-        border: none;
-        font-size: clamp(0.875rem, 2vw, 1.5rem);
-        font-weight: 600;
-        color: white;
-        cursor: pointer;
-        white-space: nowrap;
-        min-width: fit-content;
-
-        @include mobile {
-          padding: 12px 24px;
-          font-size: 0.875rem;
-        }
-      }
-    }
-  }
-
-  .listContainer {
+  // Services Grid
+  .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-
-    @include small-laptop {
+    gap: $space-8;
+    margin-bottom: $space-16;
+    
+    @include laptop {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      gap: $space-6;
     }
-
+    
     @include tablet {
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      gap: $space-5;
     }
-
+    
     @include mobile {
       grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 100%;
+      gap: $space-4;
     }
 
-    .box {
-      padding: clamp(20px, 4vw, 40px);
-      border: 1px solid rgba(255, 165, 0, 0.2);
-      border-radius: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(10px);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    .service-card {
+      @include glass-effect;
+      border-radius: $radius-xl;
+      padding: $space-8;
       position: relative;
       overflow: hidden;
-
+      transition: all 0.3s ease;
+      cursor: pointer;
+      
+      // Card Hover Effect
       &::before {
         content: '';
         position: absolute;
@@ -213,85 +83,369 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
-        transition: left 0.6s;
+        background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+        transition: left 0.6s ease;
       }
-
+      
       &:hover::before {
         left: 100%;
       }
-
-      @include mobile {
-        padding: 20px;
-        gap: 15px;
+      
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: $shadow-2xl, $shadow-glow;
+        border-color: rgba(0, 212, 255, 0.3);
       }
 
-      .service-icon-large {
-        font-size: clamp(2rem, 4vw, 3rem);
-        align-self: flex-start;
-        padding: 10px;
-        background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), rgba(255, 107, 53, 0.1));
-        border-radius: 10px;
-        width: fit-content;
-      }
-
-      h2 {
-        font-size: clamp(1.25rem, 3vw, 1.5rem);
-        color: orange;
-        margin: 0;
-      }
-
-      .service-description {
-        color: lightgray;
-        line-height: 1.6;
-        font-size: clamp(0.875rem, 2vw, 1rem);
-        flex-grow: 1;
-
-        @include mobile {
-          font-size: 0.875rem;
+      // Card Header
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: $space-4;
+        margin-bottom: $space-6;
+        
+        .service-icon {
+          font-size: $text-4xl;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $gradient-accent;
+          border-radius: $radius-lg;
+          box-shadow: $shadow-glow;
+          flex-shrink: 0;
+        }
+        
+        .service-title {
+          font-size: $text-2xl;
+          color: $text-primary;
+          font-weight: $font-bold;
+          margin: 0;
+          line-height: $leading-tight;
         }
       }
 
+      // Service Description
+      .service-description {
+        color: $text-secondary;
+        line-height: $leading-relaxed;
+        margin-bottom: $space-6;
+        font-size: $text-base;
+      }
+
+      // Technologies
       .technologies {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin: 10px 0;
-
-        .tech-tag {
-          padding: 4px 8px;
-          background: rgba(255, 165, 0, 0.1);
-          border: 1px solid rgba(255, 165, 0, 0.3);
-          border-radius: 12px;
-          font-size: 0.75rem;
-          color: orange;
-          transition: all 0.3s ease;
-          cursor: pointer;
-
-          @include mobile {
-            font-size: 0.7rem;
-            padding: 3px 6px;
+        margin-bottom: $space-6;
+        
+        .tech-label {
+          display: block;
+          font-size: $text-sm;
+          color: $text-muted;
+          font-weight: $font-medium;
+          margin-bottom: $space-3;
+        }
+        
+        .tech-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: $space-2;
+          
+          .tech-tag {
+            padding: $space-1 $space-3;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: $radius-full;
+            font-size: $text-xs;
+            color: $accent-primary;
+            font-weight: $font-medium;
+            transition: all 0.3s ease;
+            
+            &:hover {
+              background: $accent-primary;
+              color: $primary-dark;
+              transform: translateY(-1px);
+            }
           }
         }
       }
 
-      button {
-        padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 20px);
-        background: linear-gradient(45deg, orange, #ff6b35);
-        border: none;
-        border-radius: 8px;
+      // Service Button
+      .service-btn {
+        width: 100%;
+        padding: $space-3 $space-4;
+        background: transparent;
+        border: 2px solid $accent-primary;
+        border-radius: $radius-lg;
+        color: $accent-primary;
+        font-weight: $font-semibold;
         cursor: pointer;
-        font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-        font-weight: 500;
-        color: white;
-        align-self: flex-start;
         transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $space-2;
+        
+        svg {
+          transition: transform 0.3s ease;
+        }
+        
+        &:hover {
+          background: $accent-primary;
+          color: $primary-dark;
+          transform: translateY(-2px);
+          box-shadow: $shadow-glow;
+          
+          svg {
+            transform: translateX(2px);
+          }
+        }
+        
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
 
-        @include mobile {
-          padding: 8px 16px;
-          font-size: 0.75rem;
-          align-self: stretch;
+  // Call to Action
+  .services-cta {
+    text-align: center;
+    padding: $space-12 0;
+    
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+      
+      h3 {
+        font-size: $text-3xl;
+        color: $text-primary;
+        margin-bottom: $space-4;
+        font-weight: $font-bold;
+      }
+      
+      p {
+        font-size: $text-lg;
+        color: $text-secondary;
+        margin-bottom: $space-8;
+        line-height: $leading-relaxed;
+      }
+      
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-2;
+        padding: $space-4 $space-8;
+        font-size: $text-lg;
+        font-weight: $font-semibold;
+        
+        svg {
+          transition: transform 0.3s ease;
+        }
+        
+        &:hover svg {
+          transform: translateX(2px);
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include laptop {
+  .services {
+    padding: $space-16 0;
+    
+    .services-grid {
+      .service-card {
+        padding: $space-6;
+        
+        .card-header {
+          gap: $space-3;
+          margin-bottom: $space-5;
+          
+          .service-icon {
+            width: 50px;
+            height: 50px;
+            font-size: $text-3xl;
+          }
+          
+          .service-title {
+            font-size: $text-xl;
+          }
+        }
+        
+        .service-description {
+          margin-bottom: $space-5;
+          font-size: $text-sm;
+        }
+        
+        .technologies {
+          margin-bottom: $space-5;
+        }
+      }
+    }
+    
+    .services-cta {
+      padding: $space-10 0;
+      
+      .cta-content {
+        h3 {
+          font-size: $text-2xl;
+        }
+        
+        p {
+          font-size: $text-base;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .services {
+    padding: $space-12 0;
+    
+    .services-header {
+      margin-bottom: $space-12;
+    }
+    
+    .services-grid {
+      margin-bottom: $space-12;
+      
+      .service-card {
+        padding: $space-5;
+        
+        .card-header {
+          flex-direction: column;
           text-align: center;
+          gap: $space-3;
+          margin-bottom: $space-4;
+          
+          .service-icon {
+            width: 50px;
+            height: 50px;
+            font-size: $text-3xl;
+          }
+          
+          .service-title {
+            font-size: $text-xl;
+          }
+        }
+        
+        .service-description {
+          margin-bottom: $space-4;
+          font-size: $text-sm;
+        }
+        
+        .technologies {
+          margin-bottom: $space-4;
+          
+          .tech-tags {
+            justify-content: center;
+          }
+        }
+      }
+    }
+    
+    .services-cta {
+      padding: $space-8 0;
+      
+      .cta-content {
+        h3 {
+          font-size: $text-2xl;
+        }
+        
+        p {
+          font-size: $text-base;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .services {
+    padding: $space-10 0;
+    
+    .services-header {
+      margin-bottom: $space-10;
+    }
+    
+    .services-grid {
+      margin-bottom: $space-10;
+      
+      .service-card {
+        padding: $space-4;
+        
+        .card-header {
+          flex-direction: column;
+          text-align: center;
+          gap: $space-2;
+          margin-bottom: $space-4;
+          
+          .service-icon {
+            width: 45px;
+            height: 45px;
+            font-size: $text-2xl;
+          }
+          
+          .service-title {
+            font-size: $text-lg;
+          }
+        }
+        
+        .service-description {
+          margin-bottom: $space-4;
+          font-size: $text-sm;
+        }
+        
+        .technologies {
+          margin-bottom: $space-4;
+          
+          .tech-label {
+            text-align: center;
+            font-size: $text-xs;
+          }
+          
+          .tech-tags {
+            justify-content: center;
+            gap: $space-1;
+            
+            .tech-tag {
+              padding: $space-1 $space-2;
+              font-size: $text-xs;
+            }
+          }
+        }
+        
+        .service-btn {
+          padding: $space-2 $space-3;
+          font-size: $text-sm;
+        }
+      }
+    }
+    
+    .services-cta {
+      padding: $space-6 0;
+      
+      .cta-content {
+        h3 {
+          font-size: $text-xl;
+          margin-bottom: $space-3;
+        }
+        
+        p {
+          font-size: $text-sm;
+          margin-bottom: $space-6;
+        }
+        
+        .btn {
+          padding: $space-3 $space-6;
+          font-size: $text-base;
         }
       }
     }

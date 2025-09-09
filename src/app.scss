@@ -1,145 +1,619 @@
+// ========================================
+// MODERN DESIGN SYSTEM - PORTFOLIO REDESIGN
+// ========================================
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+// ========================================
+// COLOR SYSTEM
+// ========================================
+
+// Primary Colors
+$primary-dark: #0a0a0f;
+$primary-medium: #1a1a2e;
+$primary-light: #16213e;
+
+// Accent Colors
+$accent-primary: #00d4ff;
+$accent-secondary: #ff6b35;
+$accent-tertiary: #7c3aed;
+$accent-success: #10b981;
+$accent-warning: #f59e0b;
+$accent-error: #ef4444;
+
+// Neutral Colors
+$text-primary: #ffffff;
+$text-secondary: #a1a1aa;
+$text-muted: #71717a;
+$text-accent: #00d4ff;
+
+// Background Colors
+$bg-primary: #0a0a0f;
+$bg-secondary: #1a1a2e;
+$bg-tertiary: #16213e;
+$bg-card: rgba(255, 255, 255, 0.05);
+$bg-glass: rgba(255, 255, 255, 0.1);
+
+// ========================================
+// TYPOGRAPHY SYSTEM
+// ========================================
+
+$font-primary: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+// Font Sizes
+$text-xs: 0.75rem;    // 12px
+$text-sm: 0.875rem;   // 14px
+$text-base: 1rem;     // 16px
+$text-lg: 1.125rem;   // 18px
+$text-xl: 1.25rem;    // 20px
+$text-2xl: 1.5rem;    // 24px
+$text-3xl: 1.875rem;  // 30px
+$text-4xl: 2.25rem;   // 36px
+$text-5xl: 3rem;      // 48px
+$text-6xl: 3.75rem;   // 60px
+$text-7xl: 4.5rem;    // 72px
+$text-8xl: 6rem;      // 96px
+
+// Font Weights
+$font-light: 300;
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+$font-extrabold: 800;
+$font-black: 900;
+
+// Line Heights
+$leading-tight: 1.25;
+$leading-snug: 1.375;
+$leading-normal: 1.5;
+$leading-relaxed: 1.625;
+$leading-loose: 2;
+
+// ========================================
+// SPACING SYSTEM
+// ========================================
+
+$space-1: 0.25rem;   // 4px
+$space-2: 0.5rem;    // 8px
+$space-3: 0.75rem;   // 12px
+$space-4: 1rem;      // 16px
+$space-5: 1.25rem;   // 20px
+$space-6: 1.5rem;    // 24px
+$space-8: 2rem;      // 32px
+$space-10: 2.5rem;   // 40px
+$space-12: 3rem;     // 48px
+$space-16: 4rem;     // 64px
+$space-20: 5rem;     // 80px
+$space-24: 6rem;     // 96px
+$space-32: 8rem;     // 128px
+
+// ========================================
+// BORDER RADIUS
+// ========================================
+
+$radius-sm: 0.375rem;   // 6px
+$radius-md: 0.5rem;     // 8px
+$radius-lg: 0.75rem;    // 12px
+$radius-xl: 1rem;       // 16px
+$radius-2xl: 1.5rem;    // 24px
+$radius-full: 9999px;
+
+// ========================================
+// SHADOWS
+// ========================================
+
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+$shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+$shadow-glow-orange: 0 0 20px rgba(255, 107, 53, 0.3);
+
+// ========================================
+// GRADIENTS
+// ========================================
+
+$gradient-primary: linear-gradient(135deg, $primary-dark 0%, $primary-medium 100%);
+$gradient-accent: linear-gradient(135deg, $accent-primary 0%, $accent-tertiary 100%);
+$gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+$gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+$gradient-hero: linear-gradient(135deg, $primary-dark 0%, $primary-medium 50%, $primary-light 100%);
+
+// ========================================
+// RESPONSIVE BREAKPOINTS
+// ========================================
+
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 1024px) and (max-width: 1365px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1366px) and (max-width: 1919px) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: 1920px) {
+    @content;
+  }
+}
+
+// ========================================
+// UTILITY MIXINS
+// ========================================
+
+@mixin glass-effect {
+  background: $gradient-glass;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@mixin card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-2xl, $shadow-glow;
+  }
+}
+
+@mixin button-primary {
+  background: $gradient-accent;
+  color: $text-primary;
+  border: none;
+  border-radius: $radius-lg;
+  padding: $space-3 $space-6;
+  font-weight: $font-semibold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-glow;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin text-gradient {
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ========================================
+// BASE STYLES
+// ========================================
+
 html {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-primary;
+  background: $gradient-hero;
+  color: $text-primary;
+  overflow-x: hidden;
+  line-height: $leading-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+section {
+  min-height: 100vh;
+  width: 100vw;
+  scroll-snap-align: center;
+  overflow: hidden;
+  position: relative;
+  
+  @include mobile {
+    min-height: 100vh;
+    height: auto;
+  }
+}
+
+// ========================================
+// SMOOTH ANIMATIONS
+// ========================================
+
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ========================================
+// CUSTOM SCROLLBAR
+// ========================================
+
+::-webkit-scrollbar {
+  width: 8px;
+  
+  @include mobile {
+    width: 4px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: $primary-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gradient-accent;
+  border-radius: $radius-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $accent-primary;
+}
+
+// ========================================
+// SELECTION STYLES
+// ========================================
+
+::selection {
+  background: $accent-primary;
+  color: $primary-dark;
+}
+
+::-moz-selection {
+  background: $accent-primary;
+  color: $primary-dark;
+}
+
+// ========================================
+// CONTAINER SYSTEM
+// ========================================
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $space-6;
+  
+  @include large-desktop {
+    max-width: 1600px;
+    padding: 0 $space-8;
   }
   
+  @include desktop {
+    max-width: 1200px;
+    padding: 0 $space-6;
+  }
+  
+  @include laptop {
+    max-width: 1024px;
+    padding: 0 $space-5;
+  }
+  
+  @include tablet {
+    max-width: 768px;
+    padding: 0 $space-4;
+  }
+  
+  @include mobile {
+    max-width: 100%;
+    padding: 0 $space-4;
+  }
+}
+
+// ========================================
+// TYPOGRAPHY UTILITIES
+// ========================================
+
+.text-gradient {
+  @include text-gradient;
+}
+
+.text-primary { color: $text-primary; }
+.text-secondary { color: $text-secondary; }
+.text-muted { color: $text-muted; }
+.text-accent { color: $text-accent; }
+
+// ========================================
+// RESPONSIVE TYPOGRAPHY
+// ========================================
+
+.hero-title {
+  font-size: clamp($text-4xl, 8vw, $text-8xl);
+  font-weight: $font-black;
+  line-height: $leading-tight;
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  font-size: clamp($text-3xl, 6vw, $text-6xl);
+  font-weight: $font-bold;
+  line-height: $leading-tight;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: clamp($text-lg, 3vw, $text-2xl);
+  font-weight: $font-medium;
+  line-height: $leading-relaxed;
+  color: $text-secondary;
+}
+
+.body-text {
+  font-size: clamp($text-base, 2vw, $text-lg);
+  font-weight: $font-normal;
+  line-height: $leading-relaxed;
+  color: $text-secondary;
+}
+
+// ========================================
+// BUTTON UTILITIES
+// ========================================
+
+.btn {
+  @include button-primary;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  font-size: $text-base;
+  font-weight: $font-semibold;
+  text-decoration: none;
+  border-radius: $radius-lg;
+  padding: $space-3 $space-6;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-glow;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &.btn-secondary {
+    background: transparent;
+    border: 2px solid $accent-primary;
+    color: $accent-primary;
+    
+    &:hover {
+      background: $accent-primary;
+      color: $primary-dark;
+    }
+  }
+  
+  &.btn-large {
+    padding: $space-4 $space-8;
+    font-size: $text-lg;
+  }
+  
+  &.btn-small {
+    padding: $space-2 $space-4;
+    font-size: $text-sm;
+  }
+}
+
+// ========================================
+// CARD UTILITIES
+// ========================================
+
+.card {
+  @include glass-effect;
+  border-radius: $radius-xl;
+  padding: $space-6;
+  @include card-hover;
+}
+
+// ========================================
+// SPACING UTILITIES
+// ========================================
+
+.mt-1 { margin-top: $space-1; }
+.mt-2 { margin-top: $space-2; }
+.mt-3 { margin-top: $space-3; }
+.mt-4 { margin-top: $space-4; }
+.mt-6 { margin-top: $space-6; }
+.mt-8 { margin-top: $space-8; }
+.mt-12 { margin-top: $space-12; }
+.mt-16 { margin-top: $space-16; }
+
+.mb-1 { margin-bottom: $space-1; }
+.mb-2 { margin-bottom: $space-2; }
+.mb-3 { margin-bottom: $space-3; }
+.mb-4 { margin-bottom: $space-4; }
+.mb-6 { margin-bottom: $space-6; }
+.mb-8 { margin-bottom: $space-8; }
+.mb-12 { margin-bottom: $space-12; }
+.mb-16 { margin-bottom: $space-16; }
+
+.p-1 { padding: $space-1; }
+.p-2 { padding: $space-2; }
+.p-3 { padding: $space-3; }
+.p-4 { padding: $space-4; }
+.p-6 { padding: $space-6; }
+.p-8 { padding: $space-8; }
+.p-12 { padding: $space-12; }
+.p-16 { padding: $space-16; }
+
+// ========================================
+// APP-SPECIFIC RESPONSIVE OPTIMIZATIONS
+// ========================================
+
+// Smooth scrolling and app container
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+// Performance optimizations for mobile
+@include mobile {
   * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "DM Sans", sans-serif;
+    -webkit-tap-highlight-color: transparent;
   }
   
-  body {
-    background-color: #0c0c1d;
-    color: lightgray;
-    overflow-x: hidden;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  section {
-    height: 100vh;
-    width: 100vw;
-    scroll-snap-align: center;
-    overflow: hidden;
-    
-    @include mobile {
-      min-height: 100vh;
-      height: auto;
+  // Reduce motion for better performance
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
   
-  // Enhanced responsive breakpoints
-  @mixin mobile {
-    @media (max-width: 767px) {
-      @content;
-    }
+  // Optimize touch interactions
+  button, a, input, textarea {
+    touch-action: manipulation;
   }
-  
-  @mixin tablet {
-    @media (min-width: 768px) and (max-width: 1023px) {
-      @content;
-    }
-  }
-  
-  @mixin small-laptop {
-    @media (min-width: 1024px) and (max-width: 1365px) {
-      @content;
-    }
-  }
-  
-  @mixin desktop {
-    @media (min-width: 1366px) and (max-width: 1919px) {
-      @content;
-    }
-  }
-  
-  @mixin large-desktop {
-    @media (min-width: 1920px) {
-      @content;
-    }
-  }
+}
 
-  // Smooth animations for all elements
-  * {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+// Tablet-specific optimizations
+@include tablet {
+  // Improve touch targets
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
   }
+}
 
-  // Custom scrollbar
-  ::-webkit-scrollbar {
-    width: 8px;
-    
-    @include mobile {
-      width: 4px;
+// Desktop hover optimizations
+@include desktop {
+  // Only enable hover effects on devices that support them
+  @media (hover: hover) {
+    .card:hover,
+    .btn:hover,
+    .nav-link:hover {
+      transform: translateY(-2px);
     }
   }
+}
 
-  ::-webkit-scrollbar-track {
-    background: #0c0c1d;
-  }
+// ========================================
+// PERFORMANCE OPTIMIZATIONS
+// ========================================
 
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, orange, #ff6b35);
-    border-radius: 4px;
-  }
+// GPU acceleration for smooth animations
+.card,
+.btn,
+.nav-link,
+.project-card,
+.service-card,
+.contact-method {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #ff6b35, orange);
-  }
+// Optimize animations for better performance
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateZ(0); }
+  50% { transform: translateY(-20px) translateZ(0); }
+}
 
-  // Container utility classes
-  .container {
-    max-width: 1366px;
-    margin: 0 auto;
-    padding: 0 20px;
-    
-    @include large-desktop {
-      max-width: 1600px;
-    }
-    
-    @include desktop {
-      max-width: 1200px;
-    }
-    
-    @include small-laptop {
-      max-width: 1024px;
-      padding: 0 15px;
-    }
-    
-    @include tablet {
-      max-width: 768px;
-      padding: 0 15px;
-    }
-    
-    @include mobile {
-      max-width: 100%;
-      padding: 0 10px;
-    }
-  }
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-10deg); }
+}
 
-  // Responsive typography
-  .responsive-text {
-    &.hero-title {
-      font-size: clamp(2rem, 8vw, 5.5rem);
-      line-height: 1.1;
-    }
-    
-    &.section-title {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      line-height: 1.2;
-    }
-    
-    &.subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.875rem);
-      line-height: 1.4;
-    }
-    
-    &.body-text {
-      font-size: clamp(0.875rem, 2vw, 1.25rem);
-      line-height: 1.6;
-    }
-  }
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateZ(0); }
+  100% { transform: translateX(100%) translateZ(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg) translateZ(0); }
+  to { transform: rotate(360deg) translateZ(0); }
+}
+
+// Optimize image loading
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+}
+
+// Reduce repaints and reflows
+.glass-effect,
+.card,
+.btn {
+  contain: layout style paint;
+}
+
+// Optimize scroll performance
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Optimize font loading
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+}
+
+// Critical CSS optimizations
+* {
+  box-sizing: border-box;
+}
+
+// Optimize focus states for accessibility
+*:focus {
+  outline: 2px solid $accent-primary;
+  outline-offset: 2px;
+}
+
+// Optimize selection
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: $text-primary;
+}
+
+::-moz-selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: $text-primary;
+}

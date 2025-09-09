@@ -2,36 +2,42 @@ import { useRef } from "react";
 import "./services.scss";
 import { motion, useInView } from "framer-motion";
 
-const variants = {
-  initial: {
-    x: -500,
-    y: 100,
-    opacity: 0,
-  },
+// Modern animation variants
+const containerVariants = {
+  initial: { opacity: 0 },
   animate: {
-    x: 0,
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 1,
+      duration: 0.8,
       staggerChildren: 0.1,
-    },
-  },
+      ease: "easeOut"
+    }
+  }
 };
 
-const cardVariants = {
-  initial: {
-    y: 50,
-    opacity: 0,
-  },
-  animate: {
-    y: 0,
+const itemVariants = {
+  initial: { y: 50, opacity: 0 },
+  animate: { 
+    y: 0, 
     opacity: 1,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
-    },
-  },
+      ease: "easeOut"
+    }
+  }
+};
+
+const cardVariants = {
+  initial: { y: 30, opacity: 0, scale: 0.95 },
+  animate: { 
+    y: 0, 
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
 };
 
 const Services = () => {
@@ -84,95 +90,97 @@ const Services = () => {
   ];
 
   return (
-    <motion.div
+    <motion.section
       className="services"
-      variants={variants}
-      initial="initial"
       ref={ref}
-      animate={isInView ? "animate" : "initial"}
+      variants={containerVariants}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, margin: "-100px" }}
     >
       <div className="container">
-        <motion.div className="textContainer" variants={variants}>
-          <motion.p variants={variants} className="subtitle">
-            I focus on helping your brand grow
-            <br /> and move forward
-          </motion.p>
-          <motion.hr variants={variants} />
+        {/* Header */}
+        <motion.div className="services-header" variants={itemVariants}>
+          <h2 className="section-title">
+            My <span className="text-gradient">Services</span>
+          </h2>
+          <p className="subtitle">
+            Comprehensive solutions to bring your digital vision to life
+          </p>
         </motion.div>
         
-        <motion.div className="titleContainer" variants={variants}>
-          <div className="title">
-            <motion.div 
-              className="icon-container"
-              variants={variants}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-            >
-              <span className="service-icon">💡</span>
-            </motion.div>
-            <motion.h1 variants={variants} className="responsive-text section-title">
-              <motion.b whileHover={{color:"orange"}}>Unique</motion.b> Ideas
-            </motion.h1>
-          </div>
-          <div className="title">
-            <motion.h1 variants={variants} className="responsive-text section-title">
-              <motion.b whileHover={{color:"orange"}}>For Your</motion.b> Business.
-            </motion.h1>
-            <motion.button 
-              variants={variants}
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(255, 165, 0, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              WHAT I DO?
-            </motion.button>
-          </div>
-        </motion.div>
-        
-        <motion.div className="listContainer" variants={variants}>
+        {/* Services Grid */}
+        <motion.div className="services-grid" variants={itemVariants}>
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className="box"
+              className="service-card"
               variants={cardVariants}
               whileHover={{ 
-                background: "linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 107, 53, 0.1))", 
-                color: "white",
-                scale: 1.02,
-                boxShadow: "0 15px 30px rgba(255, 165, 0, 0.2)"
+                y: -8,
+                transition: { duration: 0.3, ease: "easeOut" }
               }}
-              custom={index}
+              whileTap={{ scale: 0.98 }}
             >
-              <motion.div 
-                className="service-icon-large"
-                whileHover={{ scale: 1.2, rotate: 10 }}
-              >
-                {service.icon}
-              </motion.div>
-              <motion.h2 variants={cardVariants}>{service.title}</motion.h2>
-              <motion.p variants={cardVariants} className="service-description">
+              <div className="card-header">
+                <div className="service-icon">
+                  {service.icon}
+                </div>
+                <h3 className="service-title">{service.title}</h3>
+              </div>
+              
+              <p className="service-description">
                 {service.description}
-              </motion.p>
-              <motion.div className="technologies" variants={cardVariants}>
-                {service.technologies.map((tech, techIndex) => (
-                  <motion.span 
-                    key={techIndex} 
-                    className="tech-tag"
-                    whileHover={{ scale: 1.1, backgroundColor: "orange", color: "#0c0c1d" }}
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </motion.div>
-              <motion.button
+              </p>
+              
+              <div className="technologies">
+                <span className="tech-label">Technologies:</span>
+                <div className="tech-tags">
+                  {service.technologies.map((tech, techIndex) => (
+                    <span 
+                      key={techIndex} 
+                      className="tech-tag"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <motion.button 
+                className="service-btn"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Learn More
+                <span>Learn More</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </motion.button>
             </motion.div>
           ))}
         </motion.div>
+        
+        {/* Call to Action */}
+        <motion.div className="services-cta" variants={itemVariants}>
+          <div className="cta-content">
+            <h3>Ready to start your project?</h3>
+            <p>Let's discuss how I can help bring your ideas to life</p>
+            <motion.button 
+              className="btn btn-primary btn-large"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span>Get In Touch</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </motion.button>
+          </div>
+        </motion.div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

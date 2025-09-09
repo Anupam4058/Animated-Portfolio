@@ -1,295 +1,649 @@
 @import "../../app.scss";
 
+// ========================================
+// MODERN CONTACT SECTION
+// ========================================
+
 .contact {
   min-height: 100vh;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: clamp(30px, 5vw, 50px);
-  padding: clamp(40px, 8vw, 80px) clamp(10px, 2vw, 20px);
-  
-  @include small-laptop {
-    max-width: 1000px;
-    gap: 40px;
-    padding: 60px 15px;
-  }
-  
-  @include tablet {
-    max-width: 100%;
-    gap: 35px;
-    padding: 50px 15px;
+  padding: $space-20 0;
+  background: $gradient-primary;
+  position: relative;
+  overflow: hidden;
+
+  // Background Elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+    z-index: 0;
   }
 
-  @include mobile {
-    width: 100%;
-    padding: 40px 10px;
-    flex-direction: column;
-    gap: 25px;
-    min-height: auto;
+  .container {
+    position: relative;
+    z-index: 1;
   }
 
-  .textContainer {
-    flex: 1;
+  // Header
+  .contact-header {
+    text-align: center;
+    margin-bottom: $space-16;
+    
+    .section-title {
+      margin-bottom: $space-4;
+    }
+    
+    .subtitle {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  // Contact Content
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-16;
+    align-items: start;
+    
+    @include laptop {
+      gap: $space-12;
+    }
+    
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $space-10;
+    }
+  }
+
+  // Contact Info
+  .contact-info {
     display: flex;
     flex-direction: column;
-    gap: clamp(25px, 4vw, 40px);
-    max-width: 500px;
-
-    @include small-laptop {
-      gap: 30px;
-      max-width: 450px;
-    }
-
-    @include tablet {
-      gap: 25px;
-      max-width: 400px;
-    }
+    gap: $space-8;
     
-    @include mobile {
-      gap: 20px;
-      text-align: center;
-      align-items: center;
-      max-width: 100%;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 6.25rem);
-      line-height: 0.9;
-      background: linear-gradient(45deg, #fff, #ccc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-
-      @include small-laptop {
-        font-size: 80px;
-        line-height: 72px;
+    .info-header {
+      h3 {
+        font-size: $text-2xl;
+        color: $text-primary;
+        margin-bottom: $space-3;
+        font-weight: $font-bold;
       }
       
-      @include tablet {
-        font-size: 64px;
-        line-height: 56px;
-      }
-      
-      @include mobile {
-        font-size: 32px;
-        line-height: 28px;
-      }
-    }
-    
-    .item {
-      position: relative;
-      padding: clamp(15px, 3vw, 20px);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 165, 0, 0.2);
-      transition: all 0.3s ease;
-      
-      &:hover {
-        background: rgba(255, 165, 0, 0.1);
-        border-color: rgba(255, 165, 0, 0.4);
-        transform: translateY(-5px);
-      }
-      
-      h2 {
-        color: orange;
-        margin-bottom: clamp(5px, 1vw, 10px);
-        font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-        
-        @include small-laptop {
-          font-size: 20px;
-        }
-        
-        @include tablet {
-          font-size: 18px;
-        }
-        
-        @include mobile {
-          font-size: 16px;
-        }
-      }
-      
-      span {
-        font-weight: 300;
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
-        
-        @include mobile {
-          font-size: 14px;
-        }
-      }
-      
-      @include small-laptop {
-        padding: 18px;
-      }
-      
-      @include tablet {
-        padding: 15px;
-      }
-      
-      @include mobile {
-        padding: 12px;
-        width: 100%;
-      }
-    }
-  }
-
-  .formContainer {
-    flex: 1;
-    position: relative;
-    max-width: 500px;
-    width: 100%;
-    
-    @include small-laptop {
-      max-width: 450px;
-    }
-    
-    @include tablet {
-      max-width: 400px;
-    }
-
-    @include mobile {
-      max-width: 100%;
-    }
-
-    .phoneSvg {
-      stroke: orange;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      margin: auto;
-      z-index: -1;
-      opacity: 0.3;
-      width: clamp(250px, 40vw, 450px);
-      height: clamp(250px, 40vw, 450px);
-      
-      @include small-laptop {
-        width: 350px;
-        height: 350px;
-      }
-      
-      @include tablet {
-        width: 300px;
-        height: 300px;
-      }
-      
-      @include mobile {
-        width: 250px;
-        height: 250px;
+      p {
+        color: $text-secondary;
+        line-height: $leading-relaxed;
+        font-size: $text-base;
       }
     }
 
-    form {
+    .contact-methods {
       display: flex;
       flex-direction: column;
-      gap: clamp(15px, 3vw, 20px);
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      padding: clamp(20px, 4vw, 30px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 165, 0, 0.2);
-      position: relative;
-      z-index: 1;
+      gap: $space-4;
       
-      @include small-laptop {
-        padding: 25px;
-        gap: 18px;
-      }
-      
-      @include tablet {
-        padding: 20px;
-        gap: 16px;
-      }
-      
-      @include mobile {
-        padding: 18px;
-        gap: 15px;
-      }
-
-      input,
-      textarea {
-        padding: clamp(12px, 2.5vw, 20px);
-        background-color: transparent;
-        border: 1px solid white;
-        color: white;
-        border-radius: 5px;
+      .contact-method {
+        @include glass-effect;
+        display: flex;
+        align-items: center;
+        gap: $space-4;
+        padding: $space-4;
+        border-radius: $radius-lg;
+        text-decoration: none;
         transition: all 0.3s ease;
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
-        
-        &:focus {
-          outline: none;
-          border-color: orange;
-          box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
-          background: rgba(255, 165, 0, 0.05);
-        }
-        
-        &::placeholder {
-          color: rgba(255, 255, 255, 0.6);
-        }
-
-        @include small-laptop {
-          padding: 16px;
-          font-size: 14px;
-        }
-
-        @include tablet {
-          padding: 14px;
-          font-size: 14px;
-        }
-        
-        @include mobile {
-          padding: 12px;
-          font-size: 13px;
-        }
-      }
-
-      button {
-        padding: clamp(12px, 2.5vw, 20px);
-        border: none;
-        background: linear-gradient(45deg, orange, #ff6b35);
         cursor: pointer;
-        font-weight: 500;
-        border-radius: 10px;
-        color: white;
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: left 0.5s;
-        }
         
         &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 15px 30px rgba(255, 165, 0, 0.4);
+          transform: translateX(10px);
+          box-shadow: $shadow-glow;
+          border-color: rgba(0, 212, 255, 0.3);
+        }
+        
+        .method-icon {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $gradient-accent;
+          border-radius: $radius-lg;
+          color: $primary-dark;
+          flex-shrink: 0;
           
-          &::before {
-            left: 100%;
+          svg {
+            width: 24px;
+            height: 24px;
           }
         }
         
-        @include small-laptop {
-          padding: 16px;
-          font-size: 14px;
+        .method-content {
+          h4 {
+            font-size: $text-lg;
+            color: $text-primary;
+            margin-bottom: $space-1;
+            font-weight: $font-semibold;
+          }
+          
+          span {
+            color: $text-secondary;
+            font-size: $text-sm;
+          }
+        }
+      }
+    }
+
+    .social-section {
+      h4 {
+        font-size: $text-lg;
+        color: $text-primary;
+        margin-bottom: $space-4;
+        font-weight: $font-semibold;
+      }
+      
+      .social-links {
+        display: flex;
+        gap: $space-3;
+        
+        .social-link {
+          @include glass-effect;
+          display: flex;
+          align-items: center;
+          gap: $space-2;
+          padding: $space-3 $space-4;
+          border-radius: $radius-lg;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          
+          &:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: $shadow-glow;
+            border-color: rgba(0, 212, 255, 0.3);
+          }
+          
+          svg {
+            width: 20px;
+            height: 20px;
+            color: $accent-primary;
+          }
+          
+          span {
+            color: $text-primary;
+            font-size: $text-sm;
+            font-weight: $font-medium;
+          }
+        }
+      }
+    }
+  }
+
+  // Contact Form
+  .contact-form {
+    @include glass-effect;
+    padding: $space-8;
+    border-radius: $radius-xl;
+    
+    .form-header {
+      margin-bottom: $space-6;
+      
+      h3 {
+        font-size: $text-2xl;
+        color: $text-primary;
+        margin-bottom: $space-3;
+        font-weight: $font-bold;
+      }
+      
+      p {
+        color: $text-secondary;
+        line-height: $leading-relaxed;
+        font-size: $text-base;
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: $space-5;
+      
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: $space-2;
+        
+        label {
+          font-size: $text-sm;
+          color: $text-primary;
+          font-weight: $font-medium;
         }
         
-        @include tablet {
-          padding: 14px;
-          font-size: 14px;
+        input,
+        textarea {
+          padding: $space-3 $space-4;
+          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          border-radius: $radius-lg;
+          color: $text-primary;
+          font-size: $text-base;
+          transition: all 0.3s ease;
+          resize: vertical;
+          
+          &::placeholder {
+            color: $text-muted;
+          }
+          
+          &:focus {
+            outline: none;
+            border-color: $accent-primary;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+          }
+          
+          &:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+          }
         }
         
-        @include mobile {
-          padding: 12px;
-          font-size: 13px;
+        textarea {
+          min-height: 120px;
+          font-family: inherit;
+        }
+      }
+      
+      .submit-btn {
+        @include button-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $space-2;
+        padding: $space-4 $space-6;
+        font-size: $text-base;
+        font-weight: $font-semibold;
+        margin-top: $space-2;
+        position: relative;
+        overflow: hidden;
+        
+        &:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
+        
+        .spinner {
+          animation: spin 1s linear infinite;
+        }
+        
+        svg {
+          transition: transform 0.3s ease;
+        }
+        
+        &:hover:not(:disabled) {
+          svg {
+            transform: translateX(2px);
+          }
+        }
+      }
+      
+      .status-message {
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+        padding: $space-3 $space-4;
+        border-radius: $radius-lg;
+        font-size: $text-sm;
+        font-weight: $font-medium;
+        
+        &.error {
+          background: rgba(239, 68, 68, 0.1);
+          border: 1px solid rgba(239, 68, 68, 0.3);
+          color: #ef4444;
+        }
+        
+        &.success {
+          background: rgba(34, 197, 94, 0.1);
+          border: 1px solid rgba(34, 197, 94, 0.3);
+          color: #22c55e;
+        }
+        
+        svg {
+          width: 20px;
+          height: 20px;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// ANIMATIONS
+// ========================================
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@include laptop {
+  .contact {
+    padding: $space-16 0;
+    
+    .contact-content {
+      gap: $space-12;
+    }
+    
+    .contact-info {
+      gap: $space-6;
+      
+      .contact-methods {
+        gap: $space-3;
+        
+        .contact-method {
+          padding: $space-3;
+          
+          .method-icon {
+            width: 45px;
+            height: 45px;
+            
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+          }
+          
+          .method-content {
+            h4 {
+              font-size: $text-base;
+            }
+            
+            span {
+              font-size: $text-xs;
+            }
+          }
+        }
+      }
+      
+      .social-section {
+        .social-links {
+          gap: $space-2;
+          
+          .social-link {
+            padding: $space-2 $space-3;
+            
+            svg {
+              width: 18px;
+              height: 18px;
+            }
+            
+            span {
+              font-size: $text-xs;
+            }
+          }
+        }
+      }
+    }
+    
+    .contact-form {
+      padding: $space-6;
+      
+      .form {
+        gap: $space-4;
+        
+        .form-group {
+          gap: $space-1;
+          
+          input,
+          textarea {
+            padding: $space-2 $space-3;
+            font-size: $text-sm;
+          }
+        }
+        
+        .submit-btn {
+          padding: $space-3 $space-5;
+          font-size: $text-sm;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .contact {
+    padding: $space-12 0;
+    
+    .contact-content {
+      gap: $space-10;
+    }
+    
+    .contact-info {
+      gap: $space-6;
+      
+      .info-header {
+        h3 {
+          font-size: $text-xl;
+        }
+        
+        p {
+          font-size: $text-sm;
+        }
+      }
+      
+      .contact-methods {
+        gap: $space-3;
+        
+        .contact-method {
+          padding: $space-3;
+          
+          .method-icon {
+            width: 40px;
+            height: 40px;
+            
+            svg {
+              width: 18px;
+              height: 18px;
+            }
+          }
+          
+          .method-content {
+            h4 {
+              font-size: $text-base;
+            }
+            
+            span {
+              font-size: $text-xs;
+            }
+          }
+        }
+      }
+      
+      .social-section {
+        h4 {
+          font-size: $text-base;
+        }
+        
+        .social-links {
+          gap: $space-2;
+          
+          .social-link {
+            padding: $space-2 $space-3;
+            
+            svg {
+              width: 16px;
+              height: 16px;
+            }
+            
+            span {
+              font-size: $text-xs;
+            }
+          }
+        }
+      }
+    }
+    
+    .contact-form {
+      padding: $space-5;
+      
+      .form-header {
+        margin-bottom: $space-4;
+        
+        h3 {
+          font-size: $text-xl;
+        }
+        
+        p {
+          font-size: $text-sm;
+        }
+      }
+      
+      .form {
+        gap: $space-4;
+        
+        .form-group {
+          gap: $space-1;
+          
+          label {
+            font-size: $text-xs;
+          }
+          
+          input,
+          textarea {
+            padding: $space-2 $space-3;
+            font-size: $text-sm;
+          }
+        }
+        
+        .submit-btn {
+          padding: $space-3 $space-5;
+          font-size: $text-sm;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .contact {
+    padding: $space-10 0;
+    
+    .contact-content {
+      gap: $space-8;
+    }
+    
+    .contact-info {
+      gap: $space-5;
+      
+      .info-header {
+        h3 {
+          font-size: $text-lg;
+          margin-bottom: $space-2;
+        }
+        
+        p {
+          font-size: $text-sm;
+        }
+      }
+      
+      .contact-methods {
+        gap: $space-3;
+        
+        .contact-method {
+          padding: $space-3;
+          
+          .method-icon {
+            width: 40px;
+            height: 40px;
+            
+            svg {
+              width: 18px;
+              height: 18px;
+            }
+          }
+          
+          .method-content {
+            h4 {
+              font-size: $text-sm;
+            }
+            
+            span {
+              font-size: $text-xs;
+            }
+          }
+        }
+      }
+      
+      .social-section {
+        h4 {
+          font-size: $text-sm;
+          margin-bottom: $space-3;
+        }
+        
+        .social-links {
+          gap: $space-2;
+          
+          .social-link {
+            padding: $space-2 $space-3;
+            
+            svg {
+              width: 16px;
+              height: 16px;
+            }
+            
+            span {
+              font-size: $text-xs;
+            }
+          }
+        }
+      }
+    }
+    
+    .contact-form {
+      padding: $space-4;
+      
+      .form-header {
+        margin-bottom: $space-4;
+        
+        h3 {
+          font-size: $text-lg;
+          margin-bottom: $space-2;
+        }
+        
+        p {
+          font-size: $text-sm;
+        }
+      }
+      
+      .form {
+        gap: $space-3;
+        
+        .form-group {
+          gap: $space-1;
+          
+          label {
+            font-size: $text-xs;
+          }
+          
+          input,
+          textarea {
+            padding: $space-2 $space-3;
+            font-size: $text-sm;
+          }
+        }
+        
+        .submit-btn {
+          padding: $space-3 $space-4;
+          font-size: $text-sm;
         }
       }
     }
