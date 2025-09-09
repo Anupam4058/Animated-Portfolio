@@ -139,12 +139,12 @@ const Hero = () => {
               <span className="wave">👋</span> Hello, I&apos;m
             </motion.div> */}
             
-            <motion.h1 
+            <motion.h2 
               className="hero-name"
               variants={textVariants}
             >
               <span className="text-gradient">Anupam Kumar Singh</span>
-            </motion.h1>
+            </motion.h2>
             
             <motion.div 
               className="role-container"

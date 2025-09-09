@@ -35,24 +35,43 @@ $bg-tertiary: #16213e;
 $bg-card: rgba(255, 255, 255, 0.05);
 $bg-glass: rgba(255, 255, 255, 0.1);
 
+// CSS Custom Properties for theming
+:root {
+  --primary-dark: #{$primary-dark};
+  --primary-medium: #{$primary-medium};
+  --primary-light: #{$primary-light};
+  --accent-primary: #{$accent-primary};
+  --accent-secondary: #{$accent-secondary};
+  --accent-tertiary: #{$accent-tertiary};
+  --accent-success: #{$accent-success};
+  --accent-warning: #{$accent-warning};
+  --accent-error: #{$accent-error};
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-muted: #{$text-muted};
+  --text-accent: #{$text-accent};
+  --bg-primary: #{$bg-primary};
+  --bg-secondary: #{$bg-secondary};
+  --bg-tertiary: #{$bg-tertiary};
+  --bg-card: #{$bg-card};
+  --bg-glass: #{$bg-glass};
+}
+
 // Light Theme Variables
 :root[data-theme="light"] {
   --primary-dark: #ffffff;
   --primary-medium: #f8f9fa;
   --primary-light: #e9ecef;
-  
   --accent-primary: #0066cc;
   --accent-secondary: #e74c3c;
   --accent-tertiary: #8e44ad;
   --accent-success: #27ae60;
   --accent-warning: #f39c12;
   --accent-error: #e74c3c;
-  
   --text-primary: #212529;
   --text-secondary: #6c757d;
   --text-muted: #adb5bd;
   --text-accent: #0066cc;
-  
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
   --bg-tertiary: #e9ecef;
@@ -282,12 +301,13 @@ html {
 
 body {
   font-family: $font-primary;
-  background: $gradient-hero;
-  color: $text-primary;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
   line-height: $leading-normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -320,6 +340,11 @@ section {
 // Ensure cursor is always visible
 * {
   cursor: auto !important;
+}
+
+// Theme transition
+.theme-transitioning * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
 
 // Specific cursor styles for interactive elements
