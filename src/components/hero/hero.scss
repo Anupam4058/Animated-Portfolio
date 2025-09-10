@@ -11,6 +11,8 @@
   align-items: center;
   overflow: hidden;
   background: var(--bg-primary);
+  // Offset for fixed navbar so content doesn't sit underneath it
+  padding-top: $space-12;
   
   // Background Elements
   .hero-background {
@@ -362,6 +364,7 @@
 
 @include mobile {
   .hero {
+    padding-top: $space-12;
     .hero-content {
       padding: $space-12 0;
     }

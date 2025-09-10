@@ -9,10 +9,7 @@ import Services from "./components/services/Services";
 import About from "./components/about/About";
 import LoadingScreen from "./components/loading/LoadingScreen";
 import ErrorBoundary from "./components/error/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import ThemeToggle from "./components/theme/ThemeToggle";
-import InstallPrompt from "./components/pwa/InstallPrompt";
-import pwa from "./utils/pwa";
+ 
 import mobileUtils from "./utils/mobile";
 import accessibilityManager from "./utils/accessibility";
 import seoOptimizer from "./utils/seo";
@@ -52,22 +49,17 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider>
-      <ErrorBoundary>
-        <div className="app">
+    <ErrorBoundary>
+      <div className="app">
           {/* Skip Navigation Link */}
           <a href="#main-content" className="skip-link">
             Skip to main content
           </a>
           
-          {/* Theme Toggle */}
-          <div className="theme-toggle-container">
-            <ThemeToggle />
-          </div>
           
           
-          {/* PWA Install Prompt */}
-          <InstallPrompt />
+          
+          
           
           
           {/* Hero Section */}
@@ -127,7 +119,6 @@ const App = () => {
           </main>
         </div>
       </ErrorBoundary>
-    </ThemeProvider>
   );
 };
 

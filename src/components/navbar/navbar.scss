@@ -10,14 +10,23 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: $space-4 0;
+  padding: $space-3 0; // tighter height
+  height: 64px; // lock navbar height so logo size won't stretch it
   transition: all 0.3s ease;
+  
+  // Bring content closer to edges for a less wide look
+  .container {
+    padding-left: $space-3; // move content closer to left edge
+    padding-right: $space-4;
+    height: 100%;
+  }
   
   &.scrolled {
     @include glass-effect;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: $space-3 0;
+    padding: $space-2 0;
+    height: 56px; // smaller locked height on scroll
   }
   
   .navbar-content {
@@ -29,13 +38,9 @@
   
   // Logo
   .logo {
-    .logo-text {
-      font-size: $text-2xl;
-      font-weight: $font-bold;
-      @include text-gradient;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+    display: flex;
+    align-items: center;
+    .logo-svg, .logo-img { display: block; height: 48px; max-height: 48px; width: auto; }
   }
   
   // Desktop Navigation
@@ -45,6 +50,11 @@
     gap: $space-8;
     
     @include tablet {
+      display: none;
+    }
+    
+    // Also collapse up to 1112px (covers iPad landscape) without affecting typical laptops
+    @media (max-width: 1112px) {
       display: none;
     }
     
@@ -87,6 +97,10 @@
       display: none;
     }
     
+    @media (max-width: 1112px) {
+      display: none;
+    }
+    
     .social-link {
       display: flex;
       align-items: center;
@@ -125,6 +139,10 @@
       display: flex;
     }
     
+    @media (max-width: 1112px) {
+      display: flex;
+    }
+    
     span {
       width: 24px;
       height: 2px;
@@ -152,7 +170,16 @@
       gap: $space-4;
     }
     
+    // Ensure links stack vertically with spacing
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: $space-2;
+      width: 100%;
+    }
+    
     .mobile-nav-link {
+      display: block;
       font-size: $text-lg;
       font-weight: $font-medium;
       color: $text-secondary;

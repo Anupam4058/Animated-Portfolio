@@ -281,17 +281,7 @@ html {
 }
 
 // Theme Toggle Container
-.theme-toggle-container {
-  position: fixed;
-  top: $space-6;
-  right: $space-6;
-  z-index: 1000;
-  
-  @include mobile {
-    top: $space-4;
-    right: $space-4;
-  }
-}
+// Removed theme toggle container styles
 
 * {
   padding: 0;

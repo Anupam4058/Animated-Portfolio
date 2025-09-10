@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./navbar.scss";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -83,7 +84,7 @@ const Navbar = () => {
               onClick={(e) => { e.preventDefault(); scrollToSection('#Homepage'); }}
               aria-label="Go to homepage"
             >
-              <span className="logo-text">AKS</span>
+              <Logo size={90} />
             </a>
           </motion.div>
 
