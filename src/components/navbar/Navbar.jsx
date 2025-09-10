@@ -55,11 +55,26 @@ const Navbar = () => {
   ];
 
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    // Close the mobile menu first so it doesn't intercept clicks
+    const wasMobileMenuOpen = isMobileMenuOpen;
+    if (wasMobileMenuOpen) setIsMobileMenuOpen(false);
+
+    const doScroll = () => {
+      const target = document.querySelector(href);
+      const navbar = document.querySelector('.navbar');
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 8;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    };
+
+    // If the mobile menu was open, wait a tick for it to collapse before scrolling
+    if (wasMobileMenuOpen) {
+      setTimeout(doScroll, 250);
+    } else {
+      doScroll();
     }
-    setIsMobileMenuOpen(false);
   };
 
   return (

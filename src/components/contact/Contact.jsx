@@ -44,6 +44,7 @@ const Contact = () => {
   const ref = useRef();
   const formRef = useRef();
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -53,26 +54,26 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(false);
+    setErrorMessage("");
     setSuccess(false);
 
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ;
+
     emailjs
-      .sendForm(
-        "service_94y20xo",
-        "template_v10u2oh",
-        formRef.current,
-        "pX_2hasGmGcuvjXIW"
-      )
-      .then(
-        () => {
-          setSuccess(true);
-          setIsSubmitting(false);
-          formRef.current.reset();
-        },
-        () => {
-          setError(true);
-          setIsSubmitting(false);
-        }
-      );
+      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then(() => {
+        setSuccess(true);
+        setIsSubmitting(false);
+        formRef.current.reset();
+      })
+      .catch((err) => {
+        console.error("EmailJS sendForm failed:", err);
+        setError(true);
+        setErrorMessage(err?.text || err?.message || "Unknown error");
+        setIsSubmitting(false);
+      });
   };
 
   const contactInfo = [
@@ -315,7 +316,7 @@ const Contact = () => {
                       <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" strokeWidth="2"/>
                       <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" strokeWidth="2"/>
                     </svg>
-                    <span>Failed to send message. Please try again.</span>
+                    <span>Failed to send message. Please try again. {errorMessage && `(${errorMessage})`}</span>
                   </motion.div>
                 )}
 
