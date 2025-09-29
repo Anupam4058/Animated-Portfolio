@@ -44,49 +44,66 @@ const Services = () => {
   const ref = useRef();
   useInView(ref, { margin: "-100px" });
 
+  const scrollToContact = () => {
+    const target = document.querySelector('#Contact');
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+    if (target) {
+      const y = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 8;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   const services = [
     {
       id: 1,
-      title: "Web Development",
-      description: "Creating modern, responsive websites using React, HTML5, CSS3, and JavaScript. From landing pages to complex web applications.",
-      icon: "🌐",
-      technologies: ["React", "JavaScript", "HTML5", "CSS3", "SASS"]
-    },
-    {
-      id: 2,
-      title: "Machine Learning",
-      description: "Developing intelligent solutions using Python, scikit-learn, and TensorFlow. From data analysis to predictive modeling.",
-      icon: "🤖",
-      technologies: ["Python", "scikit-learn", "TensorFlow", "Pandas", "NumPy"]
-    },
-    {
-      id: 3,
-      title: "UI/UX Design",
-      description: "Designing intuitive and beautiful user interfaces with focus on user experience and modern design principles.",
+      title: "Frontend Development",
+      description: "Creating modern, responsive user interfaces using React, HTML5, CSS3, and JavaScript. From landing pages to complex web applications.",
       icon: "🎨",
-      technologies: ["Figma", "Adobe XD", "Photoshop", "Illustrator"]
+      technologies: ["React","Next.js", "JavaScript", "HTML5", "Tailwind CSS", "SASS"]
     },
+    // {
+    //   id: 2,
+    //   title: "Machine Learning",
+    //   description: "Developing intelligent solutions using Python, scikit-learn, and TensorFlow. From data analysis to predictive modeling.",
+    //   icon: "🤖",
+    //   technologies: ["Python", "scikit-learn", "TensorFlow", "Pandas", "NumPy"]
+    // },
+    // {
+    //   id: 3,
+    //   title: "UI/UX Design",
+    //   description: "Designing intuitive and beautiful user interfaces with focus on user experience and modern design principles.",
+    //   icon: "🎨",
+    //   technologies: ["Figma", "Adobe XD", "Photoshop", "Illustrator"]
+    // },
     {
       id: 4,
       title: "Backend Development",
       description: "Building robust server-side applications and APIs using Node.js, Express, and database management systems.",
       icon: "⚙️",
-      technologies: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs"]
+      technologies: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs", "Supabase"]
     },
     {
       id: 5,
-      title: "Mobile Development",
-      description: "Creating cross-platform mobile applications using React Native and modern mobile development frameworks.",
-      icon: "📱",
-      technologies: ["React Native", "Flutter", "iOS", "Android"]
+      title: "Generative AI Applications",
+      description: "Creating intelligent applications powered by AI models including chatbots, content generators, and automated solutions using cutting-edge AI technologies.",
+      icon: "🚀",
+      technologies: ["OpenAI", "LangChain", "Python", "FastAPI", "Vector Databases"]
     },
-    {
-      id: 6,
-      title: "Data Analysis",
-      description: "Extracting insights from data using statistical analysis, visualization tools, and machine learning techniques.",
-      icon: "📊",
-      technologies: ["Python", "R", "Tableau", "Power BI", "Excel"]
-    }
+    // {
+    //   id: 6,
+    //   title: "Mobile Development",
+    //   description: "Creating cross-platform mobile applications using React Native and modern mobile development frameworks.",
+    //   icon: "📱",
+    //   technologies: ["React Native", "Flutter", "iOS", "Android"]
+    // },
+    // {
+    //   id: 7,
+    //   title: "Data Analysis",
+    //   description: "Extracting insights from data using statistical analysis, visualization tools, and machine learning techniques.",
+    //   icon: "📊",
+    //   technologies: ["Python", "R", "Tableau", "Power BI", "Excel"]
+    // }
   ];
 
   return (
@@ -167,9 +184,11 @@ const Services = () => {
             <h3>Ready to start your project?</h3>
             <p>Let&apos;s discuss how I can help bring your ideas to life</p>
             <motion.button 
+              type="button"
               className="btn btn-primary btn-large"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={scrollToContact}
             >
               <span>Get In Touch</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">

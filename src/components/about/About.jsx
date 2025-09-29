@@ -27,46 +27,11 @@ const itemVariants = {
   }
 };
 
-const skillVariants = {
-  initial: { width: 0 },
-  animate: (width) => ({
-    width: `${width}%`,
-    transition: {
-      duration: 1.5,
-      ease: "easeOut",
-      delay: 0.5
-    }
-  })
-};
 
 const About = () => {
   const ref = useRef();
   const isInView = useInView(ref, { margin: "-100px" });
   const [activeTab, setActiveTab] = useState('story');
-
-  const skills = {
-    frontend: [
-      { name: "React", level: 90 },
-      { name: "JavaScript", level: 85 },
-      { name: "HTML/CSS", level: 95 },
-      { name: "SASS/SCSS", level: 80 },
-      { name: "TypeScript", level: 70 }
-    ],
-    backend: [
-      { name: "Node.js", level: 75 },
-      { name: "Express", level: 70 },
-      { name: "MongoDB", level: 65 },
-      { name: "PostgreSQL", level: 60 },
-      { name: "REST APIs", level: 80 }
-    ],
-    ml: [
-      { name: "Python", level: 85 },
-      { name: "scikit-learn", level: 80 },
-      { name: "TensorFlow", level: 70 },
-      { name: "Pandas", level: 85 },
-      { name: "NumPy", level: 80 }
-    ]
-  };
 
   const timeline = [
     {
@@ -135,8 +100,8 @@ const About = () => {
         </motion.div>
 
         <div className="about-content">
-          {/* Left Side - Story & Timeline */}
-          <motion.div className="about-left" variants={itemVariants}>
+          {/* Story & Timeline */}
+          <motion.div className="about-main" variants={itemVariants}>
             {/* Tab Navigation */}
             <div className="tab-navigation">
               <button 
@@ -234,59 +199,6 @@ const About = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Skills & Image */}
-          <motion.div className="about-right" variants={itemVariants}>
-            {/* Profile Image */}
-            <div className="profile-section">
-              <div className="image-container">
-                <motion.img 
-                  src="/hero.png" 
-                  alt="Anupam Kumar Singh"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <div className="image-glow"></div>
-              </div>
-            </div>
-
-            {/* Skills Section */}
-            <div className="skills-section">
-              <h3>Technical Skills</h3>
-              <div className="skills-tabs">
-                {Object.keys(skills).map((category) => (
-                  <div key={category} className="skill-category">
-                    <h4 className="skill-category-title">
-                      {category.charAt(0).toUpperCase() + category.slice(1)}
-                    </h4>
-                    <div className="skills-list">
-                      {skills[category].map((skill, index) => (
-                        <motion.div 
-                          key={index}
-                          className="skill-item"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <div className="skill-info">
-                            <span className="skill-name">{skill.name}</span>
-                            <span className="skill-percentage">{skill.level}%</span>
-                          </div>
-                          <div className="skill-bar">
-                            <motion.div 
-                              className="skill-progress"
-                              variants={skillVariants}
-                              custom={skill.level}
-                              animate={isInView ? "animate" : "initial"}
-                            />
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </motion.section>

@@ -1,24 +1,51 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import "./portfolio.scss";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 // Enhanced project data with categories and technologies
 const projects = [
   {
     id: 1,
+    title: "WebSMSC 8",
+    img: "/WebSMSC8.png",
+    desc: "A scalable SaaS platform for managing multi-channel marketing campaigns. Features secure authentication, real-time analytics, and automated workflows for businesses to optimize their customer outreach.",
+    longDesc: "WebSMSC 8 is a comprehensive multi-channel marketing platform developed during my Frontend Developer internship at RemotIQ Pty Ltd. The platform enables businesses to manage SMS and WhatsApp campaigns with features like bulk contact import, multi-step campaign creation, real-time chat, and advanced analytics dashboard. Built with modern technologies including Zustand for state management, TanStack Query for data handling, and WebSocket for real-time features.",
+    category: "web",
+    technologies: ["React", "Zustand", "TanStack Query", "WebSocket", "2FA Authentication"],
+    demoLink: "https://app.smsc.one/",
+    githubLink: "https://app.smsc.one/",
+    featured: true,
+    year: "2025"
+  },
+  {
+    id: 3,
+    title: "M-CHAT-R Screening Tool",
+    img: "/MCHAT.png",
+    desc: "A digital M-CHAT-R tool developed for early autism screening in toddlers. Features dynamic assessment flow with conditional branching logic, real-time progress tracking, and automated PDF report generation.",
+    longDesc: "Developed as a freelance project for Avyan Idris Foundation NGO, this M-CHAT-R screening tool facilitates early autism detection in toddlers. The application features a sophisticated assessment flow with conditional branching logic, real-time progress tracking, and automated PDF report generation that reduces clinician reporting time by 80%. Built with React and TypeScript, it leverages Redux Toolkit for robust state management and delivers a high-performance, responsive experience across desktop and mobile devices.",
+    category: "web",
+    technologies: ["React", "TypeScript", "Redux Toolkit", "PDF Generation", "Conditional Logic"],
+    demoLink: "https://m-chat-tool.vercel.app/",
+    githubLink: "https://m-chat-tool.vercel.app/",
+    featured: true,
+    year: "2025"
+  },
+  {
+    id: 2,
     title: "CareerHub",
     img: "/CareerHub.png",
     desc: "A comprehensive job portal connecting job seekers with employers. Features include job listings, application tracking, and role-based access control for seamless user experience.",
     longDesc: "CareerHub is a full-stack job portal built with React, Supabase, and Clerk authentication. It provides a complete ecosystem for job seekers and employers with features like job search, application tracking, resume uploads, and real-time notifications. The platform uses modern web technologies to deliver a smooth, responsive experience across all devices.",
     category: "web",
     technologies: ["React", "Supabase", "Clerk", "Tailwind CSS", "Radix UI"],
-    demoLink: "https://github.com/Anupam4058/CareerHub",
+    demoLink: "https://career-hub-beta-virid.vercel.app/",
     githubLink: "https://github.com/Anupam4058/CareerHub",
     featured: true,
     year: "2024"
   },
+  
   {
-    id: 2,
+    id: 4,
     title: "Sumz",
     img: "/Sumz.png",
     desc: "AI-powered article summarization tool that provides quick and precise content summaries, enhancing content digestibility for busy readers.",
@@ -27,24 +54,24 @@ const projects = [
     technologies: ["React", "Redux Toolkit", "RapidAPI", "AI/ML", "JavaScript"],
     demoLink: "https://article-summerizer-3c887d.netlify.app/",
     githubLink: "https://github.com/Anupam4058/Sumz",
-    featured: true,
+    featured:false,
     year: "2024"
   },
   {
-    id: 3,
-    title: "House Price Predictor",
-    img: "/HousePricePredictor.jpeg",
-    desc: "Machine learning model that predicts house prices using advanced regression techniques and comprehensive data analysis.",
-    longDesc: "A sophisticated machine learning project that predicts house prices based on various features like location, size, amenities, and market trends. Built with Python and scikit-learn, it includes data preprocessing, feature engineering, and model optimization using cross-validation techniques. The model achieves high accuracy and provides valuable insights for real estate decisions.",
-    category: "ml",
-    technologies: ["Python", "scikit-learn", "Pandas", "NumPy", "Matplotlib"],
-    demoLink: "https://github.com/Anupam4058/House-Price-Pridictor",
-    githubLink: "https://github.com/Anupam4058/House-Price-Pridictor",
+    id: 7,
+    title: "Speak Easy",
+    img: "/people.webp",
+    desc: "AI-powered language learning app featuring interactive stories, flashcards, and an AI chat partner for French and German.",
+    longDesc: "Speak Easy is an AI-assisted language learning app that generates beginner-friendly stories, provides tappable translations, animated flashcards, and an AI conversation partner. It supports French and German with separate progress tracking and a calm, accessible UI.",
+    category: "ai",
+    technologies: ["React", "LLM", "Flashcards", "Chatbot", "Netlify"],
+    demoLink: "https://lang-learning.netlify.app/",
+    githubLink: "https://github.com/Anupam4058/SpeakEasy",
     featured: false,
-    year: "2023"
+    year: "2025"
   },
   {
-    id: 4,
+    id: 6,
     title: "Student Marks Predictor",
     img: "/StudentMarksPredictor.png",
     desc: "Supervised learning model that predicts student performance based on study hours using linear regression algorithms.",
@@ -56,14 +83,6 @@ const projects = [
     featured: false,
     year: "2023"
   }
-];
-
-// Filter categories
-const categories = [
-  { id: "all", name: "All Projects", icon: "🚀" },
-  { id: "web", name: "Web Development", icon: "🌐" },
-  { id: "ai", name: "AI/ML", icon: "🤖" },
-  { id: "ml", name: "Machine Learning", icon: "📊" }
 ];
 
 // Animation variants
@@ -115,7 +134,6 @@ const cardVariants = {
 
 // Project Card Component
 const ProjectCard = ({ project }) => {
-  const [, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -125,8 +143,6 @@ const ProjectCard = ({ project }) => {
         y: -8,
         transition: { duration: 0.3, ease: "easeOut" }
       }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
     >
       <div className="card-image">
         <motion.img 
@@ -192,12 +208,16 @@ const ProjectCard = ({ project }) => {
 const Portfolio = () => {
   const ref = useRef();
   useInView(ref, { margin: "-100px" });
-  const [activeFilter, setActiveFilter] = useState("all");
 
-  // Filter projects based on active category
-  const filteredProjects = activeFilter === "all" 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  const scrollToContact = () => {
+    const target = document.querySelector('#Contact');
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+    if (target) {
+      const y = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 8;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   return (
     <motion.section 
@@ -219,38 +239,13 @@ const Portfolio = () => {
           </p>
         </motion.div>
 
-        {/* Filter Navigation */}
-        <motion.div className="filter-navigation" variants={itemVariants}>
-          {categories.map((category) => (
-            <motion.button
-              key={category.id}
-              className={`filter-btn ${activeFilter === category.id ? 'active' : ''}`}
-              onClick={() => setActiveFilter(category.id)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="filter-icon">{category.icon}</span>
-              <span className="filter-name">{category.name}</span>
-            </motion.button>
-          ))}
-        </motion.div>
-
         {/* Projects Grid */}
         <motion.div className="projects-grid" variants={itemVariants}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeFilter}
-              className="grid-container"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {filteredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          <div className="grid-container">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
         </motion.div>
 
         {/* Call to Action */}
@@ -259,9 +254,11 @@ const Portfolio = () => {
             <h3>Interested in working together?</h3>
             <p>Let&apos;s discuss your next project and bring your ideas to life</p>
             <motion.button 
+              type="button"
               className="btn btn-primary btn-large"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={scrollToContact}
             >
               <span>Start a Project</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
