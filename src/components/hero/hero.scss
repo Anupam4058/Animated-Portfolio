@@ -100,7 +100,7 @@
     }
     
     .greeting {
-      font-size: $text-lg;
+      font-size: $text-2xl;
       color: var(--text-secondary);
       font-weight: $font-medium;
       display: flex;
@@ -108,7 +108,7 @@
       gap: $space-2;
       
       .wave {
-        font-size: $text-xl;
+        font-size: $text-3xl;
         animation: wave 2s ease-in-out infinite;
       }
     }
@@ -136,6 +136,12 @@
         
         @include mobile {
           min-width: auto;
+        }
+        
+        .typing-cursor {
+          display: inline-block;
+          margin-left: 2px;
+          animation: blink 1s step-end infinite;
         }
       }
     }
@@ -355,6 +361,15 @@
   }
   75% {
     transform: rotate(-10deg);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
   }
 }
 

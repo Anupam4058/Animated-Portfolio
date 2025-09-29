@@ -35,6 +35,11 @@ const About = () => {
 
   const timeline = [
     {
+      year: "2025",
+      title: "AI-Powered Software Development",
+      description: "Building generative AI and AI-powered software solutions by combining full-stack development expertise with modern LLM technologies and various language models."
+    },
+    {
       year: "2024",
       title: "Full-Stack Development",
       description: "Building complete web applications with modern technologies and best practices."

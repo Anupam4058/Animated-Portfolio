@@ -89,18 +89,56 @@ const floatingVariants = {
 };
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  
   const roles = [
-    "Software Developer",
-    "UI/UX Designer",
+    "Full Stack Developer",
+    "AI & ML enthusiast",
   ];
 
-  // Auto-rotate roles
+  // Function to determine if we should use "a" or "an"
+  const getArticle = (role) => {
+    const firstWord = role.split(' ')[0].toLowerCase();
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    // Check if the first letter is a vowel or if it's "AI" (sounds like "ay-eye")
+    if (vowels.includes(firstWord[0]) || firstWord === 'ai') {
+      return 'an';
+    }
+    return 'a';
+  };
+
+  // Typing and erasing animation
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [roles.length]);
+    const currentText = roles[currentRole];
+    const typingSpeed = 100; // milliseconds per character
+    const erasingSpeed = 50;
+    const pauseTime = 2000; // pause before erasing
+
+    const handleTyping = () => {
+      if (!isDeleting && displayText.length < currentText.length) {
+        // Typing
+        setDisplayText(currentText.substring(0, displayText.length + 1));
+      } else if (!isDeleting && displayText.length === currentText.length) {
+        // Pause before erasing
+        setTimeout(() => setIsDeleting(true), pauseTime);
+      } else if (isDeleting && displayText.length > 0) {
+        // Erasing
+        setDisplayText(currentText.substring(0, displayText.length - 1));
+      } else if (isDeleting && displayText.length === 0) {
+        // Move to next role
+        setIsDeleting(false);
+        setCurrentRole((prev) => (prev + 1) % roles.length);
+      }
+    };
+
+    const timeout = setTimeout(
+      handleTyping,
+      isDeleting ? erasingSpeed : typingSpeed
+    );
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentRole, roles]);
 
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
@@ -130,35 +168,29 @@ const Hero = () => {
             className="hero-text"
             variants={textVariants}
           >
-            {/* <motion.div 
+            <motion.div 
               className="greeting"
               variants={textVariants}
             >
-              <span className="wave">👋</span> Hello, I&apos;m
-            </motion.div> */}
+              <span className="wave">👋</span> Hi, I&apos;m
+            </motion.div>
             
             <motion.h2 
               className="hero-name"
               variants={textVariants}
             >
-              <span className="text-gradient">Anupam Singh</span>
+              <span className="text-gradient">Anupam</span>
             </motion.h2>
             
             <motion.div 
               className="role-container"
               variants={textVariants}
             >
-              <span className="role-prefix">I&apos;m a </span>
-              <motion.span 
-                className="role-text text-gradient"
-                key={currentRole}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                {roles[currentRole]}
-              </motion.span>
+              <span className="role-prefix">I&apos;m {getArticle(roles[currentRole])} </span>
+              <span className="role-text text-gradient">
+                {displayText}
+                <span className="typing-cursor">|</span>
+              </span>
             </motion.div>
             
             <motion.p 
