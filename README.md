@@ -22,4 +22,4 @@ A modern, responsive, and feature-rich portfolio website built with React, Frame
 
 ⭐ **Star this repository if you found it helpful!**
 
-🔗 **Live Demo**: [https://anupam-portfolio.vercel.app](https://anupam-portfolio.vercel.app)
+🔗 **Live Demo**: [https://anupam-portfolio.vercel.app](https://animated-portfolio-sigma-five.vercel.app/)
