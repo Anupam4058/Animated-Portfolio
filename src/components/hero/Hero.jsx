@@ -197,8 +197,7 @@ const Hero = () => {
               className="hero-description"
               variants={textVariants}
             >
-              Crafting digital experiences with modern technologies. 
-              Passionate about creating beautiful, functional, and user-centered applications.
+              Crafting digital experiences with modern technologies. Let&apos;s build something amazing together.
             </motion.p>
             
             <motion.div 

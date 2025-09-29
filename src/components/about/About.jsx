@@ -134,22 +134,21 @@ const About = () => {
                 >
                   <div className="story-text">
                     <p>
-                      Hi, I&apos;m <span className="highlight">Anupam Kumar Singh</span>, a passionate 
-                      Computer Science student and aspiring full-stack developer. I love creating 
-                      digital experiences that are not just functional, but also beautiful and 
-                      user-centered.
+                      Hi, I&apos;m <span className="highlight">Anupam</span>, a passionate 
+                      Computer Science student and aspiring Gen AI developer who loves creating 
+                      beautiful, functional, and user-centered digital experiences.
                     </p>
                     <p>
-                      My journey in tech started with curiosity about how websites work, and it 
-                      quickly evolved into a deep passion for <span className="highlight">web development</span> 
-                      and <span className="highlight">machine learning</span>. I believe in the power 
-                      of technology to solve real-world problems and make a positive impact.
+                      My journey in tech started with curiosity about how websites work and evolved into a deep 
+                      passion for <span className="highlight">web development</span> and <span className="highlight">machine learning</span>. 
+                      As a <span className="highlight">full-stack developer</span>, I&apos;m proficient in modern web technologies & frameworks like
+                      <span className="highlight"> React.js & Next.js</span>, 
+                      with a proven track record of building scalable platforms and delivering efficient, user-centric applications.
                     </p>
                     <p>
-                      When I&apos;m not coding, you&apos;ll find me exploring new design trends, contributing 
-                      to open-source projects, or learning about the latest advancements in AI and 
-                      web technologies. I&apos;m always excited to collaborate and learn from others in 
-                      the tech community.
+                      I&apos;m enthusiastic about emerging technologies like <span className="highlight">Generative AI</span> and 
+                      <span className="highlight"> Agentic AI</span>. When I&apos;m not coding, you&apos;ll find me exploring latest trend and advancments in the AI space or learning about the latest in AI and web technologies. 
+                      I&apos;m actively seeking new roles where I can build impactful products and collaborate with the tech community.
                     </p>
                   </div>
                 </motion.div>

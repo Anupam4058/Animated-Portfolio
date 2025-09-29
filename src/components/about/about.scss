@@ -110,6 +110,7 @@
             line-height: $leading-relaxed;
             color: $text-secondary;
             margin-bottom: $space-6;
+            text-align: justify;
             
             .highlight {
               color: $accent-primary;
@@ -319,6 +320,7 @@
           .story-content .story-text p {
             font-size: $text-base;
             margin-bottom: $space-4;
+            text-align: justify;
           }
           
           .timeline-content .timeline {
