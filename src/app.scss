@@ -5,6 +5,15 @@
 // Import Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
+// Import Futura Font
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/futura/futurastd-book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 // ========================================
 // COLOR SYSTEM
 // ========================================
@@ -84,6 +93,7 @@ $bg-glass: rgba(255, 255, 255, 0.1);
 // ========================================
 
 $font-primary: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-heading: 'Futura', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
 $font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
 // Font Sizes
@@ -443,11 +453,16 @@ textarea {
 // RESPONSIVE TYPOGRAPHY
 // ========================================
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+}
+
 .hero-title {
   font-size: clamp($text-4xl, 8vw, $text-8xl);
   font-weight: $font-black;
   line-height: $leading-tight;
   letter-spacing: -0.02em;
+  font-family: $font-heading;
 }
 
 .section-title {
@@ -455,6 +470,7 @@ textarea {
   font-weight: $font-bold;
   line-height: $leading-tight;
   letter-spacing: -0.01em;
+  font-family: $font-heading;
 }
 
 .subtitle {
