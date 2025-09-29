@@ -83,6 +83,8 @@
     }
     
     @include mobile {
+      display: flex;
+      flex-direction: column;
       gap: $space-6;
       padding: $space-16 0;
     }
@@ -99,6 +101,12 @@
       text-align: center;
     }
     
+    @include mobile {
+      order: 1;
+      align-items: center;
+      text-align: center;
+    }
+    
     .greeting {
       font-size: $text-2xl;
       color: var(--text-secondary);
@@ -106,6 +114,10 @@
       display: flex;
       align-items: center;
       gap: $space-2;
+      
+      @include mobile {
+        order: 1;
+      }
       
       .wave {
         font-size: $text-3xl;
@@ -120,12 +132,20 @@
       letter-spacing: -0.02em;
       margin: 0;
       font-family: $font-heading;
+      
+      @include mobile {
+        order: 2;
+      }
     }
     
     .role-container {
       font-size: clamp($text-xl, 4vw, $text-4xl);
       font-weight: $font-semibold;
       line-height: $leading-snug;
+      
+      @include mobile {
+        order: 4;
+      }
       
       .role-prefix {
         color: var(--text-secondary);
@@ -160,17 +180,19 @@
       
       @include mobile {
         font-size: $text-base;
+        order: 5;
       }
     }
     
     .hero-buttons {
       display: flex;
-      gap: $space-4;
+      gap: $space-3;
       flex-wrap: wrap;
       
       @include mobile {
         justify-content: center;
-        gap: $space-3;
+        gap: $space-4;
+        order: 6;
       }
       
       .btn {
@@ -269,6 +291,10 @@
       order: -1;
     }
     
+    @include mobile {
+      order: 3;
+    }
+    
     .image-wrapper {
       position: relative;
       width: 400px;
@@ -318,11 +344,13 @@
   .scroll-indicator {
     position: absolute;
     bottom: $space-8;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: $space-2;
     z-index: 3;
     
@@ -330,6 +358,8 @@
       font-size: $text-sm;
       color: $text-muted;
       font-weight: $font-medium;
+      text-align: center;
+      white-space: nowrap;
     }
     
     .scroll-arrow {
