@@ -316,21 +316,48 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
+// Base section styles
 section {
-  min-height: 100vh;
   width: 100vw;
   overflow: hidden;
   position: relative;
   // GPU acceleration for smoother scrolling
   transform: translateZ(0);
-  will-change: transform;
+}
+
+// Hero section - full viewport height
+.hero-section {
+  min-height: 100vh;
+}
+
+// Content sections - flexible height based on content
+.content-section {
+  min-height: auto;
+  padding: $space-16 0;
+  
+  // Subtle section separator
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(80%, 600px);
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.1) 20%, 
+      rgba(255, 255, 255, 0.2) 50%, 
+      rgba(255, 255, 255, 0.1) 80%, 
+      transparent
+    );
+  }
   
   @include mobile {
-    min-height: 100vh;
-    height: auto;
+    padding: $space-12 0;
   }
 }
 
