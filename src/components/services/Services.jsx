@@ -57,38 +57,24 @@ const Services = () => {
   const services = [
     {
       id: 1,
-      title: "Frontend Development",
-      description: "Creating modern, responsive user interfaces using React, HTML5, CSS3, and JavaScript. From landing pages to complex web applications.",
-      icon: "🎨",
-      technologies: ["React","Next.js", "JavaScript", "HTML5", "Tailwind CSS", "SASS"]
-    },
-    // {
-    //   id: 2,
-    //   title: "Machine Learning",
-    //   description: "Developing intelligent solutions using Python, scikit-learn, and TensorFlow. From data analysis to predictive modeling.",
-    //   icon: "🤖",
-    //   technologies: ["Python", "scikit-learn", "TensorFlow", "Pandas", "NumPy"]
-    // },
-    // {
-    //   id: 3,
-    //   title: "UI/UX Design",
-    //   description: "Designing intuitive and beautiful user interfaces with focus on user experience and modern design principles.",
-    //   icon: "🎨",
-    //   technologies: ["Figma", "Adobe XD", "Photoshop", "Illustrator"]
-    // },
-    {
-      id: 4,
-      title: "Backend Development",
-      description: "Building robust server-side applications and APIs using Node.js, Express, and database management systems.",
-      icon: "⚙️",
-      technologies: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs", "Supabase"]
+      title: "Full-Stack Development",
+      description: "Building end-to-end web applications with modern architectures. From responsive React frontends to scalable Node.js backends with robust database integrations.",
+      icon: "💻",
+      technologies: ["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "MongoDB"]
     },
     {
-      id: 5,
-      title: "Generative AI Applications",
-      description: "Creating intelligent applications powered by AI models including chatbots, content generators, and automated solutions using cutting-edge AI technologies.",
+      id: 2,
+      title: "Gen AI Engineering",
+      description: "Developing intelligent AI-powered applications using LLMs, RAG systems, and AI agents. Transforming business processes with cutting-edge generative AI solutions.",
+      icon: "🤖",
+      technologies: ["LangChain", "OpenAI", "Python", "Vector DBs", "RAG", "AI Agents"]
+    },
+    {
+      id: 3,
+      title: "AI Application Development",
+      description: "Creating production-ready AI applications including chatbots, content generators, document processors, and automated workflows powered by modern AI technologies.",
       icon: "🚀",
-      technologies: ["OpenAI", "LangChain", "Python", "FastAPI", "Vector Databases"]
+      technologies: ["FastAPI", "LLMs", "Prompt Engineering", "Embeddings", "Supabase", "APIs"]
     },
     // {
     //   id: 6,
@@ -122,7 +108,7 @@ const Services = () => {
             My <span className="text-gradient">Services</span>
           </h2>
           <p className="subtitle">
-            Comprehensive solutions to bring your digital vision to life
+            End-to-end software development & AI engineering solutions
           </p>
         </motion.div>
         

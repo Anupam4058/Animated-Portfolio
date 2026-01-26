@@ -11,13 +11,10 @@ const Parallax = ({ type }) => {
     offset: ["start start", "end start"],
   });
 
-  // Enhanced parallax transforms
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "300%"]);
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
-  const yMountains = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const yStars = useTransform(scrollYProgress, [0, 1], ["0%", "120%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  // Optimized parallax transforms - reduced complexity for smoother scrolling
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.9, 0]);
 
   // Section-specific content
   const getSectionContent = (type) => {
@@ -61,16 +58,12 @@ const Parallax = ({ type }) => {
       ref={ref}
       style={{
         background: content.gradient,
-        opacity,
-        scale
+        opacity
       }}
     >
-      {/* Animated Background Elements */}
+      {/* Simplified Background Elements for better performance */}
       <div className="parallax-bg">
-        <motion.div 
-          className="mountains"
-          style={{ y: yMountains }}
-        />
+        <div className="mountains" />
         <motion.div
           className="planets"
           style={{
@@ -82,32 +75,18 @@ const Parallax = ({ type }) => {
             })`,
           }}
         />
-        <motion.div 
-          className="stars"
-          style={{ y: yStars }}
-        />
+        <div className="stars" />
         
-        {/* Floating Particles */}
+        {/* Reduced particles for better scroll performance */}
         <div className="particles">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
+          {[...Array(6)].map((_, i) => (
+            <div
               key={i}
               className="particle"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 4}s`
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.3, 1, 0.3],
-                scale: [0.8, 1.2, 0.8]
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                ease: "easeInOut"
+                left: `${15 + i * 15}%`,
+                top: `${20 + i * 12}%`,
+                animationDelay: `${i * 0.5}s`,
               }}
             />
           ))}

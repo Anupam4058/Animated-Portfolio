@@ -31,6 +31,19 @@ const projects = [
     year: "2025"
   },
   {
+    id: 5,
+    title: "AI Powered Document Insights Extractor",
+    img: "/DocumentInsightsExtractor.png",
+    desc: "An AI-powered tool that extracts key insights from documents using NLP techniques and transformer models.",
+    longDesc: "An intelligent document analysis application that extracts structured insights from retail media documents (PDF/DOCX) using AI-powered natural language processing. The application uses transformer models to summarize documents, classify document types, and extract key information like deadlines, KPIs, technical specifications, and action items.",
+    category: "AI/ML",
+    technologies: ["Python","Transformers", "NLP", "Hugging Face", "FastAPI", "React"],
+    demoLink: "https://ai-powered-document-insight-extractor.vercel.app/",
+    githubLink: "https://github.com/Anupam4058/AI-Powered-Document-Insight-Extractor",
+    featured: true,
+    year: "2026"
+  },
+  {
     id: 2,
     title: "CareerHub",
     img: "/CareerHub.png",
@@ -64,25 +77,26 @@ const projects = [
     desc: "AI-powered language learning app featuring interactive stories, flashcards, and an AI chat partner for French and German.",
     longDesc: "Speak Easy is an AI-assisted language learning app that generates beginner-friendly stories, provides tappable translations, animated flashcards, and an AI conversation partner. It supports French and German with separate progress tracking and a calm, accessible UI.",
     category: "ai",
-    technologies: ["React", "LLM", "Flashcards", "Chatbot", "Netlify"],
+    technologies: ["React", "Gemini", "Flashcards", "Chatbot", "Netlify"],
     demoLink: "https://lang-learning.netlify.app/",
     githubLink: "https://github.com/Anupam4058/SpeakEasy",
     featured: false,
     year: "2025"
   },
-  {
-    id: 6,
-    title: "Student Marks Predictor",
-    img: "/StudentMarksPredictor.png",
-    desc: "Supervised learning model that predicts student performance based on study hours using linear regression algorithms.",
-    longDesc: "An educational machine learning project that demonstrates the power of predictive analytics in education. Using simple linear regression, it predicts student marks based on study hours with high accuracy. The project includes comprehensive data analysis, visualization, and model evaluation techniques, making it an excellent example of applied machine learning in education.",
-    category: "ml",
-    technologies: ["Python", "scikit-learn", "NumPy", "Pandas", "Streamlit"],
-    demoLink: "https://student-marks-predictor.streamlit.app/",
-    githubLink: "https://github.com/Anupam4058/Student-Marks-Predictor",
-    featured: false,
-    year: "2023"
-  }
+  // {
+  //   id: 6,
+  //   title: "Student Marks Predictor",
+  //   img: "/StudentMarksPredictor.png",
+  //   desc: "Supervised learning model that predicts student performance based on study hours using linear regression algorithms.",
+  //   longDesc: "An educational machine learning project that demonstrates the power of predictive analytics in education. Using simple linear regression, it predicts student marks based on study hours with high accuracy. The project includes comprehensive data analysis, visualization, and model evaluation techniques, making it an excellent example of applied machine learning in education.",
+  //   category: "ml",
+  //   technologies: ["Python", "scikit-learn", "NumPy", "Pandas", "Streamlit"],
+  //   demoLink: "https://student-marks-predictor.streamlit.app/",
+  //   githubLink: "https://github.com/Anupam4058/Student-Marks-Predictor",
+  //   featured: false,
+  //   year: "2023"
+  // },
+  
 ];
 
 // Animation variants

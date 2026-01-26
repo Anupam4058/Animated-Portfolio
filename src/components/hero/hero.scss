@@ -13,6 +13,9 @@
   background: var(--bg-primary);
   // Offset for fixed navbar so content doesn't sit underneath it
   padding-top: $space-12;
+  // GPU acceleration for smooth scrolling
+  transform: translateZ(0);
+  will-change: auto;
   
   // Background Elements
   .hero-background {
@@ -23,6 +26,7 @@
     height: 100%;
     z-index: 0;
     overflow: hidden;
+    transform: translateZ(0);
     
     .gradient-orb {
       position: absolute;
@@ -30,6 +34,9 @@
       filter: blur(100px);
       opacity: 0.3;
       animation: float 20s ease-in-out infinite;
+      // GPU acceleration
+      transform: translateZ(0);
+      will-change: transform;
       
       &.orb-1 {
         width: 400px;

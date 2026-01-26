@@ -100,7 +100,7 @@ const About = () => {
             About <span className="text-gradient">Me</span>
           </h2>
           <p className="subtitle">
-            Passionate developer crafting digital experiences with modern technologies
+            Software Developer & Gen AI Engineer crafting intelligent digital solutions
           </p>
         </motion.div>
 
@@ -134,21 +134,22 @@ const About = () => {
                 >
                   <div className="story-text">
                     <p>
-                      Hi, I&apos;m <span className="highlight">Anupam</span>, a passionate 
-                      Computer Science student and aspiring Gen AI developer who loves creating 
-                      beautiful, functional, and user-centered digital experiences.
+                      Hi, I&apos;m <span className="highlight">Anupam</span>, a Software Developer 
+                      and Gen AI Engineer passionate about building intelligent, scalable applications 
+                      that solve real-world problems.
                     </p>
                     <p>
-                      My journey in tech started with curiosity about how websites work and evolved into a deep 
-                      passion for <span className="highlight">web development</span> and <span className="highlight">machine learning</span>. 
-                      As a <span className="highlight">full-stack developer</span>, I&apos;m proficient in modern web technologies & frameworks like
-                      <span className="highlight"> React.js & Next.js</span>, 
-                      with a proven track record of building scalable platforms and delivering efficient, user-centric applications.
+                      With a strong foundation in <span className="highlight">full-stack development</span> using 
+                      <span className="highlight"> React.js, Next.js, Node.js</span>, and <span className="highlight">Python</span>, 
+                      I&apos;ve evolved into building <span className="highlight">AI-powered solutions</span> that leverage 
+                      the latest in LLMs, LangChain, and generative AI technologies. I specialize in creating 
+                      end-to-end applications from robust backends to intuitive user interfaces.
                     </p>
                     <p>
-                      I&apos;m enthusiastic about emerging technologies like <span className="highlight">Generative AI</span> and 
-                      <span className="highlight"> Agentic AI</span>. When I&apos;m not coding, you&apos;ll find me exploring latest trend and advancments in the AI space or learning about the latest in AI and web technologies. 
-                      I&apos;m actively seeking new roles where I can build impactful products and collaborate with the tech community.
+                      Currently, I&apos;m deeply immersed in the <span className="highlight">Gen AI engineering</span> space, 
+                      building intelligent applications with <span className="highlight">LLMs, RAG systems, and AI agents</span>. 
+                      I&apos;m passionate about bridging the gap between cutting-edge AI research and practical software solutions 
+                      that deliver real business value.
                     </p>
                   </div>
                 </motion.div>

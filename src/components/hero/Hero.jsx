@@ -93,8 +93,9 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   
   const roles = [
+    "Software Developer",
+    "Gen AI Engineer",
     "Full Stack Developer",
-    "AI & ML Enthusiast",
   ];
 
   // Function to determine if we should use "a" or "an"
@@ -222,7 +223,7 @@ const Hero = () => {
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                onClick={() => window.open("https://drive.google.com/file/d/1Mt-V26al1zcmP2a-0k-gJXdHURxas0rz/view?usp=sharing", "_blank")}
+                onClick={() => window.open("https://drive.google.com/file/d/12_TgWLC9_7KiGVj0Io1mpAk3jLTeHmc4/view?usp=drive_link", "_blank")}
               >
                 <span>My Resume</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">

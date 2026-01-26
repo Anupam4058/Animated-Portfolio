@@ -24,8 +24,8 @@ class SEOOptimizer {
   setupMetaTags() {
     // Setup comprehensive meta tags
     const metaTags = [
-      { name: 'description', content: 'Experienced Frontend Developer specializing in React, JavaScript, and modern web technologies. Creating beautiful, responsive, and user-friendly web applications.' },
-      { name: 'keywords', content: 'frontend developer, react developer, javascript, web development, UI/UX designer, portfolio, web applications, responsive design' },
+      { name: 'description', content: 'Software Developer & Gen AI Engineer specializing in Full-Stack Development, LLMs, and AI-powered applications. Building intelligent, scalable solutions with React, Python, and cutting-edge AI technologies.' },
+      { name: 'keywords', content: 'software developer, gen ai engineer, full stack developer, react developer, python developer, LLM, generative ai, langchain, openai, machine learning, web development, ai applications' },
       { name: 'author', content: 'Anupam Kumar Singh' },
       { name: 'robots', content: 'index, follow' },
       { name: 'language', content: 'English' },
@@ -36,10 +36,10 @@ class SEOOptimizer {
       { name: 'geo.region', content: 'IN' },
       { name: 'geo.country', content: 'India' },
       { name: 'geo.placename', content: 'India' },
-      { name: 'DC.title', content: 'Anupam Kumar Singh - Frontend Developer & UI/UX Designer' },
+      { name: 'DC.title', content: 'Anupam Kumar Singh - Software Developer & Gen AI Engineer' },
       { name: 'DC.creator', content: 'Anupam Kumar Singh' },
-      { name: 'DC.subject', content: 'Web Development, Frontend Development, UI/UX Design' },
-      { name: 'DC.description', content: 'Professional portfolio showcasing frontend development skills and projects' },
+      { name: 'DC.subject', content: 'Software Development, Full-Stack Development, Generative AI, LLMs, Machine Learning' },
+      { name: 'DC.description', content: 'Professional portfolio showcasing software development and Gen AI engineering skills and projects' },
       { name: 'DC.publisher', content: 'Anupam Kumar Singh' },
       { name: 'DC.contributor', content: 'Anupam Kumar Singh' },
       { name: 'DC.date', content: new Date().toISOString() },
@@ -72,8 +72,8 @@ class SEOOptimizer {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Anupam Kumar Singh",
-      "jobTitle": "Frontend Developer",
-      "description": "Experienced Frontend Developer specializing in React, JavaScript, and modern web technologies",
+      "jobTitle": "Software Developer & Gen AI Engineer",
+      "description": "Software Developer & Gen AI Engineer specializing in Full-Stack Development, LLMs, and AI-powered applications",
       "url": window.location.origin,
       "image": `${window.location.origin}/hero.png`,
       "sameAs": [

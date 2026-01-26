@@ -29,40 +29,12 @@ class MobileUtils {
   }
 
   setupMobileOptimizations() {
-    // Prevent zoom on double tap
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', (event) => {
-      const now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
-
-    // Prevent pull-to-refresh
-    document.addEventListener('touchstart', (event) => {
-      if (event.touches.length !== 1) return;
-      this.touchStartY = event.touches[0].clientY;
-      this.touchStartX = event.touches[0].clientX;
-    });
-
-    document.addEventListener('touchmove', (event) => {
-      if (event.touches.length !== 1) return;
-      
-      const touchY = event.touches[0].clientY;
-      const touchX = event.touches[0].clientX;
-      
-      // Prevent pull-to-refresh
-      if (window.scrollY === 0 && touchY > this.touchStartY) {
-        event.preventDefault();
-      }
-      
-      // Prevent horizontal scroll
-      if (Math.abs(touchX - this.touchStartX) > Math.abs(touchY - this.touchStartY)) {
-        event.preventDefault();
-      }
-    }, { passive: false });
-
+    // Use passive listeners for smooth scrolling
+    // Removed scroll-blocking event handlers that caused laggy scrolling
+    
+    // Add GPU acceleration hints
+    document.body.style.webkitOverflowScrolling = 'touch';
+    
     // Optimize scroll performance
     this.optimizeScrollPerformance();
   }
